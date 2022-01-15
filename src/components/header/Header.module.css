@@ -1,0 +1,118 @@
+.conteiner {
+  display: flex;
+  max-width: 1200px;
+  justify-content: center;
+  margin: 0 auto;
+  padding-left: 26px;
+  padding-right: 26px;
+}
+.header {
+  width: 320px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* outline: 2px solid #f57b0b; */
+}
+.logo {
+  cursor: pointer;
+  margin-left: 19px;
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #f5f6fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+.wrap {
+  display: flex;
+  align-items: center;
+}
+.titleuser {
+  display: none;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: right;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  text-decoration: none;
+  padding-right: 20px;
+  border-right: 1px solid #e0e5eb;
+  margin-left: 10px;
+}
+.userBtn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 16px;
+  height: 16px;
+  color: #cbccd0;
+  margin-right: 19px;
+  margin-left: 20px;
+}
+.userBtn:hover {
+  transition: box-shadow 0.5s, transform 0.5s;
+  transform: scale(1.2);
+  color: pink;
+}
+.exit {
+  display: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  color: #52555f;
+}
+.lightTheme {
+  color: #52555f;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    width: 768px;
+    height: 56px;
+  }
+  .titleuser {
+    display: unset;
+  }
+  .logo {
+    margin-left: 26px;
+  }
+  .userBtn {
+    margin-right: 23px;
+  }
+  .exit {
+    display: unset;
+    margin-right: 23px;
+  }
+  .iconEx {
+    display: none;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .header {
+    width: 1200px;
+  }
+  .exit {
+    margin-right: 71px;
+  }
+}
+.darkTheme {
+  color: white;
+  background-color: rgb(24, 23, 23);
+  height: 100vh;
+}

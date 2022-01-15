@@ -1,0 +1,35 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+}
+.title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #52555f;
+}
+.no {
+  background: transparent;
+  border: 2px solid #f5f6fb;
+  border-radius: 16px;
+  width: 125px;
+  height: 44px;
+  margin-top: 20px;
+  display: flex;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.no:hover {
+  background-color: purple;
+  transition: box-shadow 0.5s, transform 0.5s;
+  transform: scale(1.1);
+  color: white;
+  text-transform: uppercase;
+}

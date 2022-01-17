@@ -1,7 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import { useState, Suspense, useEffect } from 'react';
 
-import { ThemeContext, themes } from '../context/themeContext';
+import { ThemeContext, themes } from '../Context/themeContext';
 // import { useLocalStorage } from 'react-use';
 import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
 import Expense from '../Expense/Expense';

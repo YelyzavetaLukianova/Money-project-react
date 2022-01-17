@@ -16,9 +16,6 @@ const CashFlow = ({ arey }) => {
     setEmptyArray(newArray);
   }, [arey.length]);
 
-  console.log(`arey`, arey);
-  console.log(`emptyArray`, emptyArray);
-
   return (
     <div>
       <table className={`${s.table23} ${s.scrollbar}`}>
@@ -34,10 +31,10 @@ const CashFlow = ({ arey }) => {
 
         <tbody className={s.scrollbar}>
           {!!arey.length &&
-            arey.map(({ date, name, category, amount, id }) => (
+            arey.map(({ date, description, category, amount, id }) => (
               <tr key={id} className={s.field}>
                 <td className={s.string}>{date}</td>
-                <td className={s.string}>{name}</td>
+                <td className={s.string}>{description}</td>
                 <td className={s.string}>{category}</td>
                 <td className={s.string}>{amount}</td>
                 <td className={s.string}>

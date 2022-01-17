@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { GrCalculator } from 'react-icons/gr';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../common/Button/Button';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
 import s from './FormEnter.module.css';
 import Summary from '../Summary/Summary';
 import CashFlow from '../CashFlow/CashFlow';
+import {
+  getExpenseBack,
+  addExpenseBack,
+  deleteExpenseBack,
+} from '../../redux/transaction/transactionOperations';
 
 import {
   getExpenseCategories,
@@ -19,22 +26,29 @@ const classsDate = s.input + ' ' + s.date_input;
 
 const INITIAL_STATE = {
   date: '',
-  name: '',
+  description: '',
   category: '',
   amount: '',
 };
 
 const FormEnter = () => {
+  const dispatch = useDispatch();
+
+  const expense23 = useSelector(state => state.expense.data.items);
+
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
   const [expense, setExpense] = useState([]);
   const [income, setIncome] = useState([]);
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
 
-  console.log(`expense`, expense);
-  console.log(`income`, income);
-
   const location = useLocation();
+
+  console.log(`expense23`, expense23);
+
+  useEffect(() => {
+    dispatch(getExpenseBack());
+  }, [dispatch]);
 
   useEffect(() => {
     const getDataExp = async () => {
@@ -54,7 +68,7 @@ const FormEnter = () => {
     getDataInc();
   }, []);
 
-  const { date, name, category, amount } = formData;
+  const { date, description, category, amount } = formData;
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -62,15 +76,17 @@ const FormEnter = () => {
     setFormData({
       ...formData,
       [name]: value,
-      id: nanoid(),
+      // _id: nanoid(5),
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
+
     location.pathname === '/income'
       ? setIncome([...income, formData])
-      : setExpense([...expense, formData]);
+      : dispatch(addExpenseBack(formData));
+    // : setExpense([...expense, formData]);
     reset();
   };
 
@@ -101,8 +117,8 @@ const FormEnter = () => {
 
             <input
               type="text"
-              name="name"
-              value={name}
+              name="description"
+              value={description}
               placeholder="Описание товара"
               required
               onChange={handleChange}
@@ -148,7 +164,7 @@ const FormEnter = () => {
           </div>
         </form>
       </div>
-      <CashFlow arey={location.pathname === '/income' ? income : expense} />
+      <CashFlow arey={location.pathname === '/income' ? income : expense23} />
       <Summary />
     </div>
   );

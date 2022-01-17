@@ -21,6 +21,7 @@
     "react-spinners": "^0.11.0",
     "react-toastify": "^8.1.0",
     "react-use": "^17.3.2",
+    "react-use-size": "^2.0.4",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "web-vitals": "^2.1.3"

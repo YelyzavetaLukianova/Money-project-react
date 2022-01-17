@@ -2,12 +2,11 @@ import { useState, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { ThemeContext, themes } from '../context/themeContext';
-
 import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
 import Expense from '../Expense/Expense';
 import Income from '../Income/Income';
 import LoaderB from '../../common/Loader/Loader';
-import s from '../Header/Header.module.css';
+import s from '../header/Header.module.css';
 import Nav from '../Nav/Nav';
 import AuthPage from '../../pages/AuthPage/AuthPage';
 import * as storage from '../../services/localStorage';

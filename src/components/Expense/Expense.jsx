@@ -8,6 +8,10 @@ import CashFlow from '../CashFlow/CashFlow';
 import Button from '../../common/Button/Button';
 import { nanoid } from 'nanoid';
 import s from './Expense.module.css';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
+
+import { getExpenseCategories } from '../../services/kapusta-api';
 
 const classsLeft = s.input + ' ' + s.left_input;
 const classsRight = s.input + ' ' + s.right_input;
@@ -66,10 +70,21 @@ const INITIAL_STATE = {
 const Expense = () => {
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
   const [expense, setExpense] = useState([]);
+  const [categoryBack, setCategoryBack] = useState([]);
+
+  useEffect(() => {
+    const getCategoryExen = async () => {
+      const arrayCat = await getExpenseCategories();
+      console.log(`arrayCat`, arrayCat);
+    };
+    getCategoryExen();
+  }, []);
+
+  const location = useLocation();
+
+  console.log(`location`, location);
 
   const { date, name, category, amount } = formData;
-
-  console.log(`expense`, expense);
 
   const handleChange = e => {
     const { name, value } = e.target;

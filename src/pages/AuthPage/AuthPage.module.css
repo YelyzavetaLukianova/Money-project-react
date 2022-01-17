@@ -1,0 +1,90 @@
+.wrapper {
+  padding: 86px 88px 50px 49px;
+}
+
+.lightTheme {
+  width: 183px;
+  height: 47px;
+  background-image: url(../../images/GroupMob68.svg);
+}
+
+.text {
+  padding-top: 5px;
+  padding-left: 11px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #52555f;
+}
+.darkTheme {
+  width: 183px;
+  height: 47px;
+  background-image: url(../../images/GroupMob69.svg);
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 90px 290px 50px 171px;
+  }
+
+  .lightTheme {
+    width: 307px;
+    height: 78px;
+    background-image: url(../../images/GroupTablet68.svg);
+  }
+
+  .text {
+    padding-left: 55px;
+
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
+  }
+  .darkTheme {
+    width: 307px;
+    height: 78px;
+    background-image: url(../../images/GroupTablet69.svg);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .box {
+    display: flex;
+    padding: 117px 110px 142px 230px;
+  }
+
+  .wrapper {
+    padding: 147px 127px 240px 0;
+  }
+
+  .lightTheme {
+    width: 377px;
+    height: 120px;
+    background-image: url(../../images/union-desktop.png);
+  }
+
+  .text {
+    padding-left: 65px;
+  }
+  .darkTheme {
+    width: 377px;
+    height: 120px;
+    background-image: url(../../images/Group69.svg);
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}

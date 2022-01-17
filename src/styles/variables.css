@@ -32,7 +32,7 @@
   --logoBgOpacity: rgba(251, 124, 47, 0.2);
 
   /* modal */
-  --modalAlertBg: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+  --modalWarningBg: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
 
   /* box-shadow */
   --boxShadow: 0px 2px 3px rgba(9, 30, 63, 0.1);

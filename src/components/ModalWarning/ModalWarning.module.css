@@ -1,0 +1,34 @@
+.modal {
+  width: 282px;
+  height: 152px;
+  padding: 30px 25px;
+  border-radius: 30px;
+
+  color: var(--white);
+  /* background-position: top left; */
+  /* background-image: url('../../images/ModalWarningBg.png');
+  background-size: cover; */
+  background: var(--modalWarningBg);
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: justify;
+}
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 292px;
+    padding: 30px;
+  }
+}
+
+.upperText {
+  margin-bottom: 20px;
+}
+
+.lowerText {
+  font-size: 12px;
+  line-height: 16px;
+}

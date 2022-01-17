@@ -7,7 +7,7 @@ import styles from './Modal.module.css';
 
 const modalRootRef = document.querySelector('#modal-root');
 //заменить closeForm на onClose
-const Modal = ({ title, closeForm, children }) => {
+const Modal = ({ closeForm, children }) => {
   useLockBodyScroll(true);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Modal = ({ title, closeForm, children }) => {
             &times;
           </button>
         </header>
-        <h2 className={styles.title}>{title}</h2>
+        {/* <h2 className={styles.title}>{title}</h2> */}
         <div className={styles.content}>
           <div className={styles.lead}>
             {/* <h3 className="heading">{title}</h3> */}
@@ -55,8 +55,8 @@ const Modal = ({ title, closeForm, children }) => {
 };
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  closeForm: PropTypes.func.isRequired,
+  // title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };
 

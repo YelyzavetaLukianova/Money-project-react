@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ThemeContext, themes } from '../context/themeContext';
+import { ThemeContext, themes } from '../Context/themeContext';
 import s from './Header.module.css';
 import defaultLogo1 from './logo.svg';
 import defaultLogo2 from './logoW.svg';

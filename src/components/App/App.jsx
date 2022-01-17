@@ -3,6 +3,7 @@ import { useState } from 'react';
 // import authSelectors from '../../redux/auth/AuthSelectors';
 import UserMenu from '../header/UserMenu';
 import Logo from '../header/Logo';
+import AuthPage from '../../pages/AuthPage/AuthPage';
 import ThemeSwitcher from '../../common/ThemeSwitcher/ThemeSwitcher';
 import { ThemeContext, themes } from '../context/themeContext';
 import s from '../header/Header.module.css';
@@ -31,6 +32,8 @@ const App = () => {
             </header>
           </ThemeContext.Provider>
         </div>
+
+        <AuthPage />
       </div>
     </>
   );

@@ -1,0 +1,24 @@
+.bg_app {
+  position: relative;
+  height: 1000px;
+  /* background-image: url('../../images/svg/kapusta-desktop.svg'), linear-gradient(to bottom, #F5F6FB 50%, #ffff 50%); */
+  /* background-color: bisque; */
+  background-image: url('../../images/svg/kapusta-desktop.svg');
+  background-repeat: no-repeat;
+  background-position: 10px bottom;
+  /* border-bottom-left-radius: 20px; */
+
+  /* background: ; */
+}
+
+.bg_app::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-bottom-left-radius: 20px;
+  height: 50%;
+  width: 100%;
+  background-color: rgba(224, 239, 227, 0.4);
+  left: 0;
+  top: 27px;
+}

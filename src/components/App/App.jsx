@@ -1,14 +1,7 @@
-// import { useSelector } from 'react-redux';
 import { useState, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import authSelectors from '../../redux/auth/AuthSelectors';
-// import UserMenu from '../header/UserMenu';
-// import Logo from '../header/Logo';
-// import ThemeSwitcher from '../../common/ThemeSwitcher/ThemeSwitcher';
-
 import { Switch, Route } from 'react-router-dom';
 import { ThemeContext, themes } from '../context/themeContext';
-// import { useLocalStorage } from 'react-use';
 import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
 import Expense from '../Expense/Expense';
 import Income from '../Income/Income';
@@ -38,12 +31,16 @@ const App = () => {
   return (
     <>
       <div className={theme === themes.light ? s.lightTheme : s.darkTheme}>
-        <div className={s.conteinerHead}>
-          <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <header className={s.header}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <div className={s.conteinerHead}>
+            <header style={{ margin: '0 auto' }}>
               <Nav />
             </header>
+          </div>
 
+          {!isLoggedIn ? (
+            <AuthPage />
+          ) : (
             <Suspense fallback={<LoaderB />}>
               <HeaderCostsIncome />
               <Switch>
@@ -55,10 +52,8 @@ const App = () => {
                 </Route>
               </Switch>
             </Suspense>
-          </ThemeContext.Provider>
-        </div>
-
-        {!isLoggedIn && <AuthPage />}
+          )}
+        </ThemeContext.Provider>
       </div>
     </>
   );

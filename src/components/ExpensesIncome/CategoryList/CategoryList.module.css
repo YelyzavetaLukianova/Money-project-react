@@ -1,0 +1,32 @@
+.categoryList {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-right: -15px;
+  margin-bottom: -40px;
+  /* gap: 15px; */
+}
+
+.categoryItem {
+  margin-right: 15px;
+  margin-bottom: 40px;
+  flex-basis: 84px;
+  text-align: center;
+  cursor: pointer;
+}
+.categoryPrice {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #52555f;
+}
+.categoryIcon {
+  width: 56px;
+  height: 56px;
+}

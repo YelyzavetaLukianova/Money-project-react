@@ -1,0 +1,27 @@
+.containerExpInc {
+  display: flex;
+  justify-content: space-around;
+  max-width: 282px;
+  margin: 0 auto 40px auto;
+  padding: 20px 10px 25px 10px;
+  background: #ffffff;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  /* display: flex;
+align-items: center; */
+  text-align: center;
+
+  color: #52555f;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 20px;
+}
+.expenses {
+  color: #e53935;
+}
+.incomes {
+  color: #407946;
+}

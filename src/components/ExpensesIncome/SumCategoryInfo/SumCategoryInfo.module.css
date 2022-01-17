@@ -1,0 +1,17 @@
+.SumCategoryInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px auto;
+}
+.SCItitle {
+  margin: 0 15px;
+  /* font-family: Roboto; */
+  font-weight: bold;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
+}

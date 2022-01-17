@@ -1,15 +1,18 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-// import authSelectors from '../../redux/auth/AuthSelectors';
+import authSelectors from '../../redux/auth/AuthSelectors';
 import UserMenu from '../header/UserMenu';
 import Logo from '../header/Logo';
 import ThemeSwitcher from '../../common/ThemeSwitcher/ThemeSwitcher';
 import { ThemeContext, themes } from '../context/themeContext';
+import { useLocalStorage } from 'react-use';
 import s from '../header/Header.module.css';
 
+const STORAGE_KEY = 'theme';
+
 const App = () => {
-  const [theme, setTheme] = useState(themes.light);
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const [theme, setTheme] = useLocalStorage(STORAGE_KEY, themes.light);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const toggleTheme = () =>
     setTheme(prevTheme =>
@@ -27,7 +30,6 @@ const App = () => {
               </div>
               {/* {isLoggedIn && */}
               <UserMenu />
-              {/* } */}
             </header>
           </ThemeContext.Provider>
         </div>

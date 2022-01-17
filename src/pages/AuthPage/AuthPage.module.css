@@ -2,10 +2,10 @@
   padding: 86px 88px 50px 49px;
 }
 
-.logo {
+.lightTheme {
   width: 183px;
   height: 47px;
-  background-image: url(../../images/union.png);
+  background-image: url(../../images/GroupMob68.svg);
 }
 
 .text {
@@ -19,8 +19,12 @@
   line-height: 15px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-
   color: #52555f;
+}
+.darkTheme {
+  width: 183px;
+  height: 47px;
+  background-image: url(../../images/GroupMob69.svg);
 }
 
 @media screen and (min-width: 768px) {
@@ -28,10 +32,10 @@
     padding: 90px 290px 50px 171px;
   }
 
-  .logo {
+  .lightTheme {
     width: 307px;
     height: 78px;
-    background-image: url(../../images/union-tablet.png);
+    background-image: url(../../images/GroupTablet68.svg);
   }
 
   .text {
@@ -40,6 +44,11 @@
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.18em;
+  }
+  .darkTheme {
+    width: 307px;
+    height: 78px;
+    background-image: url(../../images/GroupTablet69.svg);
   }
 }
 
@@ -53,7 +62,7 @@
     padding: 147px 127px 240px 0;
   }
 
-  .logo {
+  .lightTheme {
     width: 377px;
     height: 120px;
     background-image: url(../../images/union-desktop.png);
@@ -61,6 +70,11 @@
 
   .text {
     padding-left: 65px;
+  }
+  .darkTheme {
+    width: 377px;
+    height: 120px;
+    background-image: url(../../images/Group69.svg);
   }
 }
 

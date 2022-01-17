@@ -33,6 +33,7 @@
 }
 .string {
   border-bottom: 2px solid #f5f6fb;
+  height: 40px;
 }
 .btn_table {
   width: 15px;
@@ -41,6 +42,7 @@
   background-color: #f5f6fb;
 }
 .field {
+  height: 40px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -49,4 +51,8 @@
 
   text-align: center;
   letter-spacing: 0.04em;
+}
+.emptyLine {
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
 }

@@ -1,0 +1,25 @@
+.active {
+  color: #ff751d;
+}
+.header {
+  display: flex;
+}
+.link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  width: 138px;
+  height: 40px;
+  background: #fafbfd;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}

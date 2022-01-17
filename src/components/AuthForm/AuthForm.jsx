@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { registerNewUser, logInUser } from '../../redux/auth/aauthOperations';
-import { getErrorMessage } from '../../redux/auth/aauthSelectors';
+import { registerNewUser, logInUser } from '../../redux/auth/authOperations';
+import { getErrorMessage } from '../../redux/auth/authSelectors';
 
 import symbol from '../../images/google-symbol.png';
 import styles from './AuthForm.module.css';

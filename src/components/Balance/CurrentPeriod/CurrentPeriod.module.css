@@ -1,0 +1,43 @@
+.period {
+  margin-bottom: 5px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: rgba(82, 85, 95, 0.7);
+}
+.data {
+  margin: 0 15px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #000000;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  width: 7px;
+  height: 12px;
+
+  /* color: #ff751d; */
+
+  cursor: pointer;
+}

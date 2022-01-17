@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { register, login, token } from '../../services/kapusta-api';
+import { register, login, logout, token } from '../../services/kapusta-api';
 
 const registerNewUser = createAsyncThunk(
   'auth/register',
@@ -31,16 +31,16 @@ const logInUser = createAsyncThunk(
   },
 );
 
-// const logOutUser = createAsyncThunk(
-//   'auth/logout',
-//   async ({ rejectWithValue }) => {
-//     try {
-//       await logout();
-//       token.unset();
-//     } catch (error) {
-//       return rejectWithValue(error.response.data.message);
-//     }
-//   },
-// );
+const logOutUser = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await logout();
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export { registerNewUser, logInUser };
+export { registerNewUser, logInUser, logOutUser };

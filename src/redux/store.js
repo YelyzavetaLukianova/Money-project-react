@@ -1,3 +1,5 @@
+// import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
+
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -9,26 +11,34 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 import storage from 'redux-persist/lib/storage';
-import aauthReducer from './auth/aauthSlice';
+import authReducer from './auth/authSlice';
+
+import { createLogger } from 'redux-logger';
+
+const logger = createLogger({
+  collapsed: (getState, action, logEntry) => !logEntry.error,
+  timestamp: false,
+});
 
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }),
+  }).concat(logger),
 ];
 
-const aauthPersistConfig = {
-  key: 'auth',
+const authPersistConfig = {
+  key: 'token',
   storage,
   whitelist: ['token'],
 };
 
 const store = configureStore({
   reducer: {
-    aauth: persistReducer(aauthPersistConfig, aauthReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production',

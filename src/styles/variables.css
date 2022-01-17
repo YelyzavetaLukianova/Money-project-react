@@ -1,0 +1,88 @@
+/* background-color: var(--bg-modal-two-colour); */
+
+:root {
+  --primaryBg: #f5f6fb;
+  --secondaryBg: #e5e5e5;
+  --avatarBg: #f5f6fa;
+
+  --access: #407946;
+  --error: #e7192e;
+  --errorAuth: #eb5757;
+
+  --accent: #ff751d;
+  --accentSecondary: #ffdac0;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  /* text */
+  --primaryText: #52555f;
+  --secondaryText: #898f9f;
+
+  /* input */
+  --inputBg: #f6f7fb;
+  --inputTextColor: #a6abb9;
+
+  /* button */
+  --buttonBorderWhite: 2px solid #ffffff;
+  --buttonBorderGrey: 2px solid #f6f7fc;
+
+  /* Logo */
+  --logoBg: #fb7c2f;
+  --logoBgOpacity: rgba(251, 124, 47, 0.2);
+
+  /* modal */
+  --modalAlertBg: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+
+  /* box-shadow */
+  --boxShadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  --boxShadowModal: 10px 10px 20px rgba(9, 30, 63, 0.2);
+  --boxShadowInput: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+  --boxShadowChart: 0px 2px 3px rgba(9, 30, 63, 0.25);
+  --boxShadowBtn: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* modal-overlay */
+  --modalOverlay: rgba(43, 43, 43, 0.1);
+}
+
+/* $primaryBg: #f5f6fb;
+$secondaryBg: #e5e5e5;
+
+$access: #407946;
+$error: #e7192e;
+$errorAuth: #eb5757;
+
+$accent: #ff751d;
+$accentSecondary: #ffdac0;
+
+$white: #ffffff;
+$black: #000000;
+
+// text
+$primaryText: #52555f;
+$secondaryText: #898f9f;
+
+//input
+$inputBg: #f6f7fb;
+$inputTextColor: #a6abb9;
+
+//button
+$buttonBorderWhite: 2px solid #ffffff;
+$buttonBorderGrey: 2px solid #f6f7fc;
+
+//Logo
+$logoBg: #fb7c2f;
+$logoBgOpacity: rgba(251, 124, 47, 0.2);
+
+//modal
+$modalAlertBg: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
+
+//box-shadow
+$boxShadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+$boxShadowModal: 10px 10px 20px rgba(9, 30, 63, 0.2);
+$boxShadowInput: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+$boxShadowChart: 0px 2px 3px rgba(9, 30, 63, 0.25);
+$boxShadowBtn: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+//modal-overlay
+$modalOverlay: rgba(43, 43, 43, 0.1); */

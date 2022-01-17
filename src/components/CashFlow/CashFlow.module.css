@@ -1,0 +1,52 @@
+.tab {
+  margin-right: 20px;
+  background: #f5f6fb;
+  width: 124px;
+  height: 40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  align-items: center;
+
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.right_tab {
+  border-radius: 0px 16px 0px 0px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.left_tab {
+  border-radius: 16px 0px 0px 0px;
+}
+
+.table23 {
+  border-radius: 20px 20px 0px 0px;
+  border-spacing: 0px;
+  -webkit-border-horizontal-spacing: 0px;
+  -webkit-border-vertical-spacing: 0px;
+  border: 2px solid #f5f6fb;
+}
+.string {
+  border-bottom: 2px solid #f5f6fb;
+}
+.btn_table {
+  width: 15px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #f5f6fb;
+}
+.field {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  text-align: center;
+  letter-spacing: 0.04em;
+}

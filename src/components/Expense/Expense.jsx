@@ -2,16 +2,16 @@ import React from 'react';
 
 import { useState } from 'react';
 import { GrCalculator } from 'react-icons/gr';
-import { FaTrashAlt } from 'react-icons/fa';
+
 import Summary from '../Summary/Summary';
+import CashFlow from '../CashFlow/CashFlow';
+import Button from '../../common/Button/Button';
 import { nanoid } from 'nanoid';
 import s from './Expense.module.css';
 
 const classsLeft = s.input + ' ' + s.left_input;
 const classsRight = s.input + ' ' + s.right_input;
 const classsDate = s.input + ' ' + s.date_input;
-const classsTabRight = s.tab + ' ' + s.right_tab;
-const classsTabLeft = s.tab + ' ' + s.left_tab;
 
 const categoryOptions = [
   {
@@ -65,9 +65,11 @@ const INITIAL_STATE = {
 
 const Expense = () => {
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
-  const [costs, setCosts] = useState([]);
+  const [expense, setExpense] = useState([]);
 
   const { date, name, category, amount } = formData;
+
+  console.log(`expense`, expense);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -81,7 +83,7 @@ const Expense = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setCosts([...costs, formData]);
+    setExpense([...expense, formData]);
     reset();
   };
   const onClicReset = () => {
@@ -93,101 +95,69 @@ const Expense = () => {
   };
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="">
-          <input
-            type="date"
-            name="date"
-            value={date}
-            required
-            onChange={handleChange}
-            className={classsDate}
-          />
-        </label>
-        <label htmlFor="">
-          <input
-            type="text"
-            name="name"
-            value={name}
-            placeholder="Описание товара"
-            required
-            onChange={handleChange}
-            className={classsLeft}
-          />
-        </label>
-        <select
-          name="category"
-          value={category}
-          onChange={handleChange}
-          className={s.input}
-        >
-          {categoryOptions.map(({ value, label }) => (
-            <option key={value} value={value}>
-              {label}
-            </option>
-          ))}
-        </select>
-        <label>
-          <div
-            style={{
-              alignItems: 'center',
-              display: 'inline-flex',
-            }}
-          >
-            <input
-              type="number"
-              name="amount"
-              value={amount}
-              placeholder="0,00"
-              required
-              onChange={handleChange}
-              className={classsRight}
-            />
-            <GrCalculator className={s.icon} />
-          </div>
-        </label>
-        <button type="submit" text="Confirm" className={s.button}>
-          ВВОД
-        </button>
-        <button
-          type="button"
-          text="Confirm"
-          className={s.button}
-          onClick={onClicReset}
-        >
-          ОЧИCТИТЬ
-        </button>
-      </form>
+      <div>
+        <div>
+          <form action="" onSubmit={handleSubmit} className={s.form}>
+            <div>
+              <input
+                type="date"
+                name="date"
+                value={date}
+                required
+                onChange={handleChange}
+                className={classsDate}
+              />
 
-      <div className={s.table}>
-        <table className={s.table23}>
-          <thead>
-            <tr>
-              <th className={classsTabLeft}>ДАТА</th>
-              <th className={s.tab}>ОПИСАНИЕ</th>
-              <th className={s.tab}>КАТЕГОРИЯ</th>
-              <th className={s.tab}>СУММА</th>
-              <th className={classsTabRight}>УДАЛЕНИЕ</th>
-            </tr>
-          </thead>
-          <tbody>
-            {!!costs.length &&
-              costs.map(({ date, name, category, amount, id }) => (
-                <tr key={id} className={s.field}>
-                  <td className={s.string}>{date}</td>
-                  <td className={s.string}>{name}</td>
-                  <td className={s.string}>{category}</td>
-                  <td className={s.string}>{amount}</td>
-                  <td className={s.string}>
-                    <button type="button" className={s.btn_table}>
-                      <FaTrashAlt />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-        <Summary />
+              <input
+                type="text"
+                name="name"
+                value={name}
+                placeholder="Описание товара"
+                required
+                onChange={handleChange}
+                className={classsLeft}
+              />
+
+              <select
+                name="category"
+                value={category}
+                onChange={handleChange}
+                className={s.input}
+              >
+                {categoryOptions.map(({ value, label }) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+
+              <input
+                type="number"
+                name="amount"
+                value={amount}
+                placeholder="0,00"
+                required
+                onChange={handleChange}
+                className={classsRight}
+              />
+              <GrCalculator className={s.icon} />
+            </div>
+
+            <div className={s.wrap}>
+              <Button text="ВВОД" type="submit" className={s.btn} />
+
+              <Button
+                text=" ОЧИCТИТЬ"
+                className={s.btnClean}
+                onClick={onClicReset}
+              />
+            </div>
+          </form>
+        </div>
+        <div className={s.table}>
+          <CashFlow arey={expense} />
+          <Summary />
+        </div>
       </div>
     </div>
   );

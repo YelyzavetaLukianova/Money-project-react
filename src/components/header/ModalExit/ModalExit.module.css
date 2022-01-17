@@ -14,17 +14,15 @@
   letter-spacing: 0.02em;
   color: #52555f;
 }
+.yes {
+  margin-top: 20px;
+  margin-right: 15px;
+}
 .no {
   background: transparent;
   border: 2px solid #f5f6fb;
-  border-radius: 16px;
-  width: 125px;
-  height: 44px;
+  color: #52555f;
   margin-top: 20px;
-  display: flex;
-  margin-right: 15px;
-  align-items: center;
-  justify-content: center;
 }
 .no:hover {
   background-color: purple;

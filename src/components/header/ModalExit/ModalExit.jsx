@@ -7,11 +7,8 @@ const ModalExit = ({ title, onClose, onExit }) => {
     <div>
       <p className={s.title}>{title}</p>
       <div className={s.wrap}>
-        <Button text="Da" onClick={onExit} />
-        <button onClick={onClose} className={s.no}>
-          Net
-        </button>
-        {/* <Button text="Net" onClick={onClose} className={s.no} /> */}
+        <Button text="Da" onClick={onExit} className={s.yes} />
+        <Button text="No" onClick={onClose} className={s.no} />
       </div>
     </div>
   );

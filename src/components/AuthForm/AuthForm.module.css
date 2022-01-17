@@ -1,0 +1,180 @@
+.wrapper {
+  min-width: 300px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 76px;
+}
+
+.form {
+  padding-top: 40px;
+  padding-bottom: 50px;
+
+  background: #ffffff;
+
+  /* shadow - mobile */
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+}
+
+.text {
+  /* padding: 0 39px 24px 39px; */
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  letter-spacing: 0.04em;
+
+  color: #52555f;
+}
+
+.firstText {
+  padding: 0 49px 24px 49px;
+}
+
+.secondText {
+  padding: 30px 69px 24px 29px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 20px;
+
+  background: #f6f7fb;
+  border: none;
+  border-radius: 26px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+}
+
+.img {
+  margin-right: 10px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  padding: 0 29px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  /* identical to box height */
+
+  letter-spacing: 0.04em;
+
+  color: #000000;
+}
+
+.firstLabel {
+  margin-bottom: 30px;
+}
+
+.secondLabel {
+  margin-bottom: 40px;
+}
+
+.input {
+  margin-top: 12px;
+  padding: 17px 20px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+
+  background: #f6f7fb;
+  border: none;
+  border-radius: 30px;
+}
+
+.box {
+  text-align: center;
+}
+
+.authBtn {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  border: none;
+  border-radius: 16px;
+}
+
+.logInBtn {
+  margin-right: 15px;
+  padding: 15px 40px;
+  color: #ffffff;
+  background: #ff751d;
+}
+
+.registerBtn {
+  padding: 15px 18px;
+  color: #52555f;
+  background: #f5f6fb;
+}
+
+@media screen and (min-width: 456px) {
+  .wrapper {
+    width: 436px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 192px;
+  }
+
+  .form {
+    padding-top: 50px;
+  }
+
+  .text {
+    font-size: 12px;
+    line-height: 14px;
+    text-align: start;
+    color: #52555f;
+  }
+
+  .firstText {
+    padding: 0 96px 20px 85px;
+  }
+
+  .secondText {
+    padding: 30px 85px 20px 86px;
+  }
+
+  .label {
+    padding: 0 86px;
+
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding-bottom: 0;
+  }
+}

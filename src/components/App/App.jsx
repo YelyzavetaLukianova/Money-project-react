@@ -7,7 +7,7 @@ import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
 import Expense from '../Expense/Expense';
 import Income from '../Income/Income';
 import LoaderB from '../../common/Loader/Loader';
-import s from '../header/Header.module.css';
+import s from '../Header/Header.module.css';
 import Nav from '../Nav/Nav';
 import * as storage from '../../services/localStorage';
 

@@ -1,5 +1,6 @@
 .button {
-  background: #ff751d;
+  color: var(--white);
+  background-color: var(--accent);
   border-radius: 16px;
   border: none;
   width: 125px;
@@ -13,10 +14,17 @@
 
   /* box-shadow: 0 0 15px 7px rgba(34, 60, 80, 0.2); */
 }
+/* .button:last-child {
+  color: var(--primaryText);
+  background-color: var(--white);
+  border: var(--buttonBorderGrey);
+} */
+
 .button:hover {
-  background-color: purple;
+  color: var(--white);
+  background-color: var(--accent);
+  /* background-color: purple; */
   transition: box-shadow 0.5s, transform 0.5s;
   transform: scale(1.2);
-  color: white;
   text-transform: uppercase;
 }

@@ -1,5 +1,6 @@
-.conteiner {
+.conteinerHead {
   display: flex;
+  flex-direction: column;
   max-width: 1200px;
   justify-content: center;
   margin: 0 auto;

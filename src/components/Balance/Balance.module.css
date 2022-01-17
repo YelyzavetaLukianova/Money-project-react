@@ -1,0 +1,13 @@
+.balanseContainer {
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  background-color: #f2f5fc;
+}
+@media screen and (min-width: 768px) {
+  .balanseContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}

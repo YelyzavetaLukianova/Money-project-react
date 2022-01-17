@@ -1,10 +1,14 @@
 import s from './Button.module.css';
 
 const Button = props => {
-  const { text, onClick = () => {}, type = 'button' } = props;
+  const { text, onClick = () => {}, type = 'button', className } = props;
 
   return (
-    <button className={s.button} type={type} onClick={onClick}>
+    <button
+      className={`${s.button} ${className}`}
+      type={type}
+      onClick={onClick}
+    >
       <span>{text}</span>
     </button>
   );

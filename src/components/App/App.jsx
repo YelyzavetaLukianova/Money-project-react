@@ -31,7 +31,7 @@ const App = () => {
       <div className={theme === themes.light ? s.lightTheme : s.darkTheme}>
         <div className={s.conteinerHead}>
           <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <header className={s.header}>
+            <header>
               <Nav />
             </header>
             <Suspense fallback={<LoaderB />}>

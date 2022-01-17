@@ -6,7 +6,7 @@ const save = (key, value) => {
   }
 };
 
-const get = (key) => {
+const get = key => {
   try {
     return JSON.parse(localStorage.getItem(key));
   } catch (error) {
@@ -14,7 +14,7 @@ const get = (key) => {
   }
 };
 
-const remove = (key) => {
+const remove = key => {
   try {
     return localStorage.removeItem(key);
   } catch (error) {

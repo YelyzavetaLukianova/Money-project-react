@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ThemeContext, themes } from '../../components/Context/themeContext';
+import { ThemeContext, themes } from '../../components/context/themeContext';
 import s from './ThemeSwitcher.module.css';
 
 const ThemeSwitcher = () => {

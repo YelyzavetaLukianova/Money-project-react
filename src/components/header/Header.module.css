@@ -1,14 +1,14 @@
 .conteinerHead {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   max-width: 1200px;
   justify-content: center;
-  margin: 0 auto;
-  padding-left: 26px;
-  padding-right: 26px;
+  margin: 0 auto; */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .header {
-  width: 320px;
+  /* width: 320px; */
   height: 56px;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@
 }
 .logo {
   cursor: pointer;
-  margin-left: 19px;
+  /* margin-left: 19px; */
 }
 .avatar {
   width: 32px;
@@ -59,7 +59,7 @@
   width: 16px;
   height: 16px;
   color: #cbccd0;
-  margin-right: 19px;
+  /* margin-right: 19px; */
   margin-left: 20px;
 }
 .userBtn:hover {
@@ -83,37 +83,44 @@
 }
 
 @media screen and (min-width: 768px) {
+  .conteinerHead {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
   .header {
-    width: 768px;
+    /* width: 768px; */
     height: 56px;
   }
   .titleuser {
     display: unset;
   }
-  .logo {
+  /* .logo {
     margin-left: 26px;
-  }
-  .userBtn {
+  } */
+  /* .userBtn {
     margin-right: 23px;
-  }
+  } */
   .exit {
     display: unset;
-    margin-right: 23px;
+    /* margin-right: 23px; */
   }
   .iconEx {
     display: none;
   }
 }
-@media screen and (min-width: 1200px) {
-  .header {
+@media screen and (min-width: 1280px) {
+  .conteinerHead {
+    padding-right: 75px;
+  }
+  /* .header {
     width: 1200px;
-  }
-  .exit {
-    margin-right: 71px;
-  }
+  } */
+  /* .exit {
+    margin-right: 25px;
+  } */
 }
 .darkTheme {
   color: white;
   background-color: rgb(24, 23, 23);
-  height: 100vh;
+  height: 100%;
 }

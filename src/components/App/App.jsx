@@ -1,15 +1,16 @@
-import { Switch, Route } from 'react-router-dom';
 import { useState, Suspense, useEffect } from 'react';
-
-import { ThemeContext, themes } from '../Context/themeContext';
-// import { useLocalStorage } from 'react-use';
+import { useSelector } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
+import { ThemeContext, themes } from '../context/themeContext';
 import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
 import Expense from '../Expense/Expense';
 import Income from '../Income/Income';
 import LoaderB from '../../common/Loader/Loader';
-import s from '../Header/Header.module.css';
+import s from '../header/Header.module.css';
 import Nav from '../Nav/Nav';
+import AuthPage from '../../pages/AuthPage/AuthPage';
 import * as storage from '../../services/localStorage';
+import { getIsLoggedIn } from '../../redux/auth/authSelectors';
 
 const STORAGE_KEY = 'theme';
 
@@ -17,6 +18,7 @@ const App = () => {
   const [theme, setTheme] = useState(
     () => storage.get(STORAGE_KEY) ?? themes.light,
   );
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
   //локал сторадж
   useEffect(() => {
@@ -29,11 +31,16 @@ const App = () => {
   return (
     <>
       <div className={theme === themes.light ? s.lightTheme : s.darkTheme}>
-        <div className={s.conteinerHead}>
-          <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <header>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <div className={s.conteinerHead}>
+            <header style={{ margin: '0 auto' }}>
               <Nav />
             </header>
+          </div>
+
+          {!isLoggedIn ? (
+            <AuthPage />
+          ) : (
             <Suspense fallback={<LoaderB />}>
               <HeaderCostsIncome />
               <Switch>
@@ -45,8 +52,8 @@ const App = () => {
                 </Route>
               </Switch>
             </Suspense>
-          </ThemeContext.Provider>
-        </div>
+          )}
+        </ThemeContext.Provider>
       </div>
     </>
   );

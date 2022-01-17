@@ -1,6 +1,6 @@
 .bg_app {
   position: relative;
-  height: 1000px;
+  height: 800px;
   /* background-image: url('../../images/svg/kapusta-desktop.svg'), linear-gradient(to bottom, #F5F6FB 50%, #ffff 50%); */
   /* background-color: bisque; */
   background-image: url('../../images/svg/kapusta-desktop.svg');
@@ -20,5 +20,5 @@
   width: 100%;
   background-color: rgba(224, 239, 227, 0.4);
   left: 0;
-  top: 27px;
+  top: 0;
 }

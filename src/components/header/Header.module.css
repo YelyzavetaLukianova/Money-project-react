@@ -94,12 +94,9 @@
   .titleuser {
     display: unset;
   }
-  /* .logo {
-    margin-left: 26px;
-  } */
-  /* .userBtn {
-    margin-right: 23px;
-  } */
+  .wrap {
+    width: 175px;
+  }
   .exit {
     display: unset;
     /* margin-right: 23px; */
@@ -122,5 +119,5 @@
 .darkTheme {
   color: white;
   background-color: rgb(24, 23, 23);
-  height: 100%;
+  height: 100vh;
 }

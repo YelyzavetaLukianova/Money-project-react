@@ -1,0 +1,34 @@
+.bg_app::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-bottom-left-radius: 100px;
+  height: 286px;
+  width: 100%;
+  background-color: var(--primaryBg);
+  left: 0;
+  top: 0;
+  z-index: -5;
+}
+
+@media screen and (min-width: 480px) {
+  .bg_app {
+    position: relative;
+    background-image: url('../../images/svg/kapusta-tablet.svg');
+    background-repeat: no-repeat;
+    background-position: right 88px bottom 64px;
+  }
+
+  .bg_app::after {
+    height: 526px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bg_app {
+    position: relative;
+    background-image: url('../../images/svg/kapusta-desktop.svg');
+    background-repeat: repeat-x;
+    background-position: 10px bottom;
+  }
+}

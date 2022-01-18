@@ -21,9 +21,10 @@ const UserMenu = () => {
     <div className={s.wrap}>
       {isLoggedIn && <p className={s.avatar}>{email[0].toUpperCase()}</p>}
       <span className={s.titleuser}>{email}</span>
+      <span className={s.line}></span>
       <button className={s.userBtn} type="button" onClick={toggleForm}>
         <RiLogoutBoxRLine className={s.iconEx} size={16} />
-        <p className={s.exit}>Exit</p>
+        <p className={s.exit}>Выход</p>
       </button>
       {isFormOpen && (
         <Modal closeForm={toggleForm}>

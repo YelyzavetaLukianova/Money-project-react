@@ -55,9 +55,25 @@ const AuthForm = () => {
     }
   };
 
+  const alphanumeric = () => {
+    const regex = /^[a-zA-Z0-9@-_.]*$/;
+    if (email.match(regex)) {
+      return;
+    } else {
+      return false;
+    }
+  };
+
   const isEmailValid = () => {
     const index = email.indexOf('@');
     const sliceEmail = email.slice(0, index);
+
+    if (alphanumeric() === false) {
+      setErrorEmail(
+        'email может включать в себя только латинские буквы, цифры и знаки: "@", "-", "_", "."',
+      );
+      return false;
+    }
 
     if (email.trim().length === 0) {
       setErrorEmail('это обязательное поле');

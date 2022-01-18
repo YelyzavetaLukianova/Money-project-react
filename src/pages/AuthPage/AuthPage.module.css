@@ -88,3 +88,37 @@
   border: 0;
   clip: rect(0 0 0 0);
 }
+
+/* BACKGROUND */
+
+.box {
+  position: relative;
+  background-image: url('../../images/svg/kapusta-mobile-auth-top.svg'),
+    url('../../images/svg/kapusta-mobile-auth-bottom.svg');
+  background-repeat: no-repeat;
+  background-position: right 0px top 160px, left 35px bottom 0px;
+}
+
+.box::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-bottom-left-radius: 100px;
+  height: 286px;
+  width: 100%;
+  background-color: var(--primaryBg);
+  left: 0;
+  top: 0;
+  z-index: -5;
+}
+
+@media screen and (min-width: 480px) {
+  .box {
+    background-image: url('../../images/svg/kapusta-desktop-auth.svg');
+    background-position: left 0px top 84px;
+  }
+
+  .box::after {
+    height: 526px;
+  }
+}

@@ -12,6 +12,7 @@ import Nav from '../Nav/Nav';
 import AuthPage from '../../pages/AuthPage/AuthPage';
 import * as storage from '../../services/localStorage';
 import { getIsLoggedIn } from '../../redux/auth/authSelectors';
+import ExpensesIncome from '../ExpensesIncome/ExpensesIncome';
 
 const STORAGE_KEY = 'theme';
 
@@ -54,6 +55,7 @@ const App = () => {
               </Switch>
             </Suspense>
           )}
+          <ExpensesIncome />
           <Chart />
         </ThemeContext.Provider>
       </div>

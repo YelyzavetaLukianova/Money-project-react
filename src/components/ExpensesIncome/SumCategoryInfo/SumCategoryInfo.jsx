@@ -10,25 +10,28 @@ import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-rig
 import CategoryList from '../CategoryList/CategoryList';
 import s from './SumCategoryInfo.module.css';
 
+// import getPeriodData from '../../../redux/currentPeriod/reports-slise';
+
 export default function SumCategoryInfo() {
   const dispatch = useDispatch();
   const [typeTrans, setTypeTrans] = useState('expenses');
 
   const month = useSelector(periodSelectors.getMonth);
   const year = useSelector(periodSelectors.getYear);
-  // const { data } = useDetailInfoForReportQuery({ year, month });
+  console.log();
+  // const { data } = getPeriodData({ year, month });
 
   const handleClick = () => {
     if (typeTrans === 'incomings') {
       setTypeTrans('expenses');
       dispatch(addCurrentType('expenses'));
-      // dispatch(addCurrentCategory('Продукты'));
+      dispatch(addCurrentCategory('Продукты'));
     }
 
     if (typeTrans === 'expenses') {
       setTypeTrans('incomings');
       dispatch(addCurrentType('incomings'));
-      // dispatch(addCurrentCategory('ЗП'));
+      dispatch(addCurrentCategory('ЗП'));
     }
   };
 
@@ -44,9 +47,13 @@ export default function SumCategoryInfo() {
         <ArrowRightIcon onClick={() => handleClick()} />
       </div>
       <div className={s.categoryContainer}>
-        {/* {typeTrans === 'expenses' ? */}
         <CategoryList />
-        {/* // : <CategoryList />} */}
+
+        {/* {typeTrans === 'expenses' ? (
+          <CategoryList trans={data?.data.expenses} />
+        ) : (
+          <CategoryList trans={data?.data.incomings} />
+        )} */}
       </div>
     </>
   );

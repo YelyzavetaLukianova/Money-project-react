@@ -7,7 +7,7 @@ const day = String(new Date().getDate());
 const initialState = {
   date: { day, month, year },
   currentType: 'expenses',
-  currentCategory: 'Продукты',
+  currentCategory: 'incomes',
 };
 
 const dateSlice = createSlice({

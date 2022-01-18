@@ -48,8 +48,7 @@
   letter-spacing: 0.04em;
   color: #52555f;
   text-decoration: none;
-  padding-right: 20px;
-  border-right: 1px solid #e0e5eb;
+  margin-right: 20px;
   margin-left: 10px;
 }
 .userBtn {
@@ -60,18 +59,25 @@
   height: 16px;
   color: #cbccd0;
   /* margin-right: 19px; */
+  /* padding-left: 20px;
+  border-left: 1px solid #e0e5eb; */
   margin-left: 20px;
 }
 .userBtn:hover {
   transition: box-shadow 0.5s, transform 0.5s;
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   color: pink;
+}
+.line {
+  height: 36px;
+  border: 1px solid #e0e5eb;
 }
 .exit {
   display: none;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
+  /* width: 39px; */
   line-height: 14px;
   letter-spacing: 0.04em;
   text-decoration-line: underline;
@@ -95,10 +101,14 @@
     display: unset;
   }
   .wrap {
-    width: 175px;
+    width: 185px;
+  }
+  .userBtn {
+    width: 39px;
   }
   .exit {
     display: unset;
+
     /* margin-right: 23px; */
   }
   .iconEx {

@@ -1,8 +1,3 @@
-
-
-import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
-
-
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -17,6 +12,7 @@ import {
 import { createLogger } from 'redux-logger';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/AuthSlice';
+import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
 
 const logger = createLogger({
   collapsed: (getState, action, logEntry) => !logEntry.error,
@@ -39,9 +35,9 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    currentPeriod: currentPeriodReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production',
 });
 export const persistor = persistStore(store);
-

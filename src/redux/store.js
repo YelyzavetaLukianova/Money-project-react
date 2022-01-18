@@ -15,6 +15,7 @@ import authReducer from './auth/authSlice';
 import transExpenseReducer from './transaction/expense/transactionSlice';
 import transIncomeReducer from './transaction/incom/transactionIncomeSlice';
 import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
+import balanceReducer from './balance/balance-slice';
 import { createLogger } from 'redux-logger';
 
 const logger = createLogger({
@@ -52,6 +53,7 @@ const store = configureStore({
     expense: persistReducer(persistExpenseConfig, transExpenseReducer),
     income: persistReducer(persistIncomeConfig, transIncomeReducer),
     currentPeriod: currentPeriodReducer,
+    balance: balanceReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production',

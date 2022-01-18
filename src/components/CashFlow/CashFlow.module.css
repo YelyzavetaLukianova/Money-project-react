@@ -35,6 +35,7 @@
 }
 .string {
   border-bottom: 2px solid #f5f6fb;
+  height: 40px;
 }
 .btn_table {
   width: 15px;
@@ -43,6 +44,7 @@
   background-color: #f5f6fb;
 }
 .field {
+  height: 40px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -71,51 +73,7 @@ body {
   background-color: #f0ac7b3b;
 }
 
-/* ползунок скроллбара */
-::-webkit-scrollbar-thumb {
-  background-color: var(--accent-color);
-  border-radius: 50px;
-  box-shadow: inset 1px 1px 5px #f7f3fa;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #cf4e03;
-}
-
-.scrollbar::-webkit-scrollbar {
-  width: 4px;
-  height: 5px;
-  background-color: #e69a642c;
-}
-.scrollbar::-webkit-scrollbar-thumb {
-  background-color: tomato;
-  border-radius: 50px;
-  box-shadow: inset 1px 1px 4px #f7f3fa;
-}
-
-.scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #c24a05;
-}
-.scrollbar {
-  max-width: 100%;
+.emptyLine {
   height: 40px;
-  overflow: auto;
+  border-bottom: 2px solid #f5f6fb;
 }
-
-/* .scrollbar {
-  ::-webkit-scrollbar {
-    width: 4px;
-    height: 5px;
-    background-color: #e69a642c;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--accent-color);
-    border-radius: 50px;
-    box-shadow: inset 1px 1px 4px #f7f3fa;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #c24a05;
-  }
-} */

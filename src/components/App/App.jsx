@@ -1,6 +1,7 @@
 import { useState, Suspense, useEffect, lazy } from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 import { ThemeContext, themes } from '../Context/themeContext';
+
 import * as storage from '../../services/localStorage';
 
 import { routes, AuthRoute, NotAuthRoute } from '../../routes';

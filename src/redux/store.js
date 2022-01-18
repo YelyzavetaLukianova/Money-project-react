@@ -1,5 +1,3 @@
-// import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
-
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -16,7 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
 import transExpenseReducer from './transaction/expense/transactionSlice';
 import transIncomeReducer from './transaction/incom/transactionIncomeSlice';
-
+import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
 import { createLogger } from 'redux-logger';
 
 const logger = createLogger({
@@ -53,6 +51,7 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     expense: persistReducer(persistExpenseConfig, transExpenseReducer),
     income: persistReducer(persistIncomeConfig, transIncomeReducer),
+    currentPeriod: currentPeriodReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production',

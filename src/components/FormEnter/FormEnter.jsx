@@ -161,8 +161,12 @@ const FormEnter = () => {
           </div>
         </form>
       </div>
-      <CashFlow arey={location.pathname === '/income' ? income23 : expense23} />
-      <Summary />
+      <div className={s.renderTab}>
+        <CashFlow
+          arey={location.pathname === '/income' ? income23 : expense23}
+        />
+        <Summary />
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { ThemeContext, themes } from '../Context/themeContext';
 import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
 import Expense from '../Expense/Expense';
+import Chart from '../Charts/Chart';
 import Income from '../Income/Income';
 import LoaderB from '../../common/Loader/Loader';
 import s from '../Header/Header.module.css';
@@ -53,6 +54,7 @@ const App = () => {
               </Switch>
             </Suspense>
           )}
+          <Chart />
         </ThemeContext.Provider>
       </div>
     </>

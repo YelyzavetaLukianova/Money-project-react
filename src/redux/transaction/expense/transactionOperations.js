@@ -27,6 +27,7 @@ const addExpenseBack = createAsyncThunk(
       return data.transaction;
     } catch (error) {
       console.log(`errorget`, error);
+
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },

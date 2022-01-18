@@ -30,9 +30,12 @@
   -webkit-border-horizontal-spacing: 0px;
   -webkit-border-vertical-spacing: 0px;
   border: 2px solid #f5f6fb;
+  width: 124px;
+  table-layout: fixed;
 }
 .string {
   border-bottom: 2px solid #f5f6fb;
+  height: 40px;
 }
 .btn_table {
   width: 15px;
@@ -41,6 +44,7 @@
   background-color: #f5f6fb;
 }
 .field {
+  height: 40px;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -49,4 +53,27 @@
 
   text-align: center;
   letter-spacing: 0.04em;
+  height: 40px;
+}
+.emptyLine {
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+}
+
+html,
+body {
+  scrollbar-color: tomato #f0ac7b3b; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin; /* толщина */
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+  width: 10px; /* ширина для вертикального скролла */
+  height: 7px; /* высота для горизонтального скролла */
+  background-color: #f0ac7b3b;
+}
+
+.emptyLine {
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
 }

@@ -14,6 +14,8 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
+import transExpenseReducer from './transaction/expense/transactionSlice';
+import transIncomeReducer from './transaction/incom/transactionIncomeSlice';
 
 import { createLogger } from 'redux-logger';
 
@@ -29,6 +31,16 @@ const middleware = [
     },
   }).concat(logger),
 ];
+const persistExpenseConfig = {
+  key: 'items',
+  storage,
+  whitelist: ['items'],
+};
+const persistIncomeConfig = {
+  key: 'itemsIncome',
+  storage,
+  whitelist: ['itemsIncome'],
+};
 
 const authPersistConfig = {
   key: 'token',
@@ -39,6 +51,8 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    expense: persistReducer(persistExpenseConfig, transExpenseReducer),
+    income: persistReducer(persistIncomeConfig, transIncomeReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV !== 'production',

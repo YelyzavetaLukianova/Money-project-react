@@ -1,29 +1,10 @@
-import { Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import LoaderB from '../common/Loader/Loader';
-// import AuthPage from '../pages/AuthPage/AuthPage';
-import AuthRoute from './AuthRoute';
-import NotAuthRoute from './NotAuthRoute';
-import { publicRoutes, onlyAuthRoutes, onlyNotAuthRoutes } from './index';
-
-// import { lazy } from 'react';
-
-// const AuthPage = lazy(() => import('../pages/AuthPage/AuthPage'));
-// const Expense = lazy(() => import('../components/Expense/Expense'));
-// const Income = lazy(() => import('../components/Income/Income'));
-// const Report = lazy(() => import('report'));
-/* webpackChunkName: "AuthPage___page" */
-/* webpackChunkName: "Expense___page" */
-/* webpackChunkName: "Income___page" */
-/* webpackChunkName: "Report___page" */
-
 const routes = {
   AUTH: '/',
-  //   HOMEPAGE: '/homepage',
-  //   HOMEPAGE_INCOME: '/balanse',
-  //   HOMEPAGE_EXPENSE: '/balanse/expense',
+  EXPENSE: '/expense',
+  INCOME: '/income',
   REPORT: '/report',
 };
+
 export default routes;
 // ================================================================================
 // const AllRoutes = () => {

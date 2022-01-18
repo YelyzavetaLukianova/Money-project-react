@@ -1,8 +1,13 @@
 import FormEnter from '../FormEnter/FormEnter';
 
 import s from './Expense.module.css';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
+
+import { getExpenseCategories } from '../../services/kapusta-api';
 
 const Expense = () => {
+
   return (
     <div>
       <div>

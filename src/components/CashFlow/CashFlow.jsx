@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
+
 import { FaTrashAlt } from 'react-icons/fa';
 
 import { deleteExpenseBack } from '../../redux/transaction/expense/transactionOperations';
@@ -9,7 +11,9 @@ const classsTabRight = s.tab + ' ' + s.right_tab;
 const classsTabLeft = s.tab + ' ' + s.left_tab;
 
 const CashFlow = ({ arey }) => {
+
   const dispatch = useDispatch();
+
   const [emptyArray, setEmptyArray] = useState([]);
 
   useEffect(() => {
@@ -20,9 +24,11 @@ const CashFlow = ({ arey }) => {
     setEmptyArray(newArray);
   }, [arey.length]);
 
+
   const onDeleteClick = _id => {
     dispatch(deleteExpenseBack(_id));
   };
+
 
   return (
     <div>

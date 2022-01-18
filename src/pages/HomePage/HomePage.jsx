@@ -30,7 +30,7 @@ const HomePage = () => {
         </BalanceFormContainer>
       )}
 
-      {/* <Container>
+      <Container>
         <HeaderCostsIncome />
         <Switch>
           <Route exact path="/expense">
@@ -40,7 +40,7 @@ const HomePage = () => {
             <Income />
           </Route>
         </Switch>
-      </Container> */}
+      </Container>
     </Section>
   );
 };

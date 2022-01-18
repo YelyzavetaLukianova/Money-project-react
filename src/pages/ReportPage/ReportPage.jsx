@@ -29,7 +29,9 @@ const ReportPage = () => {
         </BalanceFormContainer>
       )}
 
-      <Container>{/* <Charts /> */}</Container>
+      <Container>
+        <Charts />
+      </Container>
     </Section>
   );
 };

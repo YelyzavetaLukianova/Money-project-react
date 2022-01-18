@@ -57,6 +57,7 @@ const AuthForm = () => {
 
   const alphanumeric = () => {
     const regex = /^[a-zA-Z0-9@-_.]*$/;
+    // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.match(regex)) {
       return;
     } else {

@@ -11,7 +11,6 @@ const classsTabRight = s.tab + ' ' + s.right_tab;
 const classsTabLeft = s.tab + ' ' + s.left_tab;
 
 const CashFlow = ({ arey }) => {
-
   const dispatch = useDispatch();
 
   const [emptyArray, setEmptyArray] = useState([]);
@@ -24,11 +23,9 @@ const CashFlow = ({ arey }) => {
     setEmptyArray(newArray);
   }, [arey.length]);
 
-
   const onDeleteClick = _id => {
     dispatch(deleteExpenseBack(_id));
   };
-
 
   return (
     <div>

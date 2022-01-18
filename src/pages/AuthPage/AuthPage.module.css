@@ -96,7 +96,7 @@
   background-image: url('../../images/svg/kapusta-mobile-auth-top.svg'),
     url('../../images/svg/kapusta-mobile-auth-bottom.svg');
   background-repeat: no-repeat;
-  background-position: right 0px top 160px, left 35px bottom 0px;
+  background-position: right 0px top 120px, left 35px bottom 0px;
 }
 
 .box::after {
@@ -114,11 +114,21 @@
 
 @media screen and (min-width: 480px) {
   .box {
-    background-image: url('../../images/svg/kapusta-desktop-auth.svg');
-    background-position: left 0px top 84px;
+    background-image: url('../../images/svg/kapusta-desktop-auth.svg'),
+      url('../../images/svg/kapusta-desktop-auth-bottom.svg');
+    background-position: left 0px top 84px, left 103px bottom 56px;
   }
 
   .box::after {
     height: 526px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .box {
+    background-image: url('../../images/svg/kapusta-desktop-auth.svg'),
+      url('../../images/svg/kapusta-desktop-auth-bottom.svg');
+    background-position: left 0px top 84px, left 230px bottom 50px;
+    background-repeat: repeat-x, no-repeat;
   }
 }

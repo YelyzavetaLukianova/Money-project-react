@@ -14,7 +14,6 @@
 @media screen and (min-width: 480px) {
   .bg_app {
     position: relative;
-    height: 800px; /* ЭТО ДЛЯ ТЕСТОВ */
     background-image: url('../../images/svg/kapusta-tablet.svg');
     background-repeat: no-repeat;
     background-position: right 88px bottom 64px;

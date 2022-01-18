@@ -78,12 +78,22 @@
   color: #000000;
 }
 
-.firstLabel {
+/* .firstLabel {
   margin-bottom: 30px;
-}
+} */
 
 .secondLabel {
-  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.spanError {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+
+  color: #eb5757;
 }
 
 .input {
@@ -102,7 +112,21 @@
   border-radius: 30px;
 }
 
+.textError {
+  padding: 0 29px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+
+  color: #eb5757;
+}
+
 .box {
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -170,6 +194,10 @@
 
     font-size: 12px;
     line-height: 14px;
+  }
+
+  .textError {
+    padding: 0 86px;
   }
 }
 

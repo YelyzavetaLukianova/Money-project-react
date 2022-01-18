@@ -1,17 +1,27 @@
-import { useState, Suspense, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Switch, Route } from 'react-router-dom';
+import { useState, Suspense, useEffect, lazy } from 'react';
+import { Switch, Redirect } from 'react-router-dom';
 import { ThemeContext, themes } from '../Context/themeContext';
-import HeaderCostsIncome from '../HeaderCostsIncome/HeaderCostsIncome';
-import Expense from '../Expense/Expense';
-import Charts from '../Charts/Chart';
-import Income from '../Income/Income';
-import LoaderB from '../../common/Loader/Loader';
-import s from '../Header/Header.module.css';
-import Nav from '../Nav/Nav';
-import AuthPage from '../../pages/AuthPage/AuthPage';
+
 import * as storage from '../../services/localStorage';
-import { getIsLoggedIn } from '../../redux/auth/authSelectors';
+
+import { routes, AuthRoute, NotAuthRoute } from '../../routes';
+
+import LoaderB from '../../common/Loader';
+import Nav from '../Nav/Nav';
+
+import s from '../Header/Header.module.css';
+
+const AuthPage = lazy(() =>
+  import('../../pages/AuthPage' /* webpackChunkName: "AuthPage___page" */),
+);
+const HomePage = lazy(() =>
+  import('../../pages/HomePage' /* webpackChunkName: "HomePage___page" */),
+);
+const ReportPage = lazy(() =>
+  import('../../pages/ReportPage' /* webpackChunkName: "ReportPage___page" */),
+);
+
+const { AUTH, EXPENSE, INCOME, REPORT } = routes;
 
 const STORAGE_KEY = 'theme';
 
@@ -19,7 +29,6 @@ const App = () => {
   const [theme, setTheme] = useState(
     () => storage.get(STORAGE_KEY) ?? themes.light,
   );
-  const isLoggedIn = useSelector(getIsLoggedIn);
 
   //локал сторадж
   useEffect(() => {
@@ -39,22 +48,26 @@ const App = () => {
             </header>
           </div>
 
-          {!isLoggedIn ? (
-            <AuthPage />
-          ) : (
-            <Suspense fallback={<LoaderB />}>
-              <HeaderCostsIncome />
-              <Switch>
-                <Route exact path="/expense">
-                  <Expense />
-                </Route>
-                <Route exact path="/income">
-                  <Income />
-                </Route>
-              </Switch>
-            </Suspense>
-          )}
-          <Charts />
+          {/* <Suspense fallback={<LoaderB />}> */}
+          <Suspense fallback={<p>Loading...</p>}>
+            <Switch>
+              <NotAuthRoute exact path={AUTH} redirectTo={EXPENSE}>
+                <AuthPage />
+              </NotAuthRoute>
+
+              <AuthRoute exact path={EXPENSE} redirectTo={AUTH}>
+                <HomePage />
+              </AuthRoute>
+              <AuthRoute exact path={INCOME} redirectTo={AUTH}>
+                <HomePage />
+              </AuthRoute>
+              <AuthRoute exact path={REPORT} redirectTo={AUTH}>
+                <ReportPage />
+              </AuthRoute>
+
+              <Redirect to={AUTH} />
+            </Switch>
+          </Suspense>
         </ThemeContext.Provider>
       </div>
     </>

@@ -1,46 +1,47 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getExpenseBack,
-  addExpenseBack,
+  getIncomeBack,
+  addIncomeBack,
   deleteExpenseBack,
-} from './transactionOperations';
+} from './transactionIncomeOperations';
 
 const initialState = {
   data: {
-    items: [],
+    itemsIncom: [],
     loading: false,
     error: null,
     token: null,
   },
 };
 
-const transactionExpenseSlice = createSlice({
-  name: 'transactionExpense',
+const transactionIncomeSlice = createSlice({
+  name: 'income',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(getExpenseBack.pending, state => {
+      .addCase(getIncomeBack.pending, state => {
         state.data.loading = true;
         state.data.error = null;
       })
-      .addCase(getExpenseBack.fulfilled, (state, { payload }) => {
+      .addCase(getIncomeBack.fulfilled, (state, { payload }) => {
         state.data.loading = false;
-        state.data.items = payload;
+        state.data.itemsIncom = payload;
       })
-      .addCase(getExpenseBack.rejected, (state, { payload }) => {
+      .addCase(getIncomeBack.rejected, (state, { payload }) => {
         state.data.loading = false;
         state.data.error = payload;
       })
 
-      .addCase(addExpenseBack.pending, state => {
+      .addCase(addIncomeBack.pending, state => {
         state.data.loading = true;
         state.data.error = null;
       })
-      .addCase(addExpenseBack.fulfilled, (state, { payload }) => {
+      .addCase(addIncomeBack.fulfilled, (state, { payload }) => {
+        console.log(`payload`, payload);
         state.data.loading = false;
-        state.data.items.push(payload);
+        state.data.itemsIncom.push(payload);
       })
-      .addCase(addExpenseBack.rejected, (state, { payload }) => {
+      .addCase(addIncomeBack.rejected, (state, { payload }) => {
         state.data.loading = false;
         state.data.error = payload;
       })
@@ -51,8 +52,10 @@ const transactionExpenseSlice = createSlice({
       })
       .addCase(deleteExpenseBack.fulfilled, (state, { payload }) => {
         state.data.loading = false;
-        const indx = state.data.items.findIndex(item => item.id === payload);
-        state.data.items.splice(indx, 1);
+        const indx = state.data.itemsIncom.findIndex(
+          item => item._id === payload,
+        );
+        state.data.itemsIncom.splice(indx, 1);
       })
       .addCase(deleteExpenseBack.rejected, (state, { payload }) => {
         state.data.loading = false;
@@ -61,4 +64,4 @@ const transactionExpenseSlice = createSlice({
   },
 });
 
-export default transactionExpenseSlice.reducer;
+export default transactionIncomeSlice.reducer;

@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { FaTrashAlt } from 'react-icons/fa';
+
+import { deleteExpenseBack } from '../../redux/transaction/expense/transactionOperations';
 import s from './CashFlow.module.css';
 
 const classsTabRight = s.tab + ' ' + s.right_tab;
 const classsTabLeft = s.tab + ' ' + s.left_tab;
 
 const CashFlow = ({ arey }) => {
+  const dispatch = useDispatch();
   const [emptyArray, setEmptyArray] = useState([]);
 
   useEffect(() => {
@@ -15,6 +19,10 @@ const CashFlow = ({ arey }) => {
 
     setEmptyArray(newArray);
   }, [arey.length]);
+
+  const onDeleteClick = _id => {
+    dispatch(deleteExpenseBack(_id));
+  };
 
   return (
     <div>
@@ -31,14 +39,18 @@ const CashFlow = ({ arey }) => {
 
         <tbody className={s.scrollbar}>
           {!!arey.length &&
-            arey.map(({ date, description, category, amount, id }) => (
-              <tr key={id} className={s.field}>
+            arey.map(({ date, description, category, amount, _id }) => (
+              <tr key={_id} className={s.field}>
                 <td className={s.string}>{date}</td>
                 <td className={s.string}>{description}</td>
                 <td className={s.string}>{category}</td>
                 <td className={s.string}>{amount}</td>
                 <td className={s.string}>
-                  <button type="button" className={s.btn_table}>
+                  <button
+                    type="button"
+                    className={s.btn_table}
+                    onClick={() => onDeleteClick(_id)}
+                  >
                     <FaTrashAlt />
                   </button>
                 </td>

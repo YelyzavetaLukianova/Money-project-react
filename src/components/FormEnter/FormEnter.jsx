@@ -4,16 +4,19 @@ import { GrCalculator } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../common/Button/Button';
-// import { nanoid } from 'nanoid';
-import { nanoid } from '@reduxjs/toolkit';
+
 import s from './FormEnter.module.css';
 import Summary from '../Summary/Summary';
 import CashFlow from '../CashFlow/CashFlow';
 import {
   getExpenseBack,
   addExpenseBack,
-  deleteExpenseBack,
-} from '../../redux/transaction/transactionOperations';
+} from '../../redux/transaction/expense/transactionOperations';
+
+import {
+  getIncomeBack,
+  addIncomeBack,
+} from '../../redux/transaction/incom/transactionIncomeOperations';
 
 import {
   getExpenseCategories,
@@ -35,25 +38,24 @@ const FormEnter = () => {
   const dispatch = useDispatch();
 
   const expense23 = useSelector(state => state.expense.data.items);
+  const income23 = useSelector(state => state.income.data.itemsIncom);
 
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
-  const [expense, setExpense] = useState([]);
-  const [income, setIncome] = useState([]);
+
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
 
   const location = useLocation();
 
-  console.log(`expense23`, expense23);
-
   useEffect(() => {
-    dispatch(getExpenseBack());
-  }, [dispatch]);
+    location.pathname === '/income'
+      ? dispatch(getIncomeBack())
+      : dispatch(getExpenseBack());
+  }, [dispatch, location.pathname]);
 
   useEffect(() => {
     const getDataExp = async () => {
       const { data } = await getExpenseCategories();
-
       setCategoryBack(['Категория товара', ...data]);
     };
     getDataExp();
@@ -62,7 +64,6 @@ const FormEnter = () => {
   useEffect(() => {
     const getDataInc = async () => {
       const { data } = await getIncomeCategories();
-
       setCategoryInc(['Категория дохода', ...data]);
     };
     getDataInc();
@@ -76,7 +77,6 @@ const FormEnter = () => {
     setFormData({
       ...formData,
       [name]: value,
-      // _id: nanoid(5),
     });
   };
 
@@ -84,9 +84,9 @@ const FormEnter = () => {
     e.preventDefault();
 
     location.pathname === '/income'
-      ? setIncome([...income, formData])
+      ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));
-    // : setExpense([...expense, formData]);
+
     reset();
   };
 
@@ -97,10 +97,7 @@ const FormEnter = () => {
   const reset = () => {
     setFormData({ ...INITIAL_STATE });
   };
-  //     if (location.pathname === '/income') {
-  //     const income =
-  // }
-  //     const income =
+
   return (
     <div>
       <div>
@@ -164,7 +161,7 @@ const FormEnter = () => {
           </div>
         </form>
       </div>
-      <CashFlow arey={location.pathname === '/income' ? income : expense23} />
+      <CashFlow arey={location.pathname === '/income' ? income23 : expense23} />
       <Summary />
     </div>
   );

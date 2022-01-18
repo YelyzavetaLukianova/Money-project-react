@@ -3,17 +3,14 @@ import {
   deleteTransaction,
   getExpense,
   postExpense,
-  getIncome,
-  postIncome,
-  getTransactionPeriodData,
-} from '../../services/kapusta-api';
+} from '../../../services/kapusta-api';
 
 const getExpenseBack = createAsyncThunk(
   'transaction/getExpense',
   async (_, thunkAPI) => {
     try {
       const { data } = await getExpense();
-      console.log(`datagetExp`, data);
+
       return data.expenses;
     } catch (error) {
       console.log(`errorget`, error);
@@ -39,8 +36,9 @@ const deleteExpenseBack = createAsyncThunk(
   'transaction/delete',
   async (id, thunkAPI) => {
     try {
-      const data = await deleteTransaction(id);
-      console.log(`datadelete`, data);
+      await deleteTransaction(id);
+
+      return id;
     } catch (error) {
       console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');

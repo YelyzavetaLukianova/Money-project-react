@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 import { getExpenseCategories } from '../../services/kapusta-api';
 
 const Expense = () => {
-
   return (
     <div>
       <div>

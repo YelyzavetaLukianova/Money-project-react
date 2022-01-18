@@ -1,9 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import s from './ReportButton.module.css';
 
 export default function ReportButton() {
   return (
-    <div>
-      <p>Перейти к отчетам</p>
-    </div>
+    <NavLink to="/report">
+      <p className={s.report_button}>Перейти к отчетам</p>
+    </NavLink>
   );
 }

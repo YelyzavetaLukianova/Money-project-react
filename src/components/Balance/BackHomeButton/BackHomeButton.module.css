@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.back_symbol {
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--accent);
+}
+
+.text {
+  color: #52555fb2;
+}

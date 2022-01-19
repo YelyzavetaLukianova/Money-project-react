@@ -70,8 +70,7 @@ const CashFlow = ({ arey }) => {
                         onClose={closeForm}
                         onExit={() => onDeleteClick(_id)}
                       />
-                      {/* <button>Удалить</button>
-                      <button>тмена</button> */}
+                     
                     </Modal>
                   )}
                 </td>

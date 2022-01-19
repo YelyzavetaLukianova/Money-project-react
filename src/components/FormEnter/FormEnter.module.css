@@ -6,6 +6,9 @@
 
   /* border-radius: 16px 16px 16px 0px; */
 }
+.form_item {
+  display: flex;
+}
 .left_input {
   border-radius: 16px 0px 0px 0px;
 }
@@ -17,9 +20,10 @@
   display: none;
 }
 
-.date_input {
-  background-color: transparent;
-  border: none;
+.input_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
@@ -73,4 +77,17 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 59px;
+}
+.datestyle {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+.calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  margin-right: -20px;
 }

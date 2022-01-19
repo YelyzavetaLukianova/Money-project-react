@@ -2,6 +2,11 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { GrCalculator } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
+import calend from './calendar.png';
+
+import 'flatpickr/dist/themes/material_green.css';
+
+import Flatpickr from 'react-flatpickr';
 
 import Button from '../../common/Button/Button';
 
@@ -25,7 +30,6 @@ import {
 
 const classsLeft = s.input + ' ' + s.left_input;
 const classsRight = s.input + ' ' + s.right_input;
-const classsDate = s.input + ' ' + s.date_input;
 
 const INITIAL_STATE = {
   date: '',
@@ -41,6 +45,7 @@ const FormEnter = () => {
   const income23 = useSelector(state => state.income.data.itemsIncom);
 
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
@@ -69,7 +74,7 @@ const FormEnter = () => {
     getDataInc();
   }, []);
 
-  const { date, description, category, amount } = formData;
+  const { description, category, amount } = formData;
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -77,6 +82,7 @@ const FormEnter = () => {
     setFormData({
       ...formData,
       [name]: value,
+      date: selectedDate,
     });
   };
 
@@ -96,21 +102,42 @@ const FormEnter = () => {
 
   const reset = () => {
     setFormData({ ...INITIAL_STATE });
+    setSelectedDate(new Date());
+  };
+
+  const onChange = (selectedDates, dateStr, instance) => {
+    setSelectedDate(dateStr);
   };
 
   return (
     <div>
       <div>
         <form action="" onSubmit={handleSubmit} className={s.form}>
-          <div>
-            <input
+          <div className={s.form_item}>
+            {/* <input
               type="date"
               name="date"
               value={date}
               required
               onChange={handleChange}
               className={classsDate}
-            />
+            /> */}
+            <div className={s.calendar}>
+              <img
+                src={calend}
+                alt="calendar"
+                width="20"
+                height="18"
+                className={s.img}
+              />
+              <Flatpickr
+                options={{ minDate: '01-01-2017', maxDate: new Date() }}
+                // name="date"
+                value={selectedDate}
+                onChange={onChange}
+                className={s.datestyle}
+              />
+            </div>
 
             <input
               type="text"
@@ -137,17 +164,18 @@ const FormEnter = () => {
                 </option>
               ))}
             </select>
-
-            <input
-              type="number"
-              name="amount"
-              value={amount}
-              placeholder="0,00"
-              required
-              onChange={handleChange}
-              className={classsRight}
-            />
-            <GrCalculator className={s.icon} />
+            <div className={s.input_icon}>
+              <input
+                type="number"
+                name="amount"
+                value={amount}
+                placeholder="0,00"
+                required
+                onChange={handleChange}
+                className={classsRight}
+              />
+              <GrCalculator className={s.icon} />
+            </div>
           </div>
 
           <div className={s.wrap}>

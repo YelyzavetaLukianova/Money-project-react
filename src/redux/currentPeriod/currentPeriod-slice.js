@@ -14,11 +14,6 @@ const dateSlice = createSlice({
   name: 'currentPeriod',
   initialState,
   reducers: {
-    //   добавить дату
-    addDate: (state, action) => {
-      state.date = action.payload;
-    },
-
     //   добавить текущий тип
     addCurrentType: (state, action) => {
       state.currentType = action.payload;

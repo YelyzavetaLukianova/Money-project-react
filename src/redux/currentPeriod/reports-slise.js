@@ -3,7 +3,7 @@ import { getPeriodData } from './currentPeriod-operation';
 
 const initialState = {
   items: [],
-  loading: false,
+  isLoading: false,
   error: null,
 };
 

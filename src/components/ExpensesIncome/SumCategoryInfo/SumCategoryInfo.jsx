@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { periodSelectors } from '../../../redux/currentPeriod';
 import {
   addCurrentType,
@@ -9,29 +9,43 @@ import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left
 import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-right.svg';
 import CategoryList from '../CategoryList/CategoryList';
 import s from './SumCategoryInfo.module.css';
-
+import { getTransactionPeriodData } from '../../../services/kapusta-api';
 // import getPeriodData from '../../../redux/currentPeriod/reports-slise';
 
-export default function SumCategoryInfo() {
+const SumCategoryInfo = () => {
+  // const [expensesData, setExpensesData] = useState(null);
+  // const [incomesData, setIncomesData] = useState(null);
   const dispatch = useDispatch();
   const [typeTrans, setTypeTrans] = useState('expenses');
 
   const month = useSelector(periodSelectors.getMonth);
   const year = useSelector(periodSelectors.getYear);
-  console.log();
-  // const { data } = getPeriodData({ year, month });
+
+  // const { data } = getTransactionPeriodData('2022-01');
+  // console.log(data);
+
+  // useEffect(() => {
+  //   const getPeriodData = async () => {
+  //     const { data } = await getTransactionPeriodData('2022-01');
+  //     setExpensesData(data.expenses.expensesData);
+  //     setIncomesData(data.incomes.incomesData);
+  //     console.log('datagggg', data.incomes);
+  //     // console.log('data', data.expenses);
+  //   };
+  //   getPeriodData();
+  // }, []);
 
   const handleClick = () => {
-    if (typeTrans === 'incomings') {
+    if (typeTrans === 'incomes') {
       setTypeTrans('expenses');
       dispatch(addCurrentType('expenses'));
-      dispatch(addCurrentCategory('Продукты'));
+      // dispatch(addCurrentCategory('Продукты'));
     }
 
     if (typeTrans === 'expenses') {
-      setTypeTrans('incomings');
-      dispatch(addCurrentType('incomings'));
-      dispatch(addCurrentCategory('ЗП'));
+      setTypeTrans('incomes');
+      dispatch(addCurrentType('incomes'));
+      // dispatch(addCurrentCategory('ЗП'));
     }
   };
 
@@ -52,9 +66,10 @@ export default function SumCategoryInfo() {
         {/* {typeTrans === 'expenses' ? (
           <CategoryList trans={data?.data.expenses} />
         ) : (
-          <CategoryList trans={data?.data.incomings} />
+          <CategoryList trans={data?.data.incomes} />
         )} */}
       </div>
     </>
   );
-}
+};
+export default SumCategoryInfo;

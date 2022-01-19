@@ -6,7 +6,7 @@ const getPeriodData = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await getTransactionPeriodData();
-      return data.expenses;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue('Something wrong :(');
     }

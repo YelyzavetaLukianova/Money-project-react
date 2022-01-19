@@ -11,10 +11,10 @@ const HeaderCostsIncome = () => {
         activeClassName={s.active}
         exact
       >
-        Expense
+        РАСХОД
       </NavLink>
       <NavLink to="/income" className={s.link} activeClassName={s.active} exact>
-        Income
+        ДОХОД
       </NavLink>
     </div>
   );

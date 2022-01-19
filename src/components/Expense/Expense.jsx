@@ -1,5 +1,5 @@
 import FormEnter from '../FormEnter/FormEnter';
-
+import { useMediaQuery } from 'react-responsive';
 import s from './Expense.module.css';
 import { useLocation } from 'react-router';
 import { useEffect } from 'react';

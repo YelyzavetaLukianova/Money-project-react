@@ -24,7 +24,7 @@ const addExpenseBack = createAsyncThunk(
     try {
       const { data } = await postExpense(newContact);
 
-      return data.transaction;
+      return data;
     } catch (error) {
       console.log(`errorget`, error);
 
@@ -36,6 +36,7 @@ const addExpenseBack = createAsyncThunk(
 const deleteExpenseBack = createAsyncThunk(
   'transaction/delete',
   async (id, thunkAPI) => {
+    console.log(`_id Operation`, id);
     try {
       await deleteTransaction(id);
 

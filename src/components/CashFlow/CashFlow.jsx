@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { useDispatch } from 'react-redux';
 
 import { FaTrashAlt } from 'react-icons/fa';
+import Modal from '../../common/Modal/Modal';
+import ModalExit from '../Header/ModalExit/ModalExit';
 
 import { deleteExpenseBack } from '../../redux/transaction/expense/transactionOperations';
 import s from './CashFlow.module.css';
@@ -12,8 +14,10 @@ const classsTabLeft = s.tab + ' ' + s.left_tab;
 
 const CashFlow = ({ arey }) => {
   const dispatch = useDispatch();
-
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [emptyArray, setEmptyArray] = useState([]);
+
+  const [idDelete, setIdDelete] = useState(null);
 
   useEffect(() => {
     if (arey.length >= 9) return;
@@ -24,8 +28,20 @@ const CashFlow = ({ arey }) => {
   }, [arey.length]);
 
   const onDeleteClick = _id => {
+    console.log(`_id CashFlow`, _id);
     dispatch(deleteExpenseBack(_id));
+    setIsFormOpen(false);
   };
+
+  const closeForm = () => {
+    setIdDelete(null);
+    setIsFormOpen(false);
+  };
+
+  const openForm = useCallback(id => {
+    setIdDelete(id);
+    setIsFormOpen(true);
+  }, []);
 
   return (
     <div>
@@ -52,10 +68,20 @@ const CashFlow = ({ arey }) => {
                   <button
                     type="button"
                     className={s.btn_table}
-                    onClick={() => onDeleteClick(_id)}
+                    onClick={() => openForm(_id)}
                   >
                     <FaTrashAlt />
                   </button>
+                  {/* {isFormOpen && (
+                    <Modal closeForm={closeForm}>
+                      <ModalExit
+                        title="Вы уверены?"
+                        onClose={closeForm}
+                        onExit={() => onDeleteClick(_id)}
+                      />
+                     
+                    </Modal>
+                  )} */}
                 </td>
               </tr>
             ))}
@@ -70,6 +96,15 @@ const CashFlow = ({ arey }) => {
               </tr>
             );
           })}
+          {isFormOpen && (
+            <Modal closeForm={closeForm}>
+              <ModalExit
+                title="Вы уверены?"
+                onClose={closeForm}
+                onExit={() => onDeleteClick(idDelete)}
+              />
+            </Modal>
+          )}
         </tbody>
       </table>
     </div>

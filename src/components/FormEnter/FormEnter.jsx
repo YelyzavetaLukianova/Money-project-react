@@ -81,7 +81,7 @@ const FormEnter = () => {
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === 'amount' ? Number(value) : value,
       date: selectedDate,
     });
   };
@@ -114,14 +114,6 @@ const FormEnter = () => {
       <div>
         <form action="" onSubmit={handleSubmit} className={s.form}>
           <div className={s.form_item}>
-            {/* <input
-              type="date"
-              name="date"
-              value={date}
-              required
-              onChange={handleChange}
-              className={classsDate}
-            /> */}
             <div className={s.calendar}>
               <img
                 src={calend}
@@ -132,7 +124,6 @@ const FormEnter = () => {
               />
               <Flatpickr
                 options={{ minDate: '01-01-2017', maxDate: new Date() }}
-                // name="date"
                 value={selectedDate}
                 onChange={onChange}
                 className={s.datestyle}

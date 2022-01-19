@@ -24,7 +24,7 @@ const addExpenseBack = createAsyncThunk(
     try {
       const { data } = await postExpense(newContact);
 
-      return data.transaction;
+      return data;
     } catch (error) {
       console.log(`errorget`, error);
 

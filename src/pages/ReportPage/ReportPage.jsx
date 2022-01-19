@@ -7,6 +7,7 @@ import BackHomeButton from '../../components/Balance/BackHomeButton';
 import CurrentPeriod from '../../components/Balance/CurrentPeriod/CurrentPeriod';
 import BalanceForm from '../../components/Balance/BalanceForm/BalanceForm';
 import BalanceFormContainer from '../../common/BalanceFormContainer';
+import ExpensesIncome from '../../components/ExpensesIncome/ExpensesIncome';
 import style from './ReportPage.module.css';
 
 const ReportPage = () => {
@@ -30,6 +31,7 @@ const ReportPage = () => {
       )}
 
       <Container>
+        <ExpensesIncome />
         <Charts />
       </Container>
     </Section>

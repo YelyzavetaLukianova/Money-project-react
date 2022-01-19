@@ -7,18 +7,13 @@ const day = String(new Date().getDate());
 const initialState = {
   date: { day, month, year },
   currentType: 'expenses',
-  currentCategory: 'Продукты',
+  currentCategory: 'incomes',
 };
 
 const dateSlice = createSlice({
   name: 'currentPeriod',
   initialState,
   reducers: {
-    //   добавить дату
-    addDate: (state, action) => {
-      state.date = action.payload;
-    },
-
     //   добавить текущий тип
     addCurrentType: (state, action) => {
       state.currentType = action.payload;

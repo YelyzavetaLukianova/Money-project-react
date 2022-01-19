@@ -6,7 +6,6 @@ const getBalance = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await getUserInfo();
-      console.log(typeof data.balance);
       return data.balance;
     } catch (error) {
       console.log(`errorget`, error);

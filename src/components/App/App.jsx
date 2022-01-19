@@ -43,9 +43,7 @@ const App = () => {
       <div className={theme === themes.light ? s.lightTheme : s.darkTheme}>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <div className={s.conteinerHead}>
-            <header style={{ margin: '0 auto' }}>
-              <Nav />
-            </header>
+            <Nav />
           </div>
 
           {/* <Suspense fallback={<LoaderB />}> */}

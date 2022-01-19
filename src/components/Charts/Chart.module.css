@@ -1,49 +1,52 @@
-.rechartsresponsivecontainer {
-  background-color: var(--white-color);
-  border-radius: 40px;
-  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  border-radius: 30px;
-  height: 80px;
-  margin: 0 auto;
-  height: 422px;
-}
-@media screen and (max-width: 767px) {
-  .container {
-    min-height: 422px;
-    padding-bottom: 10px;
-  }
-}
-.noData {
-  padding-top: 10px;
-  text-align: center;
+.line {
+  width: 280px;
+  display: flex;
+  margin: 20px auto 30px;
+  border: 1px solid #e0e5eb;
 }
 .pap {
-  width: 282px;
+  width: 283px;
+  height: 510px;
 }
 .chart {
   width: 270px;
   /* height: 422px; */
 }
+.wrap {
+  display: none;
+}
+.wrapMob {
+  width: 280px;
+  height: 508px;
+}
 @media screen and (min-width: 768px) {
+  .wrap {
+    display: unset;
+  }
+  .wrapMob {
+    display: none;
+  }
   .pap {
     width: 666px;
+    height: 422px;
     margin: 20px auto;
     padding: 50px 30px 45px;
   }
   .chart {
-    width: 605px;
+    width: 625px;
     height: 328px;
+    margin: 0 auto;
   }
 }
 @media screen and (min-width: 1280px) {
   .pap {
     width: 1060px;
+    height: 422px;
     margin: 20px auto;
     padding: 20px 0;
   }
   .chart {
     width: 758px;
-    height: 422px;
-    margin: 0 auto;
+    margin: 45px auto;
   }
 }

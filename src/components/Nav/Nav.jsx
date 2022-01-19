@@ -8,12 +8,14 @@ import s from '../Header/Header.module.css';
 const Nav = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
-    <div className={s.header}>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Logo />
-        <ThemeSwitcher />
-      </div>
-      {isLoggedIn && <UserMenu />}
+    <div>
+      <header className={s.header}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Logo />
+          <ThemeSwitcher />
+        </div>
+        {isLoggedIn && <UserMenu />}
+      </header>
     </div>
   );
 };

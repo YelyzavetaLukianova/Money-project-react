@@ -1,0 +1,22 @@
+.balance_container {
+  /* margin: 0 auto; */
+  padding-top: 15px;
+  padding-bottom: 30px;
+  padding-left: 19px;
+  padding-right: 19px;
+  /* margin-bottom: 21px; */
+  background-color: #8ce783;
+  outline: brown solid 1px;
+}
+
+@media screen and (min-width: 481px) {
+  .balance_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

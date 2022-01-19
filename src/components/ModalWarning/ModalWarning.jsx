@@ -15,7 +15,7 @@ const ModalWarning = () => {
   );
 
   const initialBalance = 0;
-  console.log(!initialBalance);
+  // console.log(!initialBalance);
 
   useEffect(() => {
     if (!initialBalance) {

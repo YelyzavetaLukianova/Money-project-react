@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { useDispatch } from 'react-redux';
 
 import { FaTrashAlt } from 'react-icons/fa';
+import Modal from '../../common/Modal/Modal';
+import ModalExit from '../Header/ModalExit/ModalExit';
 
 import { deleteExpenseBack } from '../../redux/transaction/expense/transactionOperations';
 import s from './CashFlow.module.css';
@@ -12,7 +14,7 @@ const classsTabLeft = s.tab + ' ' + s.left_tab;
 
 const CashFlow = ({ arey }) => {
   const dispatch = useDispatch();
-
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [emptyArray, setEmptyArray] = useState([]);
 
   useEffect(() => {
@@ -24,9 +26,14 @@ const CashFlow = ({ arey }) => {
   }, [arey.length]);
 
   const onDeleteClick = _id => {
+    console.log(`_id CashFlow`, _id);
     dispatch(deleteExpenseBack(_id));
+    setIsFormOpen(false);
   };
-
+  const closeForm = useCallback(
+    () => setIsFormOpen(prevIsFormOpen => !prevIsFormOpen),
+    [],
+  );
   return (
     <div>
       <table className={`${s.table23} ${s.scrollbar}`}>
@@ -52,10 +59,21 @@ const CashFlow = ({ arey }) => {
                   <button
                     type="button"
                     className={s.btn_table}
-                    onClick={() => onDeleteClick(_id)}
+                    onClick={closeForm}
                   >
                     <FaTrashAlt />
                   </button>
+                  {isFormOpen && (
+                    <Modal closeForm={closeForm}>
+                      <ModalExit
+                        title="Вы уверены?"
+                        onClose={closeForm}
+                        onExit={() => onDeleteClick(_id)}
+                      />
+                      {/* <button>Удалить</button>
+                      <button>тмена</button> */}
+                    </Modal>
+                  )}
                 </td>
               </tr>
             ))}

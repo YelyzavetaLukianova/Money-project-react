@@ -36,6 +36,7 @@ const addExpenseBack = createAsyncThunk(
 const deleteExpenseBack = createAsyncThunk(
   'transaction/delete',
   async (id, thunkAPI) => {
+    console.log(`_id Operation`, id);
     try {
       await deleteTransaction(id);
 

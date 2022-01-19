@@ -49,9 +49,9 @@
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
-.balance_form_wrapper p {
+/* .text {
   margin-bottom: 6px;
-}
+} */
 
 @media screen and (max-width: 480px) {
   .balance_button {
@@ -63,7 +63,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .balance_form_wrapper p {
+  .text {
     margin-bottom: 6px;
   }
 
@@ -84,7 +84,7 @@
     align-items: center;
   }
 
-  .balance_form_wrapper p {
+  .text {
     margin-right: 21px;
     margin-bottom: 0;
   }

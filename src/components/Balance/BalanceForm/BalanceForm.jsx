@@ -39,7 +39,7 @@ export default function BalanceForm({ display_none }) {
 
   return (
     <div className={s.balance_form_wrapper}>
-      <p>Баланс:</p>
+      <p className={s.text}>Баланс:</p>
       <form className={s.balance_form} onSubmit={addBalance}>
         <input
           name="balance"

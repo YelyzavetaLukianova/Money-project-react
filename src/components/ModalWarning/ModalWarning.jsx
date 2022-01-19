@@ -1,28 +1,51 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 // import { useState, useCallback, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import ModalWarningWindow from './ModalWarningWindow';
 import s from './ModalWarning.module.css';
 
 const ModalWarning = () => {
-  // const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(true); // for test
+  // const initialBalance = useSelector(state => state.balance.balance);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(true); // for test
 
   const onClose = useCallback(
-    () => setIsFormOpen(prevIsFormOpen => !prevIsFormOpen),
+    () => setIsModalOpen(prevIsModalOpen => (prevIsModalOpen = false)),
     [],
   );
-  // useEffect(() => {
-  // if (balance !== 0) return;
-  //   setTimeout(isFormOpen(true), 1000);
-  //   setTimeout(onClose, 3000);
-  // }, [balance]);
+
+  const initialBalance = 0;
+  console.log(!initialBalance);
+
+  useEffect(() => {
+    if (!initialBalance) {
+      setIsModalOpen(true);
+      setTimeout(onClose, 2000);
+    }
+  }, [initialBalance, onClose]);
+
+  useEffect(() => {
+    const onEscPress = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', onEscPress);
+
+    return () => {
+      window.removeEventListener('keydown', onEscPress);
+    };
+  }, [onClose]);
+
+  const handleModalClick = e => {
+    if (e.target !== e.currentTarget) return onClose();
+  };
 
   return (
     <>
-      {isFormOpen && (
-        <ModalWarningWindow onClose={onClose}>
+      {isModalOpen && (
+        <div className={s.modalContainer} onClick={handleModalClick}>
           <div className={s.modal}>
             <p className={s.upperText}>
               Привет! Для начала работы внеси текущий баланс своего счета!
@@ -31,7 +54,7 @@ const ModalWarning = () => {
               Ты не можешь тратить деньги пока их у тебя нет :)
             </p>
           </div>
-        </ModalWarningWindow>
+        </div>
       )}
     </>
   );

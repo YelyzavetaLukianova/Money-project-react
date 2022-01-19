@@ -48,33 +48,35 @@ export default class Charts extends PureComponent {
 
   render() {
     return (
-      // <ResponsiveContainer className={s.rechartsresponsivecontainer}>
-      <Paper
-        className={s.pap}
-        sx={{ width: 800, margin: '20px auto', padding: '20px 0' }}
-        elevation={1}
-      >
+      <>
         <div className={s.wrap}>
-          <BarChart
-            className={s.chart}
-            width={620}
-            height={328}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
+          <Paper
+            className={s.pap}
+            // sx={{ width: 800, margin: '20px auto', padding: '20px 0' }}
+            elevation={1}
           >
-            <CartesianGrid />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            {/* <Legend /> */}
-            <Bar dataKey="expense" fill="#FF751D" barSize={38} />
-          </BarChart>
+            <BarChart
+              className={s.chart}
+              width={620}
+              height={328}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              {/* <Legend /> */}
+              <Bar dataKey="expense" fill="#FF751D" barSize={38} />
+            </BarChart>
+          </Paper>
         </div>
+        <div className={s.line}></div>
         <div className={s.wrapMob}>
           <BarChart
             layout="vertical"
@@ -97,8 +99,7 @@ export default class Charts extends PureComponent {
             <Bar dataKey="expense" fill="#FF751D" barSize={38} />
           </BarChart>
         </div>
-      </Paper>
-      // </ResponsiveContainer>
+      </>
     );
   }
 }

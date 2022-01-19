@@ -35,7 +35,7 @@ const INITIAL_STATE = {
   date: '',
   description: '',
   category: '',
-  amount: '',
+  amount: 0,
 };
 
 const FormEnter = () => {

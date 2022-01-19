@@ -33,13 +33,18 @@ const addIncomeBack = createAsyncThunk(
   },
 );
 
-const deleteExpenseBack = createAsyncThunk(
+const deleteIncomeExpenseBack = createAsyncThunk(
   'transaction/delete',
   async (id, thunkAPI) => {
     try {
-      await deleteTransaction(id);
-
-      return id;
+      // await deleteTransaction(id);
+      const { data } = await deleteTransaction(id);
+      // console.error(data)
+      const objDel = {
+        id,
+        data,
+      };
+      return objDel;
     } catch (error) {
       console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
@@ -47,4 +52,4 @@ const deleteExpenseBack = createAsyncThunk(
   },
 );
 
-export { getIncomeBack, addIncomeBack, deleteExpenseBack };
+export { getIncomeBack, addIncomeBack, deleteIncomeExpenseBack };

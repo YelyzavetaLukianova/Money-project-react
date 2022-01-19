@@ -39,7 +39,7 @@ const transactionIncomeSlice = createSlice({
       .addCase(addIncomeBack.fulfilled, (state, { payload }) => {
         console.log(`payload`, payload);
         state.data.loading = false;
-        state.data.itemsIncom.push(payload);
+        state.data.itemsIncom.push(payload.transaction);
       })
       .addCase(addIncomeBack.rejected, (state, { payload }) => {
         state.data.loading = false;

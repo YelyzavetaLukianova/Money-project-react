@@ -25,7 +25,7 @@ const addIncomeBack = createAsyncThunk(
     try {
       const { data } = await postIncome(newContact);
       console.log(`dataIncome`, data.transaction);
-      return data.transaction;
+      return data;
     } catch (error) {
       console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');

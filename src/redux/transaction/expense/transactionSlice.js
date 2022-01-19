@@ -38,7 +38,7 @@ const transactionExpenseSlice = createSlice({
       })
       .addCase(addExpenseBack.fulfilled, (state, { payload }) => {
         state.data.loading = false;
-        state.data.items.push(payload);
+        state.data.items.push(payload.transaction);
       })
       .addCase(addExpenseBack.rejected, (state, { payload }) => {
         state.data.loading = false;

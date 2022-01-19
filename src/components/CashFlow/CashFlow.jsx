@@ -17,6 +17,8 @@ const CashFlow = ({ arey }) => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [emptyArray, setEmptyArray] = useState([]);
 
+  const [idDelete, setIdDelete] = useState(null);
+
   useEffect(() => {
     if (arey.length >= 9) return;
     const arrayLength = 9 - arey.length;
@@ -30,10 +32,17 @@ const CashFlow = ({ arey }) => {
     dispatch(deleteExpenseBack(_id));
     setIsFormOpen(false);
   };
-  const closeForm = useCallback(
-    () => setIsFormOpen(prevIsFormOpen => !prevIsFormOpen),
-    [],
-  );
+
+  const closeForm = () => {
+    setIdDelete(null);
+    setIsFormOpen(false);
+  };
+
+  const openForm = useCallback(id => {
+    setIdDelete(id);
+    setIsFormOpen(true);
+  }, []);
+
   return (
     <div>
       <table className={`${s.table23} ${s.scrollbar}`}>
@@ -59,11 +68,11 @@ const CashFlow = ({ arey }) => {
                   <button
                     type="button"
                     className={s.btn_table}
-                    onClick={closeForm}
+                    onClick={() => openForm(_id)}
                   >
                     <FaTrashAlt />
                   </button>
-                  {isFormOpen && (
+                  {/* {isFormOpen && (
                     <Modal closeForm={closeForm}>
                       <ModalExit
                         title="Вы уверены?"
@@ -72,7 +81,7 @@ const CashFlow = ({ arey }) => {
                       />
                      
                     </Modal>
-                  )}
+                  )} */}
                 </td>
               </tr>
             ))}
@@ -87,6 +96,15 @@ const CashFlow = ({ arey }) => {
               </tr>
             );
           })}
+          {isFormOpen && (
+            <Modal closeForm={closeForm}>
+              <ModalExit
+                title="Вы уверены?"
+                onClose={closeForm}
+                onExit={() => onDeleteClick(idDelete)}
+              />
+            </Modal>
+          )}
         </tbody>
       </table>
     </div>

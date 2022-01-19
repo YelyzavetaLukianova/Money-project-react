@@ -52,7 +52,9 @@ const transactionExpenseSlice = createSlice({
       .addCase(deleteExpenseBack.fulfilled, (state, { payload }) => {
         console.log(` id payload`, payload);
         state.data.loading = false;
-        const indx = state.data.items.findIndex(item => item._id === payload);
+        const indx = state.data.items.findIndex(
+          item => item._id === payload.id,
+        );
         state.data.items.splice(indx, 1);
       })
       .addCase(deleteExpenseBack.rejected, (state, { payload }) => {

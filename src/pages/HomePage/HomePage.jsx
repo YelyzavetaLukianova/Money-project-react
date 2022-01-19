@@ -1,6 +1,6 @@
 // import { Link } from 'react-router-dom';
 import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
-import { useWindowSize } from 'react-use-size';
+import { useMediaQuery } from 'react-responsive';
 import HeaderCostsIncome from '../../components/HeaderCostsIncome/HeaderCostsIncome';
 import Container from '../../common/Container';
 import Section from '../../common/Section';
@@ -13,17 +13,18 @@ import BalanceFormContainer from '../../common/BalanceFormContainer';
 import style from './HomePage.module.css';
 
 const HomePage = () => {
-  const { width } = useWindowSize();
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
   return (
     <Section>
-      {width < 481 && (
+      {isMobile && (
         <BalanceFormContainer>
           <ReportButton />
           <BalanceForm />
         </BalanceFormContainer>
       )}
 
-      {width > 480 && (
+      {isDesktop && (
         <BalanceFormContainer>
           <BalanceForm />
           <ReportButton />

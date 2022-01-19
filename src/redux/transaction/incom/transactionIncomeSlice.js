@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getIncomeBack,
   addIncomeBack,
-  deleteExpenseBack,
+  deleteIncomeExpenseBack,
 } from './transactionIncomeOperations';
 
 const initialState = {
@@ -46,18 +46,18 @@ const transactionIncomeSlice = createSlice({
         state.data.error = payload;
       })
 
-      .addCase(deleteExpenseBack.pending, state => {
+      .addCase(deleteIncomeExpenseBack.pending, state => {
         state.data.loading = true;
         state.data.error = null;
       })
-      .addCase(deleteExpenseBack.fulfilled, (state, { payload }) => {
+      .addCase(deleteIncomeExpenseBack.fulfilled, (state, { payload }) => {
         state.data.loading = false;
         const indx = state.data.itemsIncom.findIndex(
-          item => item._id === payload,
+          item => item._id === payload.id,
         );
         state.data.itemsIncom.splice(indx, 1);
       })
-      .addCase(deleteExpenseBack.rejected, (state, { payload }) => {
+      .addCase(deleteIncomeExpenseBack.rejected, (state, { payload }) => {
         state.data.loading = false;
         state.data.error = payload;
       });

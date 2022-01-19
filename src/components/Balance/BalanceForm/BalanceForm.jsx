@@ -9,16 +9,21 @@ import s from './BalanceForm.module.css';
 
 export default function BalanceForm({ display_none }) {
   const dispatch = useDispatch();
-  const initialBalance = useSelector(state => state.balance);
+  const initialBalance = useSelector(state => state.balance.balance);
 
-  const [input, setInput] = useState(0);
+  const [input, setInput] = useState(null);
   const handleChange = e => {
     setInput(e.target.value);
   };
 
   useEffect(() => {
+    dispatch(getBalance());
     setInput(initialBalance);
-  }, [dispatch]);
+  }, []);
+
+  useEffect(() => {
+    setInput(initialBalance);
+  }, [initialBalance]);
 
   const addBalance = e => {
     e.preventDefault();
@@ -31,6 +36,7 @@ export default function BalanceForm({ display_none }) {
       alert('Баланс должен быть положительным');
     }
   };
+
   return (
     <div className={s.balance_form_wrapper}>
       <p>Баланс:</p>
@@ -44,10 +50,18 @@ export default function BalanceForm({ display_none }) {
           pattern="^[ 0-9]+$"
           title="Поле должно состоять только из цифр"
         />
-        <Button
+        {!initialBalance && (
+          <Button
+            text="ПОДТВЕРДИТЬ"
+            type={'submit'}
+            className={!display_none ? s.balance_button : s.display_none}
+          />
+        )}
+        {/* <Button
           text="ПОДТВЕРДИТЬ"
+          type={'submit'}
           className={!display_none ? s.balance_button : s.display_none}
-        />
+        /> */}
       </form>
     </div>
   );

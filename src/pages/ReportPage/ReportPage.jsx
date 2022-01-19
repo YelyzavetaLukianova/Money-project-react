@@ -1,5 +1,5 @@
 // import { Link, NavLink } from 'react-router-dom';
-import { useWindowSize } from 'react-use-size';
+import { useMediaQuery } from 'react-responsive';
 import Container from '../../common/Container';
 import Section from '../../common/Section';
 import Charts from '../../components/Charts/Chart';
@@ -11,10 +11,11 @@ import ExpensesIncome from '../../components/ExpensesIncome/ExpensesIncome';
 import style from './ReportPage.module.css';
 
 const ReportPage = () => {
-  const { width } = useWindowSize();
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
   return (
     <Section>
-      {width < 481 && (
+      {isMobile && (
         <BalanceFormContainer>
           <BackHomeButton />
           <CurrentPeriod />
@@ -22,7 +23,7 @@ const ReportPage = () => {
         </BalanceFormContainer>
       )}
 
-      {width > 480 && (
+      {isDesktop && (
         <BalanceFormContainer>
           <BackHomeButton />
           <BalanceForm display_none="true" />

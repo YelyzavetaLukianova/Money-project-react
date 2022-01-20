@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 import { useDispatch } from 'react-redux';
-
+import { useMediaQuery } from 'react-responsive';
 import { FaTrashAlt } from 'react-icons/fa';
 import Modal from '../../common/Modal/Modal';
 import ModalExit from '../Header/ModalExit/ModalExit';
@@ -18,6 +18,9 @@ const CashFlow = ({ arey }) => {
   const [emptyArray, setEmptyArray] = useState([]);
 
   const [idDelete, setIdDelete] = useState(null);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
 
   useEffect(() => {
     if (arey.length >= 9) return;
@@ -46,22 +49,25 @@ const CashFlow = ({ arey }) => {
   return (
     <div>
       <table className={`${s.table23} ${s.scrollbar}`}>
-        <thead>
-          <tr>
-            <th className={classsTabLeft}>ДАТА</th>
-            <th className={s.tab}>ОПИСАНИЕ</th>
-            <th className={s.tab}>КАТЕГОРИЯ</th>
-            <th className={s.tab}>СУММА</th>
-            <th className={classsTabRight}>УДАЛЕНИЕ</th>
-          </tr>
-        </thead>
+        {isDesktop && (
+          <thead>
+            <tr>
+              <th className={classsTabLeft}>ДАТА</th>
+              <th className={s.tab}>ОПИСАНИЕ</th>
+              <th className={s.tab}>КАТЕГОРИЯ</th>
+              <th className={s.tab}>СУММА</th>
+              <th className={classsTabRight}>УДАЛЕНИЕ</th>
+            </tr>
+          </thead>
+        )}
 
-        <tbody className={s.scrollbar}>
+        <tbody className={s.body}>
           {!!arey.length &&
             arey.map(({ date, description, category, amount, _id }) => (
               <tr key={_id} className={s.field}>
                 <td className={s.string}>{date}</td>
                 <td className={s.string}>{description}</td>
+
                 <td className={s.string}>{category}</td>
                 <td className={s.string}>{amount}</td>
                 <td className={s.string}>
@@ -72,30 +78,21 @@ const CashFlow = ({ arey }) => {
                   >
                     <FaTrashAlt />
                   </button>
-                  {/* {isFormOpen && (
-                    <Modal closeForm={closeForm}>
-                      <ModalExit
-                        title="Вы уверены?"
-                        onClose={closeForm}
-                        onExit={() => onDeleteClick(_id)}
-                      />
-                     
-                    </Modal>
-                  )} */}
                 </td>
               </tr>
             ))}
-          {emptyArray.map((_, idx) => {
-            return (
-              <tr key={idx}>
-                <td className={s.emptyLine}></td>
-                <td className={s.emptyLine}></td>
-                <td className={s.emptyLine}></td>
-                <td className={s.emptyLine}></td>
-                <td className={s.emptyLine}></td>
-              </tr>
-            );
-          })}
+          {isDesktop &&
+            emptyArray.map((_, idx) => {
+              return (
+                <tr key={idx}>
+                  <td className={s.emptyLine}></td>
+                  <td className={s.emptyLine}></td>
+                  <td className={s.emptyLine}></td>
+                  <td className={s.emptyLine}></td>
+                  <td className={s.emptyLine}></td>
+                </tr>
+              );
+            })}
           {isFormOpen && (
             <Modal closeForm={closeForm}>
               <ModalExit

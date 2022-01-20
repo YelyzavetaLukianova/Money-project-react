@@ -3,6 +3,9 @@
 }
 .header {
   display: flex;
+  justify-content: left;
+  /* width: 1060px; */
+  padding-left: 64px;
 }
 .link {
   font-family: Roboto;

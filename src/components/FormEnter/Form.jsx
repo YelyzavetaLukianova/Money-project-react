@@ -151,6 +151,9 @@ const Form = () => {
               value={description}
               placeholder="Описание товара"
               required
+              minLength="3"
+              maxLength="20"
+              pattern="^[A-Za-zА-Яа-яЁё'`\s]+$"
               onChange={handleChange}
               className={`${classsLeft} ${s.inputDiscr_items}`}
             />
@@ -158,6 +161,7 @@ const Form = () => {
               name="category"
               value={category}
               onChange={handleChange}
+              required
               className={`${s.input} ${s.inputDiscr_items}`}
             >
               {(location.pathname === '/income'
@@ -176,6 +180,7 @@ const Form = () => {
               name="amount"
               value={amount}
               placeholder="0,00"
+              min="1"
               required
               onChange={handleChange}
               className={classsRight}

@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import {
   goBackOneMonth,
   goForwardOneMonth,
@@ -7,7 +8,7 @@ import { periodSelectors } from '../../../redux/currentPeriod';
 import s from './CurrentPeriod.module.css';
 import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-right.svg';
-
+import { getPeriodData } from '../../../redux/currentPeriod/currentPeriod-operation';
 export default function CurrentPeriod() {
   const dispatch = useDispatch();
   const month = useSelector(periodSelectors.getMonth);
@@ -31,11 +32,17 @@ export default function CurrentPeriod() {
   // клик влево
   const onClickLeft = () => {
     dispatch(goBackOneMonth());
+    // dispatch(getPeriodData(`${year}-${month.toString().padStart(2, 0)}`));
   };
   // клик вправо
   const onClickRight = () => {
     dispatch(goForwardOneMonth());
+    // dispatch(getPeriodData(`${year}-${month.toString().padStart(2, 0)}`));
   };
+
+  useEffect(() => {
+    dispatch(getPeriodData(`${year}-${month.toString().padStart(2, 0)}`));
+  }, [dispatch, month, year]);
 
   return (
     <div className={s.container}>

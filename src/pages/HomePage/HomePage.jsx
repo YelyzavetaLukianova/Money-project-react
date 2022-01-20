@@ -32,7 +32,7 @@ const HomePage = () => {
       )}
 
       <Container>
-        <HeaderCostsIncome />
+        {isDesktop && <HeaderCostsIncome />}
         <Switch>
           <Route exact path="/expense">
             <Expense />

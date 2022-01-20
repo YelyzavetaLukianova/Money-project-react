@@ -17,14 +17,17 @@
 
 .table23 {
   border-radius: 20px 20px 0px 0px;
-
   border: 2px solid #f5f6fb;
-  max-width: 282px;
   margin: 0 auto;
-  width: 282px;
+  min-height: 282px;
+  background-color: #fff;
 }
 
 @media screen and (max-width: 480px) {
+  .table23 {
+    margin-bottom: 10px;
+  }
+
   .mobTable {
     display: flex;
     flex-direction: column-reverse;
@@ -34,7 +37,6 @@
 
 @media screen and (min-width: 481px) {
   .table23 {
-    width: 605px;
     margin-bottom: 20px;
   }
   .string {
@@ -44,17 +46,19 @@
 }
 
 @media screen and (min-width: 768px) {
-  .table23 {
+  /* .table23 {
     min-width: 760px;
     max-width: 761px;
-  }
+  } */
 }
+
 .right_tab {
   border-radius: 0px 16px 0px 0px;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
+
 .left_tab {
   border-radius: 16px 0px 0px 0px;
 }

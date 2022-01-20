@@ -1,24 +1,26 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import s from './ExpensesIncome.module.css';
 import SumCategoryInfo from './SumCategoryInfo/SumCategoryInfo';
 import { getTransactionPeriodData } from '../../services/kapusta-api';
+import { getPeriodData } from '../../redux/currentPeriod/currentPeriod-operation';
+import {
+  getExpensesTotal,
+  getIncomesTotal,
+} from '../../redux/currentPeriod/currentPeriod-selectors';
 
 const ExpensesIncome = () => {
-  const [expenseTotal, setExpensesTotal] = useState(null);
-  const [incomeTotal, setIncomeTotal] = useState(null);
+  const dispatch = useDispatch();
+  const expenseTotal = useSelector(getExpensesTotal);
+  const incomeTotal = useSelector(getIncomesTotal);
 
-  useEffect(() => {
-    const getPeriodData = async () => {
-      const { data } = await getTransactionPeriodData('2022-01');
-      setExpensesTotal(data.expenses.expenseTotal);
-      setIncomeTotal(data.incomes.incomeTotal);
-      console.log('data', data.incomes);
-      console.log('data', data.expenses);
-    };
-    getPeriodData();
-  }, []);
-  // console.log(`expensesTotal`, expenseTotal);
-  // console.log(`incomeTotal`, incomeTotal);
+  // useEffect(() => {
+  //   const date = new Date();
+  //   const year = date.getFullYear();
+  //   const month = date.getMonth() + 1;
+  //   dispatch(getPeriodData(`${year}-${month.toString().padStart(2, 0)}`));
+  //   console.log('date', `${year}-${month.toString().padStart(2, 0)}`);
+  // }, [dispatch]);
 
   return (
     <section className={s.sectionExpInc}>

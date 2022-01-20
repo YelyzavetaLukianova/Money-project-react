@@ -4,6 +4,21 @@ import { getIncome, getExpense } from '../../services/kapusta-api';
 
 import s from './Summary.module.css';
 
+const months = [
+  ['01', 'ЯНВАРЬ'],
+  ['02', 'ФЕВРАЛЬ'],
+  ['03', 'МАРТ'],
+  ['04', 'АПРЕЛЬ'],
+  ['05', 'МАЙ'],
+  ['06', 'ИЮНЬ'],
+  ['07', 'ИЮЛЬ'],
+  ['08', 'АВГУСТ'],
+  ['09', 'СЕНТЯБРЬ'],
+  [10, 'ОКТЯБРЬ'],
+  [11, 'НОЯБРЬ'],
+  [12, 'ДЕКАБРЬ'],
+];
+
 const Summary = () => {
   const [incomMonths, setIncomMonths] = useState({});
   const [expenseMonths, setExpenseMonths] = useState({});
@@ -12,6 +27,17 @@ const Summary = () => {
 
   const incom = Object.entries(incomMonths);
   const expense = Object.entries(expenseMonths);
+
+  const date = new Date('December 17, 1995');
+
+  const dateMonth = (date.getMonth() + 1).toString().padStart(2, 0);
+
+  // const newObject = months.filter(
+  //   month => Number(month[0]) <= Number(dateMonth),
+  // );
+  // const arrey = { ...newObject };
+  // const arreyRey = Object.values(arrey).map(item => item[1]);
+  // console.log(`arreyRey`, arreyRey);
 
   useEffect(() => {
     const getData = async () => {
@@ -35,12 +61,15 @@ const Summary = () => {
     <div className={s.summary}>
       <h2 className={s.title}>Сводка</h2>
 
-      {(location.pathname === '/income' ? incom : expense).map(item => (
-        <div key={item[0]} className={s.rows}>
-          <p>{item[0]}</p>
-          <p>{item[1] === 'N/A' ? 'Нет данных' : item[1]}</p>
-        </div>
-      ))}
+      {(location.pathname === '/income' ? incom : expense).map(
+        item =>
+          item[1] !== 'N/A' && (
+            <div key={item[0]} className={s.rows}>
+              <p>{item[0]}</p>
+              <p>{item[1] === 'N/A' ? 'Нет данных' : item[1]}</p>
+            </div>
+          ),
+      )}
     </div>
   );
 };

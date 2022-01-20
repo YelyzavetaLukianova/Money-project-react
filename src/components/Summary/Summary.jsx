@@ -38,7 +38,7 @@ const Summary = () => {
       {(location.pathname === '/income' ? incom : expense).map(item => (
         <div key={item[0]} className={s.rows}>
           <p>{item[0]}</p>
-          <p>{item[1]}</p>
+          <p>{item[1] === 'N/A' ? 'Нет данных' : item[1]}</p>
         </div>
       ))}
     </div>

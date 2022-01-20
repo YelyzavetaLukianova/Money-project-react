@@ -48,33 +48,58 @@ export default class Charts extends PureComponent {
 
   render() {
     return (
-      // <ResponsiveContainer className={s.rechartsresponsivecontainer}>
-      <Paper
-        className={s.pap}
-        sx={{ width: 800, margin: '20px auto', padding: '20px 0' }}
-        elevation={1}
-      >
-        <BarChart
-          className={s.chart}
-          width={758}
-          height={422}
-          data={data}
-          margin={{
-            top: 5,
-            // right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid />
-          <XAxis dataKey="name" />
-          {/* <YAxis dataKey="name" /> */}
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="expense" fill="#FF751D" barSize={38} />
-        </BarChart>
-      </Paper>
-      // </ResponsiveContainer>
+      <>
+        <div className={s.wrap}>
+          <Paper
+            className={s.pap}
+            // sx={{ width: 800, margin: '20px auto', padding: '20px 0' }}
+            elevation={1}
+          >
+            <BarChart
+              className={s.chart}
+              width={620}
+              height={328}
+              data={data}
+              margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              {/* <Legend /> */}
+              <Bar dataKey="expense" fill="#FF751D" barSize={38} />
+            </BarChart>
+          </Paper>
+        </div>
+        <div className={s.line}></div>
+        <div className={s.wrapMob}>
+          <BarChart
+            layout="vertical"
+            className={s.chart}
+            width={270}
+            height={485}
+            data={data}
+            margin={{
+              top: 5,
+              // right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid />
+            <XAxis type="number" />
+            <YAxis type="category" dataKey="name" />
+            <Tooltip />
+            {/* <Legend /> */}
+            <Bar dataKey="expense" fill="#FF751D" barSize={38} />
+          </BarChart>
+        </div>
+      </>
     );
   }
 }

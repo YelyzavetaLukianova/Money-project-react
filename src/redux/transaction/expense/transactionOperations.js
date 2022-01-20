@@ -24,9 +24,9 @@ const addExpenseBack = createAsyncThunk(
     try {
       const { data } = await postExpense(newContact);
 
-      return data.transaction;
+      return data;
     } catch (error) {
-      console.log(`errorget`, error);
+      // console.log(`errorget`, error);
 
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
@@ -36,12 +36,18 @@ const addExpenseBack = createAsyncThunk(
 const deleteExpenseBack = createAsyncThunk(
   'transaction/delete',
   async (id, thunkAPI) => {
+    console.log(`_id Operation`, id);
     try {
-      await deleteTransaction(id);
-
-      return id;
+      const { data } = await deleteTransaction(id);
+      console.error(data);
+      const objDel = {
+        id,
+        data,
+      };
+      console.log(`wwwsdadasdsad + ${id}`);
+      return objDel;
     } catch (error) {
-      console.log(`errorget`, error);
+      // console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },

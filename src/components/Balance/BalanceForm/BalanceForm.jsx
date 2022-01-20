@@ -11,7 +11,7 @@ export default function BalanceForm({ display_none }) {
   const dispatch = useDispatch();
   const initialBalance = useSelector(state => state.balance.balance);
 
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState('');
   const handleChange = e => {
     if (!initialBalance) {
       setInput(e.target.value);

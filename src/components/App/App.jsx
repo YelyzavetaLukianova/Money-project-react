@@ -1,6 +1,10 @@
 import { useState, Suspense, useEffect, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 import { ThemeContext, themes } from '../Context/themeContext';
+
+import { refreshSession } from '../../redux/auth/authOperations';
+import { getIsRefreshCurrentUser } from '../../redux/auth/authSelectors';
 
 import * as storage from '../../services/localStorage';
 
@@ -34,10 +38,24 @@ const App = () => {
   useEffect(() => {
     storage.save(STORAGE_KEY, theme);
   }, [theme]);
+
   const toggleTheme = () =>
     setTheme(prevTheme =>
       prevTheme === themes.light ? themes.dark : themes.light,
     );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshSession());
+  }, [dispatch]);
+
+  const isRefreshCurrentUser = useSelector(getIsRefreshCurrentUser);
+
+  if (isRefreshCurrentUser) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <div className={theme === themes.light ? s.lightTheme : s.darkTheme}>

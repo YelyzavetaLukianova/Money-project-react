@@ -56,7 +56,7 @@ const AuthForm = () => {
   };
 
   const alphanumeric = () => {
-    const regex = /^[a-zA-Z0-9@-_.]*$/;
+    const regex = /^[a-zA-Z0-9@_.-]*$/;
     // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.match(regex)) {
       return;
@@ -66,6 +66,7 @@ const AuthForm = () => {
   };
 
   const isEmailValid = () => {
+    const emailLength = email.length;
     const index = email.indexOf('@');
     const sliceEmail = email.slice(0, index);
 
@@ -73,6 +74,11 @@ const AuthForm = () => {
       setErrorEmail(
         'email может включать в себя только латинские буквы, цифры и знаки: "@", "-", "_", "."',
       );
+      return false;
+    }
+
+    if (email.indexOf('-') === 0 || email.indexOf('-') === emailLength - 1) {
+      setErrorEmail('знак "-" не должен бить в начале или конце email');
       return false;
     }
 
@@ -88,7 +94,7 @@ const AuthForm = () => {
       setErrorEmail('email должен обязательно содержать @');
       return false;
     }
-    if (sliceEmail.length < 3) {
+    if (sliceEmail.length < 2) {
       setErrorEmail('перед @ должно стоять минимум 2 символа');
       return false;
     }
@@ -163,6 +169,7 @@ const AuthForm = () => {
               height="18px"
               className={styles.img}
             />
+            {/* <a href="https://kapusta-backend.goit.global/auth/google">Google</a> */}
             Google
           </button>
 

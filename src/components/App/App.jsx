@@ -10,7 +10,7 @@ import * as storage from '../../services/localStorage';
 
 import { routes, AuthRoute, NotAuthRoute } from '../../routes';
 
-import LoaderB from '../../common/Loader';
+import Loader from '../../common/Loader';
 import Nav from '../Nav/Nav';
 
 import s from '../Header/Header.module.css';
@@ -64,24 +64,20 @@ const App = () => {
             <Nav />
           </div>
 
-          {/* <Suspense fallback={<LoaderB />}> */}
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<Loader />}>
+            {/* <Suspense fallback={<p>Loading...</p>}> */}
             <Switch>
               <NotAuthRoute exact path={AUTH} redirectTo={EXPENSE}>
                 <AuthPage />
               </NotAuthRoute>
 
-              <AuthRoute exact path={EXPENSE} redirectTo={AUTH}>
+              <AuthRoute exact path={[INCOME, EXPENSE]} redirectTo={AUTH}>
                 <HomePage />
               </AuthRoute>
-              <AuthRoute exact path={INCOME} redirectTo={AUTH}>
-                <HomePage />
-              </AuthRoute>
+
               <AuthRoute exact path={REPORT} redirectTo={AUTH}>
                 <ReportPage />
               </AuthRoute>
-
-              <Redirect to={AUTH} />
             </Switch>
           </Suspense>
         </ThemeContext.Provider>

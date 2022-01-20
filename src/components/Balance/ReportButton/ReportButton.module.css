@@ -9,3 +9,9 @@
     margin-bottom: 0px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .report_button {
+    margin-top: 30px;
+  }
+}

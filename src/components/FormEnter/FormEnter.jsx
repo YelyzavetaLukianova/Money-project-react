@@ -116,8 +116,11 @@ const FormEnter = () => {
               type="text"
               name="description"
               value={description}
-              placeholder="Описание товара"
               required
+              minLength="3"
+              maxLength="20"
+              pattern="^[A-Za-zА-Яа-яЁё'`\s]+$"
+              placeholder="Описание товара"
               onChange={handleChange}
               className={classsLeft}
             />
@@ -125,6 +128,7 @@ const FormEnter = () => {
             <select
               name="category"
               value={category}
+              required
               onChange={handleChange}
               className={s.input}
             >
@@ -143,6 +147,7 @@ const FormEnter = () => {
               name="amount"
               value={amount}
               placeholder="0,00"
+              min="1"
               required
               onChange={handleChange}
               className={classsRight}

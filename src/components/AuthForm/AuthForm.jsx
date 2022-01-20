@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { registerNewUser, logInUser } from '../../redux/auth/authOperations';
+import {
+  registerNewUser,
+  logInUser,
+  logInGoogle,
+} from '../../redux/auth/authOperations';
 import { getErrorMessage } from '../../redux/auth/authSelectors';
 
 import symbol from '../../images/google-symbol.png';
@@ -56,7 +60,7 @@ const AuthForm = () => {
   };
 
   const alphanumeric = () => {
-    const regex = /^[a-zA-Z0-9@-_.]*$/;
+    const regex = /^[a-zA-Z0-9@_.-]*$/;
     // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.match(regex)) {
       return;
@@ -66,6 +70,7 @@ const AuthForm = () => {
   };
 
   const isEmailValid = () => {
+    const emailLength = email.length;
     const index = email.indexOf('@');
     const sliceEmail = email.slice(0, index);
 
@@ -73,6 +78,11 @@ const AuthForm = () => {
       setErrorEmail(
         'email может включать в себя только латинские буквы, цифры и знаки: "@", "-", "_", "."',
       );
+      return false;
+    }
+
+    if (email.indexOf('-') === 0 || email.indexOf('-') === emailLength - 1) {
+      setErrorEmail('знак "-" не должен бить в начале или конце email');
       return false;
     }
 
@@ -88,7 +98,7 @@ const AuthForm = () => {
       setErrorEmail('email должен обязательно содержать @');
       return false;
     }
-    if (sliceEmail.length < 3) {
+    if (sliceEmail.length < 2) {
       setErrorEmail('перед @ должно стоять минимум 2 символа');
       return false;
     }
@@ -141,6 +151,10 @@ const AuthForm = () => {
     setErrorPassword(null);
   };
 
+  const loginGoogleHandelClick = () => {
+    dispatch(logInGoogle());
+  };
+
   const reset = () => {
     setEmail('');
     setPassword('');
@@ -155,7 +169,11 @@ const AuthForm = () => {
             Вы можете авторизоваться с помощью Google Account:
           </p>
 
-          <button type="button" className={styles.btn}>
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={loginGoogleHandelClick}
+          >
             <img
               src={symbol}
               alt="Google symbol"

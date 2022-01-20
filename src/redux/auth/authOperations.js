@@ -1,6 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { register, login, logout, token } from '../../services/kapusta-api';
+import {
+  register,
+  login,
+  logout,
+  refresh,
+  token,
+  getUserInfo,
+  setGoogleToken,
+} from '../../services/kapusta-api';
 
 const registerNewUser = createAsyncThunk(
   'auth/register',
@@ -43,4 +51,42 @@ const logOutUser = createAsyncThunk(
   },
 );
 
-export { registerNewUser, logInUser, logOutUser };
+const refreshSession = createAsyncThunk(
+  'auth/refresh',
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    const persistedRefreshToken = state.auth.refreshToken;
+    const persistedSid = state.auth.sid;
+    const sessionId = { sid: persistedSid };
+
+    if (!persistedRefreshToken || !persistedSid) {
+      return rejectWithValue();
+    }
+
+    token.set(persistedRefreshToken);
+
+    try {
+      const { data } = await refresh(sessionId);
+      token.set(data.newRefreshToken);
+      const userInfo = await getUserInfo();
+      const userEmail = userInfo.data.email;
+      return { userEmail, ...data };
+    } catch (error) {
+      token.unset();
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+const logInGoogle = createAsyncThunk(
+  '/auth/google',
+  async (_, { rejectWithValue }) => {
+    try {
+      await setGoogleToken();
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+export { registerNewUser, logInUser, logOutUser, refreshSession, logInGoogle };

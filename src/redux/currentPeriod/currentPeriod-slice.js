@@ -1,16 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getPeriodData } from './currentPeriod-operation';
 
 const year = String(new Date().getFullYear());
 const month = String(new Date().getMonth() + 1);
-const day = String(new Date().getDate());
 
 const initialState = {
-  date: { day, month, year },
+  date: { month, year },
   currentType: 'expenses',
   currentCategory: 'incomes',
+  incomes: {
+    data: {},
+  },
+  expense: {
+    data: {},
+  },
+  loading: false,
+  error: null,
+  expensesTotal: 0,
+  incomesTotal: 0,
 };
 
-const dateSlice = createSlice({
+const currentPeriodSlice = createSlice({
   name: 'currentPeriod',
   initialState,
   reducers: {
@@ -45,6 +55,25 @@ const dateSlice = createSlice({
       state.date.month = Number(state.date.month) + 1;
     },
   },
+  extraReducers: builder => {
+    builder
+      .addCase(getPeriodData.pending, (state, _) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getPeriodData.fulfilled, (state, { payload }) => {
+        state.incomes.data = payload.incomes.incomesData;
+        state.expense.data = payload.expenses.expensesData;
+        state.expensesTotal = payload.expenses.expenseTotal;
+        state.incomesTotal = payload.incomes.incomeTotal;
+
+        state.loading = false;
+      })
+      .addCase(getPeriodData.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload.message.error;
+      });
+  },
 });
 
 export const {
@@ -53,6 +82,6 @@ export const {
   addCurrentCategory,
   goBackOneMonth,
   goForwardOneMonth,
-} = dateSlice.actions;
+} = currentPeriodSlice.actions;
 
-export default dateSlice.reducer;
+export default currentPeriodSlice.reducer;

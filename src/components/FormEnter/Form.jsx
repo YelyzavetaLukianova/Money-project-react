@@ -37,6 +37,12 @@ const INITIAL_STATE = {
   amount: 0.0,
 };
 
+const date = new Date();
+const year = date.getFullYear().toString();
+const month = (date.getMonth() + 1).toString().padStart(2, 0);
+const day = date.getDate().toString().padStart(2, 0);
+const newDate = `${year}-${month}-${day}`;
+
 const Form = () => {
   const dispatch = useDispatch();
 
@@ -46,12 +52,13 @@ const Form = () => {
   //   const income23 = useSelector(state => state.income.data.itemsIncom);
 
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(newDate);
+
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
 
   const location = useLocation();
-
+  console.log(`newDate`, newDate);
   useEffect(() => {
     location.pathname === '/income'
       ? dispatch(getIncomeBack())
@@ -103,7 +110,7 @@ const Form = () => {
 
   const reset = () => {
     setFormData({ ...INITIAL_STATE });
-    setSelectedDate(new Date());
+    setSelectedDate(newDate);
   };
 
   const onChange = (selectedDates, dateStr, instance) => {
@@ -127,7 +134,10 @@ const Form = () => {
               className={s.img}
             />
             <Flatpickr
-              options={{ minDate: '01-01-2017', maxDate: new Date() }}
+              options={{
+                // minDate: '01-01-2017',
+                maxDate: newDate,
+              }}
               value={selectedDate}
               onChange={onChange}
               className={s.datestyle}

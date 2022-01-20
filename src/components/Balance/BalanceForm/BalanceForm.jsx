@@ -13,7 +13,9 @@ export default function BalanceForm({ display_none }) {
 
   const [input, setInput] = useState(null);
   const handleChange = e => {
-    setInput(e.target.value);
+    if (!initialBalance) {
+      setInput(e.target.value);
+    }
   };
 
   useEffect(() => {

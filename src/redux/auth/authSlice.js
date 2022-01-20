@@ -85,21 +85,17 @@ const authSlice = createSlice({
         state.token = null; //???
         state.refreshToken = null; //???
         state.sid = null; //???
-      })
-
-      .addCase(logInGoogle.pending, state => {
-        state.error = null;
-      })
-      .addCase(logInGoogle.fulfilled, (state, action) => {
-        // state.user.email = action.payload.userData.email;
-        // state.token = action.payload.accessToken;
-        // state.refreshToken = action.payload.refreshToken;
-        // state.sid = action.payload.sid;
-        state.isLoggedIn = true;
-      })
-      .addCase(logInGoogle.rejected, (state, action) => {
-        state.error = action.payload;
       });
+
+    // .addCase(logInGoogle.pending, state => {
+    //   state.error = null;
+    // })
+    // .addCase(logInGoogle.fulfilled, (state, action) => {
+    //   state.isLoggedIn = true;
+    // })
+    // .addCase(logInGoogle.rejected, (state, action) => {
+    //   state.error = action.payload;
+    // });
   },
 });
 

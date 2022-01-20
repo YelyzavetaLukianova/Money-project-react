@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import {
-  registerNewUser,
-  logInUser,
-  logInGoogle,
-} from '../../redux/auth/authOperations';
+import { registerNewUser, logInUser } from '../../redux/auth/authOperations';
 import { getErrorMessage } from '../../redux/auth/authSelectors';
 
 import symbol from '../../images/google-symbol.png';
@@ -151,10 +147,6 @@ const AuthForm = () => {
     setErrorPassword(null);
   };
 
-  const loginGoogleHandelClick = () => {
-    dispatch(logInGoogle());
-  };
-
   const reset = () => {
     setEmail('');
     setPassword('');
@@ -169,11 +161,7 @@ const AuthForm = () => {
             Вы можете авторизоваться с помощью Google Account:
           </p>
 
-          <button
-            type="button"
-            className={styles.btn}
-            onClick={loginGoogleHandelClick}
-          >
+          <button type="button" className={styles.btn}>
             <img
               src={symbol}
               alt="Google symbol"
@@ -181,6 +169,7 @@ const AuthForm = () => {
               height="18px"
               className={styles.img}
             />
+            {/* <a href="https://kapusta-backend.goit.global/auth/google">Google</a> */}
             Google
           </button>
 

@@ -7,7 +7,6 @@ import {
   refresh,
   token,
   getUserInfo,
-  setGoogleToken,
 } from '../../services/kapusta-api';
 
 const registerNewUser = createAsyncThunk(
@@ -78,15 +77,6 @@ const refreshSession = createAsyncThunk(
   },
 );
 
-const logInGoogle = createAsyncThunk(
-  '/auth/google',
-  async (_, { rejectWithValue }) => {
-    try {
-      await setGoogleToken();
-    } catch (error) {
-      return rejectWithValue(error.response.data.message);
-    }
-  },
-);
+// const logInGoogle = createAsyncThunk('auth/google');
 
-export { registerNewUser, logInUser, logOutUser, refreshSession, logInGoogle };
+export { registerNewUser, logInUser, logOutUser, refreshSession };

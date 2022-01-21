@@ -20,7 +20,7 @@ const HomePage = () => {
       {isMobile && (
         <BalanceFormContainer>
           <ReportButton />
-          <BalanceForm />
+          <BalanceForm btnCheker="true" />
         </BalanceFormContainer>
       )}
 

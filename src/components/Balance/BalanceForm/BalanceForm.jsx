@@ -2,14 +2,16 @@ import { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { updateUserBalance } from '../../../services/kapusta-api';
-import getBalance from '../../../redux/balance/balanceOperations';
+import {
+  getBalance,
+  updateBalance,
+} from '../../../redux/balance/balanceOperations';
 import ModalWarning from '../../ModalWarning';
 
 import Button from '../../../common/Button';
 import s from './BalanceForm.module.css';
 
-export default function BalanceForm({ display_none }) {
+export default function BalanceForm({ display_none, btnCheker }) {
   const dispatch = useDispatch();
   let initialBalance = useSelector(state => state.balance.balance);
 
@@ -20,6 +22,10 @@ export default function BalanceForm({ display_none }) {
     }
   };
 
+  if (initialBalance === 0) {
+    initialBalance = '';
+  }
+
   useEffect(() => {
     dispatch(getBalance());
     setInput(initialBalance);
@@ -29,17 +35,13 @@ export default function BalanceForm({ display_none }) {
     setInput(initialBalance);
   }, [initialBalance]);
 
-  const updateBalance = () => {
-    return input;
-  };
-
   const addBalance = e => {
     e.preventDefault();
 
     const newBalance = Number(input);
 
     if (newBalance > 0) {
-      dispatch(updateUserBalance({ newBalance: newBalance }));
+      dispatch(updateBalance({ newBalance }));
     } else {
       toast.error('Баланс должен быть положительным');
     }
@@ -54,10 +56,13 @@ export default function BalanceForm({ display_none }) {
             name="balance"
             onChange={handleChange}
             value={input}
-            className={s.balance_input}
+            className={
+              btnCheker ? s.balance_input : `${s.balance_input} ${s.input_chek}`
+            }
             type="number"
             pattern="^[ 0-9]+$"
             title="Поле должно состоять только из цифр"
+            placeholder="0.00"
           />
           <ModalWarning initialBalance={initialBalance} />
         </span>

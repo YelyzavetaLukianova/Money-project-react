@@ -4,17 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import s from './ModalWarning.module.css';
 
-const ModalWarning = () => {
-  // const initialBalance = useSelector(state => state.balance.balance);
+const ModalWarning = ({ initialBalance }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isModalOpen, setIsModalOpen] = useState(true); // for test
 
   const onClose = useCallback(
     () => setIsModalOpen(prevIsModalOpen => (prevIsModalOpen = false)),
     [],
   );
-
-  const initialBalance = null;
 
   useEffect(() => {
     let closeId = null;

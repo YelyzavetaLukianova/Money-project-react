@@ -13,11 +13,11 @@ import s from './SumCategoryInfo.module.css';
 const SumCategoryInfo = () => {
   const [typeTrans, setTypeTrans] = useState('expenses');
   const [categoryState, setCategoryState] = useState('');
+
   const monthlyIncome = useSelector(getMonthlyIncome);
   const categoryIncome = Object.entries(monthlyIncome);
 
   const monthlyExpense = useSelector(getMonthlyExpense);
-  // console.log(`monthlyExpense`, Object.values(monthlyExpense));
   const categoryExpense = Object.entries(monthlyExpense);
 
   const catChart = category => {

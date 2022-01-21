@@ -3,7 +3,6 @@ import { categories, incomes } from '../categoryList';
 import sprite from '../../../images/svg/sprite.svg';
 
 const CategoryList = ({ category, onClick }) => {
-  // const type = 'expenses';
   return (
     <ul className={s.categoryList}>
       {category.length === 0 ? (

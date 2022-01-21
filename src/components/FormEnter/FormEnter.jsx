@@ -86,7 +86,7 @@ const FormEnter = () => {
         </div>
       </div>
 
-      {isTablet & isBelowDesktop && <Summary />}
+      {isTablet && isBelowDesktop && <Summary />}
     </>
   );
 };

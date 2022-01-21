@@ -18,21 +18,30 @@
   line-height: 1.17;
   text-align: center;
   text-transform: uppercase;
-  padding: 12px 25px 12px 10px;
+  padding: 12px 40px 12px 10px;
   width: 125px;
+  /* max-width: 300px; */
+  flex-grow: 1;
   height: 44px;
   border: 2px solid rgba(255, 255, 255, 1);
   background-color: transparent;
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
 }
 
-.balance_input::after {
+.input_wrapper::after {
   position: absolute;
   font-weight: 700;
   content: 'UAH';
-  top: 15px;
-  right: 20px;
+  top: 16px;
+  right: 30px;
   font-size: 12px;
+}
+
+@media screen and (max-width: 480px) {
+  .input_wrapper::after {
+    top: 4px;
+    right: 15px;
+  }
 }
 
 .balance_input::-webkit-inner-spin-button {
@@ -108,8 +117,37 @@
   }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 768px) {
   .display_none {
     display: none;
   }
+}
+
+@media screen and (min-width: 769px) {
+  .display_none {
+    display: inline-block;
+    color: #52555fb2;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 12px 6px 12px 6px;
+    margin-left: 0px;
+
+    border: 2px solid rgba(255, 255, 255, 1);
+    background-color: transparent;
+    width: 125px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+  }
+}
+
+.input_wrapper {
+  position: relative;
+}
+
+.input_chek {
+  border-radius: 16px;
 }

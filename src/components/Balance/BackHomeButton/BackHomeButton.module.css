@@ -16,3 +16,9 @@
 .text {
   color: #52555fb2;
 }
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    margin-left: 20px;
+  }
+}

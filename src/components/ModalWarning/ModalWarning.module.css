@@ -1,8 +1,14 @@
 .modalContainer {
   position: absolute;
-  top: 120px;
+  top: 60px;
   left: 0;
   z-index: 15;
+}
+
+@media screen and (max-width: 480px) {
+  .modalContainer {
+    top: 50px;
+  }
 }
 
 .modal {
@@ -32,7 +38,7 @@
 .modal::before {
   content: '';
   position: absolute;
-  left: 25%;
+  left: 12%;
   top: -20px;
   border: 10px solid transparent;
   border-bottom: 10px solid #1d346a;

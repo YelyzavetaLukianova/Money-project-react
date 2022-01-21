@@ -3,6 +3,11 @@
   border: 2px solid #f5f6fb;
   box-sizing: border-box;
   text-align: center;
+  color: #c7ccdc;
+}
+
+.input::placeholder {
+  color: #c7ccdc;
 }
 .formEnter {
   position: relative;

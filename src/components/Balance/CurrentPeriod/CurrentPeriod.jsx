@@ -5,7 +5,11 @@ import {
   goBackOneMonth,
   goForwardOneMonth,
 } from '../../../redux/currentPeriod/currentPeriod-slice';
-import { periodSelectors } from '../../../redux/currentPeriod';
+// import { periodSelectors } from '../../../redux/currentPeriod';
+import {
+  getMonth,
+  getYear,
+} from '../../../redux/currentPeriod/currentPeriod-selectors';
 
 import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-right.svg';
@@ -13,8 +17,8 @@ import s from './CurrentPeriod.module.css';
 
 export default function CurrentPeriod() {
   const dispatch = useDispatch();
-  const month = useSelector(periodSelectors.getMonth);
-  const year = useSelector(periodSelectors.getYear);
+  const month = useSelector(getMonth);
+  const year = useSelector(getYear);
 
   const months = {
     1: 'январь',

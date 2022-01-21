@@ -37,7 +37,6 @@ const CashFlow = ({ arey }) => {
   }, [arey.length]);
 
   const onDeleteClick = _id => {
-    console.log(`_id CashFlow`, _id);
     dispatch(deleteExpenseBack(_id));
     setIsFormOpen(false);
   };

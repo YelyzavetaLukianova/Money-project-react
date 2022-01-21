@@ -32,13 +32,6 @@ const Summary = () => {
 
   const dateMonth = (date.getMonth() + 1).toString().padStart(2, 0);
 
-  // const newObject = months.filter(
-  //   month => Number(month[0]) <= Number(dateMonth),
-  // );
-  // const arrey = { ...newObject };
-  // const arreyRey = Object.values(arrey).map(item => item[1]);
-  // console.log(`arreyRey`, arreyRey);
-
   useEffect(() => {
     const getData = async () => {
       const { data } = await getIncome();

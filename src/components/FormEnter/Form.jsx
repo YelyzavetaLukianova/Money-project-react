@@ -76,7 +76,6 @@ const Form = () => {
 
   useEffect(() => {
     isIncome ? dispatch(getIncomeBack()) : dispatch(getExpenseBack());
-   
   }, [dispatch, isIncome]);
 
   useEffect(() => {
@@ -110,7 +109,7 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!initialBalance) {
-      return toast.error('Мало денег...');
+      return toast.error('Нет капусты 💰');
       // return alert('Мало денег...');
     }
     isIncome

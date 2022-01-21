@@ -6,7 +6,7 @@ import s from './BackHomeButton.module.css';
 export default function BackHomeButton() {
   const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
   return (
-    <NavLink to="/expence">
+    <NavLink to="/expense">
       <div className={s.wrapper}>
         <span className={s.back_symbol}>&#8592;</span>
         {isDesktop && <p className={s.text}>Вернуться на главную</p>}

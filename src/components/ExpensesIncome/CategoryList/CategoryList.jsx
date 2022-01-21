@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { addCurrentCategory } from '../../../redux/currentPeriod/currentPeriod-slice';
-
+// import { useDispatch } from 'react-redux';
+// import { useState, useEffect } from 'react';
+// import { addCurrentCategory } from '../../../redux/currentPeriod/currentPeriod-slice';
+import { NavLink } from 'react-router-dom';
 import s from './CategoryList.module.css';
 import { categoryList } from '../categoryList';
 // import sprite from '../../../images/svg/sprite.svg';
@@ -11,7 +11,7 @@ import {
 } from '../../../redux/currentPeriod/currentPeriod-selectors';
 import { useSelector } from 'react-redux';
 
-const CategoryList = ({ category }) => {
+const CategoryList = ({ category, onClick }) => {
   // const monthlyIncome = useSelector(getMonthlyIncome);
   // const categoryIncome = Object.entries(monthlyIncome);
   // console.log('categoryIncome', categoryIncome);
@@ -39,9 +39,11 @@ const CategoryList = ({ category }) => {
       ) : (
         category.map(item => (
           <li className={s.categoryItem} key={item[0]}>
-            <p className={s.categoryPrice}>{item[1].total}</p>
-            {/* <img className={s.categoryIcon} src={images} alt={category} /> */}
-            <h3 className={s.categoryPrice}>{item[0]}</h3>
+            <button onClick={() => onClick(item[0])} type="button">
+              <p className={s.categoryPrice}>{item[1].total}</p>
+              {/* <img className={s.categoryIcon} src={images} alt={category} /> */}
+              <h3 className={s.categoryPrice}>{item[0]}</h3>
+            </button>
           </li>
         ))
       )}

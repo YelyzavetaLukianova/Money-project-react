@@ -34,23 +34,25 @@ const SumCategoryInfo = () => {
   };
 
   return (
-    <section className={s.sectionSCI}>
-      <div className={s.SumCategoryInfo}>
-        <ArrowLeftIcon className={s.iconSCI} onClick={() => handleClick()} />
-        {typeTrans === 'expenses' ? (
-          <p className={s.SCItitle}>Расходы</p>
-        ) : (
-          <p className={s.SCItitle}>Доходы</p>
-        )}
-        <ArrowRightIcon className={s.iconSCI} onClick={() => handleClick()} />
-      </div>
-      <div className={s.categoryContainer}>
-        {typeTrans === 'expenses' ? (
-          <CategoryList onClick={catChart} category={categoryExpense} />
-        ) : (
-          <CategoryList onClick={catChart} category={categoryIncome} />
-        )}
-      </div>
+    <>
+      <section className={s.sectionSCI}>
+        <div className={s.SumCategoryInfo}>
+          <ArrowLeftIcon className={s.iconSCI} onClick={() => handleClick()} />
+          {typeTrans === 'expenses' ? (
+            <p className={s.SCItitle}>Расходы</p>
+          ) : (
+            <p className={s.SCItitle}>Доходы</p>
+          )}
+          <ArrowRightIcon className={s.iconSCI} onClick={() => handleClick()} />
+        </div>
+        <div className={s.categoryContainer}>
+          {typeTrans === 'expenses' ? (
+            <CategoryList onClick={catChart} category={categoryExpense} />
+          ) : (
+            <CategoryList onClick={catChart} category={categoryIncome} />
+          )}
+        </div>
+      </section>
       {categoryState && (
         <Charts
           typeTr={typeTrans === 'expenses' ? 'expenses' : 'incomes'}
@@ -59,7 +61,7 @@ const SumCategoryInfo = () => {
           incomes={monthlyIncome}
         />
       )}
-    </section>
+    </>
   );
 };
 export default SumCategoryInfo;

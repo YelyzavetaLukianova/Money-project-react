@@ -1,31 +1,23 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { periodSelectors } from '../../../redux/currentPeriod';
-import {
-  addCurrentType,
-  addCurrentCategory,
-} from '../../../redux/currentPeriod/currentPeriod-slice';
-import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left.svg';
-import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-right.svg';
-import CategoryList from '../CategoryList/CategoryList';
-import s from './SumCategoryInfo.module.css';
-import { getTransactionPeriodData } from '../../../services/kapusta-api';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import {
   getMonthlyIncome,
   getMonthlyExpense,
 } from '../../../redux/currentPeriod/currentPeriod-selectors';
-// import getPeriodData from '../../../redux/currentPeriod/reports-slise';
+import CategoryList from '../CategoryList/CategoryList';
+
+import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left.svg';
+import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-right.svg';
+import s from './SumCategoryInfo.module.css';
 
 const SumCategoryInfo = () => {
-  // const [expensesData, setExpensesData] = useState(null);
   const [typeTrans, setTypeTrans] = useState('expenses');
 
   const monthlyIncome = useSelector(getMonthlyIncome);
   const categoryIncome = Object.entries(monthlyIncome);
-  // console.log('categoryIncome', categoryIncome);
+
   const monthlyExpense = useSelector(getMonthlyExpense);
   const categoryExpense = Object.entries(monthlyExpense);
-  console.log('categoryExpense', categoryExpense);
 
   const handleClick = () => {
     if (typeTrans === 'incomes') {
@@ -38,26 +30,24 @@ const SumCategoryInfo = () => {
   };
 
   return (
-    <>
+    <section className={s.sectionSCI}>
       <div className={s.SumCategoryInfo}>
-        <ArrowLeftIcon onClick={() => handleClick()} />
+        <ArrowLeftIcon className={s.iconSCI} onClick={() => handleClick()} />
         {typeTrans === 'expenses' ? (
           <p className={s.SCItitle}>Расходы</p>
         ) : (
           <p className={s.SCItitle}>Доходы</p>
         )}
-        <ArrowRightIcon onClick={() => handleClick()} />
+        <ArrowRightIcon className={s.iconSCI} onClick={() => handleClick()} />
       </div>
       <div className={s.categoryContainer}>
-        {/* <CategoryList /> */}
-
         {typeTrans === 'expenses' ? (
           <CategoryList category={categoryExpense} />
         ) : (
           <CategoryList category={categoryIncome} />
         )}
       </div>
-    </>
+    </section>
   );
 };
 export default SumCategoryInfo;

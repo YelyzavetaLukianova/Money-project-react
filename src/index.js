@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import App from './components/App/App';
 
@@ -19,6 +20,7 @@ ReactDOM.render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
+    <ToastContainer theme="colored" />
   </React.StrictMode>,
   document.getElementById('root'),
 );

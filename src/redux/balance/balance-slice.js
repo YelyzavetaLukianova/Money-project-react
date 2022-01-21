@@ -7,7 +7,7 @@ import {
 import { addIncomeBack } from '../transaction/incom/transactionIncomeOperations.js';
 
 const initialState = {
-  balance: null,
+  balance: '',
   error: null,
 };
 

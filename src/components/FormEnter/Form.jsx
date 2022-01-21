@@ -34,29 +34,33 @@ const INITIAL_STATE = {
   date: '',
   description: '',
   category: '',
-  amount: 0.0,
+  amount: '',
 };
+
+const date = new Date();
+const year = date.getFullYear().toString();
+const month = (date.getMonth() + 1).toString().padStart(2, 0);
+const day = date.getDate().toString().padStart(2, 0);
+const newDate = `${year}-${month}-${day}`;
 
 const Form = () => {
   const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-  //   const expense23 = useSelector(state => state.expense.data.items);
-  //   const income23 = useSelector(state => state.income.data.itemsIncom);
-
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(newDate);
+
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
 
   const location = useLocation();
 
+  const isIncome = location.pathname === '/income';
+
   useEffect(() => {
-    location.pathname === '/income'
-      ? dispatch(getIncomeBack())
-      : dispatch(getExpenseBack());
-  }, [dispatch, location.pathname]);
+    isIncome ? dispatch(getIncomeBack()) : dispatch(getExpenseBack());
+  }, [dispatch, isIncome]);
 
   useEffect(() => {
     const getDataExp = async () => {
@@ -89,7 +93,7 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    location.pathname === '/income'
+    isIncome
       ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));
     setIsModalOpen(false);
@@ -103,7 +107,7 @@ const Form = () => {
 
   const reset = () => {
     setFormData({ ...INITIAL_STATE });
-    setSelectedDate(new Date());
+    setSelectedDate(newDate);
   };
 
   const onChange = (selectedDates, dateStr, instance) => {
@@ -127,7 +131,10 @@ const Form = () => {
               className={s.img}
             />
             <Flatpickr
-              options={{ minDate: '01-01-2017', maxDate: new Date() }}
+              options={{
+                // minDate: '01-01-2017',
+                maxDate: newDate,
+              }}
               value={selectedDate}
               onChange={onChange}
               className={s.datestyle}
@@ -154,10 +161,7 @@ const Form = () => {
               required
               className={`${s.input} ${s.inputDiscr_items}`}
             >
-              {(location.pathname === '/income'
-                ? categoryInc
-                : categoryBack
-              ).map(value => (
+              {(isIncome ? categoryInc : categoryBack).map(value => (
                 <option key={value} value={value}>
                   {value}
                 </option>
@@ -175,6 +179,7 @@ const Form = () => {
               onChange={handleChange}
               className={classsRight}
             />
+
             <GrCalculator className={s.icon} />
           </div>
         </div>

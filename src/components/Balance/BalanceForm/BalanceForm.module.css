@@ -11,6 +11,7 @@
 } */
 
 .balance_input {
+  position: relative;
   color: #000000;
   font-weight: bold;
   font-size: 12px;
@@ -21,9 +22,17 @@
   width: 125px;
   height: 44px;
   border: 2px solid rgba(255, 255, 255, 1);
-
   background-color: transparent;
   filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
+}
+
+.balance_input::after {
+  position: absolute;
+  font-weight: 700;
+  content: 'UAH';
+  top: 15px;
+  right: 20px;
+  font-size: 12px;
 }
 
 .balance_input::-webkit-inner-spin-button {

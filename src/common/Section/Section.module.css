@@ -1,3 +1,7 @@
+.bg_app {
+  position: relative;
+}
+
 .bg_app::after {
   content: '';
   display: block;
@@ -13,7 +17,6 @@
 
 @media screen and (min-width: 480px) {
   .bg_app {
-    position: relative;
     background-image: url('../../images/svg/kapusta-tablet.svg');
     background-repeat: no-repeat;
     background-position: right 88px bottom 64px;
@@ -26,7 +29,6 @@
 
 @media screen and (min-width: 768px) {
   .bg_app {
-    position: relative;
     background-image: url('../../images/svg/kapusta-desktop.svg');
     background-repeat: repeat-x;
     background-position: 10px bottom;

@@ -14,14 +14,21 @@ const ModalWarning = () => {
     [],
   );
 
-  const initialBalance = 0;
-  // console.log(!initialBalance);
+  const initialBalance = null;
 
   useEffect(() => {
-    if (!initialBalance) {
-      setIsModalOpen(true);
-      setTimeout(onClose, 2000);
-    }
+    let closeId = null;
+    let openId = setTimeout(() => {
+      if (!initialBalance) {
+        setIsModalOpen(true);
+
+        closeId = setTimeout(onClose, 3000);
+      }
+    }, 1000);
+    return () => {
+      clearTimeout(closeId);
+      clearTimeout(openId);
+    };
   }, [initialBalance, onClose]);
 
   useEffect(() => {

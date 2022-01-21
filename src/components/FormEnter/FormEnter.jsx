@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { useLocation } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { useMediaQuery } from 'react-responsive';
 
-import BackHomeButton from '../../components/Balance/BackHomeButton/BackHomeButton';
+// import BackHomeButton from '../../components/Balance/BackHomeButton/BackHomeButton';
 
 import { BsPlusCircle } from 'react-icons/bs';
 import Form from './Form';
@@ -26,7 +26,9 @@ const FormEnter = () => {
   const income23 = useSelector(state => state.income.data.itemsIncom);
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 481px)' });
+  const isBelowDesktop = useMediaQuery({ query: '(max-width: 1279px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const location = useLocation();
 
@@ -35,54 +37,57 @@ const FormEnter = () => {
   };
 
   return (
-    <div className={s.formEnter}>
-      {isMobile && <BackHomeButton />}
-      {isMobile && (
-        <button type="button" onClick={toggleModal}>
-          <BsPlusCircle />
-        </button>
-      )}
-      {isDesktop && (
-        <div>
-          <Form />
-        </div>
-      )}
-      <div className={s.renderTab}>
-        <CashFlow
-          arey={location.pathname === '/income' ? income23 : expense23}
-        />
-        {isModalOpen && (
-          <Modal closeForm={toggleModal}>
-            <div>
-              <Form />
-            </div>
-          </Modal>
-        )}
-        {isDesktop && <Summary />}
+    <>
+      <div className={s.formEnter}>
         {isMobile && (
+          <button className={s.plus_btn} type="button" onClick={toggleModal}>
+            <BsPlusCircle />
+          </button>
+        )}
+        {isTablet && (
           <div>
-            <div className={s.header}>
-              <NavLink
-                to="/expense"
-                className={s.link}
-                activeClassName={s.active}
-                exact
-              >
-                РАСХОД
-              </NavLink>
-              <NavLink
-                to="/income"
-                className={s.link}
-                activeClassName={s.active}
-                exact
-              >
-                ДОХОД
-              </NavLink>
-            </div>
+            <Form />
           </div>
         )}
+        <div className={s.renderTab}>
+          <CashFlow
+            arey={location.pathname === '/income' ? income23 : expense23}
+          />
+          {isModalOpen && (
+            <Modal closeForm={toggleModal}>
+              <div>
+                <Form />
+              </div>
+            </Modal>
+          )}
+          {isDesktop && <Summary />}
+          {isMobile && (
+            <div>
+              <div className={s.header}>
+                <NavLink
+                  to="/expense"
+                  className={s.link}
+                  activeClassName={s.active}
+                  exact
+                >
+                  РАСХОД
+                </NavLink>
+                <NavLink
+                  to="/income"
+                  className={s.link}
+                  activeClassName={s.active}
+                  exact
+                >
+                  ДОХОД
+                </NavLink>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+
+      {isTablet & isBelowDesktop && <Summary />}
+    </>
   );
 };
 

@@ -117,9 +117,30 @@
   }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 768px) {
   .display_none {
     display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .display_none {
+    display: inline-block;
+    color: #52555fb2;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 12px 6px 12px 6px;
+    margin-left: 0px;
+
+    border: 2px solid rgba(255, 255, 255, 1);
+    background-color: transparent;
+    width: 125px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    filter: drop-shadow(1px 3px 5px rgba(82, 85, 95, 0.15));
   }
 }
 

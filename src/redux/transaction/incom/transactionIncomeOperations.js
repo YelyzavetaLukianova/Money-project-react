@@ -11,10 +11,9 @@ const getIncomeBack = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await getIncome();
-      console.log(`datagetIncom`, data);
+
       return data.incomes;
     } catch (error) {
-      console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },
@@ -24,10 +23,9 @@ const addIncomeBack = createAsyncThunk(
   async (newContact, thunkAPI) => {
     try {
       const { data } = await postIncome(newContact);
-      console.log(`dataIncome`, data.transaction);
+
       return data;
     } catch (error) {
-      console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },
@@ -46,7 +44,6 @@ const deleteIncomeExpenseBack = createAsyncThunk(
       };
       return objDel;
     } catch (error) {
-      console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },

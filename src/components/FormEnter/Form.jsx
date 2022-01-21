@@ -34,7 +34,7 @@ const INITIAL_STATE = {
   date: '',
   description: '',
   category: '',
-  amount: 0.0,
+  amount: '',
 };
 
 const date = new Date();
@@ -48,9 +48,6 @@ const Form = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(true);
 
-  //   const expense23 = useSelector(state => state.expense.data.items);
-  //   const income23 = useSelector(state => state.income.data.itemsIncom);
-
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
   const [selectedDate, setSelectedDate] = useState(newDate);
 
@@ -58,12 +55,12 @@ const Form = () => {
   const [categoryInc, setCategoryInc] = useState([]);
 
   const location = useLocation();
-  console.log(`newDate`, newDate);
+
+  const isIncome = location.pathname === '/income';
+
   useEffect(() => {
-    location.pathname === '/income'
-      ? dispatch(getIncomeBack())
-      : dispatch(getExpenseBack());
-  }, [dispatch, location.pathname]);
+    isIncome ? dispatch(getIncomeBack()) : dispatch(getExpenseBack());
+  }, [dispatch, isIncome]);
 
   useEffect(() => {
     const getDataExp = async () => {
@@ -96,7 +93,7 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    location.pathname === '/income'
+    isIncome
       ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));
     setIsModalOpen(false);
@@ -164,10 +161,7 @@ const Form = () => {
               required
               className={`${s.input} ${s.inputDiscr_items}`}
             >
-              {(location.pathname === '/income'
-                ? categoryInc
-                : categoryBack
-              ).map(value => (
+              {(isIncome ? categoryInc : categoryBack).map(value => (
                 <option key={value} value={value}>
                   {value}
                 </option>
@@ -185,6 +179,7 @@ const Form = () => {
               onChange={handleChange}
               className={classsRight}
             />
+
             <GrCalculator className={s.icon} />
           </div>
         </div>

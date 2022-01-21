@@ -33,7 +33,7 @@ const ReportPage = () => {
 
       <Container>
         <ExpensesIncome />
-        <Charts />
+        {/* <Charts /> */}
       </Container>
     </Section>
   );

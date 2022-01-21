@@ -24,7 +24,7 @@ const UserMenu = () => {
       <span className={s.line}></span>
       <button className={s.userBtn} type="button" onClick={toggleForm}>
         <RiLogoutBoxRLine className={s.iconEx} size={16} />
-        <p className={s.exit}>Выход</p>
+        <p className={s.exit}>Выйти</p>
       </button>
       {isFormOpen && (
         <Modal closeForm={toggleForm}>

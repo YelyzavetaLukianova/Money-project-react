@@ -12,6 +12,7 @@ import s from './CashFlow.module.css';
 
 const classsTabRight = s.tab + ' ' + s.right_tab;
 const classsTabLeft = s.tab + ' ' + s.left_tab;
+const classsInputNumber = s.string + ' ' + s.green;
 
 const CashFlow = ({ arey }) => {
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ const CashFlow = ({ arey }) => {
                 <td className={s.string}>{description}</td>
 
                 <td className={s.string}>{category}</td>
-                <td className={isIncome ? s.string : s.expense}>
+                <td className={isIncome ? classsInputNumber : s.expense}>
                   {isIncome ? amount : -amount}
                 </td>
                 <td className={s.string}>

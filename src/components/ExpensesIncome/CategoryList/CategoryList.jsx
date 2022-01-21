@@ -3,7 +3,6 @@ import { categories, incomes } from '../categoryList';
 import sprite from '../../../images/svg/sprite.svg';
 
 const CategoryList = ({ category, onClick }) => {
-  // const type = 'expenses';
   return (
     <ul className={s.categoryList}>
       {category.length === 0 ? (
@@ -33,15 +32,19 @@ const CategoryList = ({ category, onClick }) => {
 
           //   <h3 className={s.categoryPrice}>{item[0]}</h3>
           // </li>
-          <li className={s.categoryItem} key={item.category}>
-            <button onClick={() => onClick(item[0])} type="button">
-              <p className={s.categoryPrice}>{item[1].total}.00</p>
+          <li className={s.categoryItem} key={item[0]}>
+            <p className={s.categoryPrice}>{item[1].total}.00</p>
+            <button
+              className={s.buttonCategoryIcon}
+              onClick={() => onClick(item[0])}
+              type="button"
+            >
               <svg className={s.categoryIcon}>
                 {/* <use href={`${sprite}#${item.category}`} /> */}
                 <use href={categories[index].svg} />
               </svg>
-              <h3 className={s.categoryPrice}>{item[0]}</h3>
             </button>
+            <h3 className={s.categoryPrice}>{item[0]}</h3>
           </li>
         ))
       )}

@@ -10,7 +10,6 @@
 }
 .chart {
   width: 270px;
-  /* height: 422px; */
 }
 .wrap {
   display: none;
@@ -31,11 +30,15 @@
     height: 422px;
     margin: 20px auto;
     padding: 50px 30px 45px;
+    border-radius: 30px;
   }
   .chart {
     width: 625px;
     height: 328px;
     margin: 0 auto;
+  }
+  .line {
+    display: none;
   }
 }
 @media screen and (min-width: 1280px) {

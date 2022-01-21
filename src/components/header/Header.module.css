@@ -64,6 +64,7 @@
 }
 .line {
   height: 36px;
+  display: none;
   border: 1px solid #e0e5eb;
 }
 .exit {
@@ -102,6 +103,10 @@
   }
   .iconEx {
     display: none;
+  }
+  .line {
+    display: unset;
+    border: 1px solid #e0e5eb;
   }
 }
 @media screen and (min-width: 1280px) {

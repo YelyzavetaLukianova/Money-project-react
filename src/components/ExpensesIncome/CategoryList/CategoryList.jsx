@@ -32,19 +32,19 @@ const CategoryList = ({ category, onClick }) => {
 
           //   <h3 className={s.categoryPrice}>{item[0]}</h3>
           // </li>
-          <li className={s.categoryItem} key={item.category}>
+          <li className={s.categoryItem} key={item[0]}>
+            <p className={s.categoryPrice}>{item[1].total}.00</p>
             <button
-              className={s.btn}
+              className={s.buttonCategoryIcon}
               onClick={() => onClick(item[0])}
               type="button"
             >
-              <p className={s.categoryPrice}>{item[1].total}.00</p>
               <svg className={s.categoryIcon}>
                 {/* <use href={`${sprite}#${item.category}`} /> */}
                 <use href={categories[index].svg} />
               </svg>
-              <h3 className={s.categoryPrice}>{item[0]}</h3>
             </button>
+            <h3 className={s.categoryPrice}>{item[0]}</h3>
           </li>
         ))
       )}

@@ -4,6 +4,9 @@ import { useLocation } from 'react-router';
 import { GrCalculator } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import calend from './calendar.png';
 
 import {
@@ -30,6 +33,18 @@ import s from '../FormEnter/FormEnter.module.css';
 const classsLeft = s.input + ' ' + s.left_input;
 const classsRight = s.input + ' ' + s.right_input;
 
+<ToastContainer
+  position="bottom-right"
+  autoClose={2000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>;
+
 const INITIAL_STATE = {
   date: '',
   description: '',
@@ -53,6 +68,7 @@ const Form = () => {
 
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
+  const initialBalance = useSelector(state => state.balance.balance);
 
   const location = useLocation();
 
@@ -60,6 +76,7 @@ const Form = () => {
 
   useEffect(() => {
     isIncome ? dispatch(getIncomeBack()) : dispatch(getExpenseBack());
+   
   }, [dispatch, isIncome]);
 
   useEffect(() => {
@@ -92,7 +109,10 @@ const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    if (!initialBalance) {
+      return toast.error('Мало денег...');
+      // return alert('Мало денег...');
+    }
     isIncome
       ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));

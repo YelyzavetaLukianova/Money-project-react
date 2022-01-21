@@ -43,6 +43,9 @@
     border-bottom: 2px solid #f5f6fb;
     height: 40px;
   }
+  .green {
+    color: #407946;
+  }
 }
 
 @media screen and (min-width: 768px) {

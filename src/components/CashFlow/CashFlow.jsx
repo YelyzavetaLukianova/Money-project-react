@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
 import { FaTrashAlt } from 'react-icons/fa';
 import Modal from '../../common/Modal/Modal';
@@ -19,8 +20,12 @@ const CashFlow = ({ arey }) => {
 
   const [idDelete, setIdDelete] = useState(null);
 
+  const location = useLocation();
+
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+
+  const isIncome = location.pathname === '/income';
 
   useEffect(() => {
     if (arey.length >= 9) return;
@@ -69,7 +74,9 @@ const CashFlow = ({ arey }) => {
                 <td className={s.string}>{description}</td>
 
                 <td className={s.string}>{category}</td>
-                <td className={s.string}>{amount}</td>
+                <td className={isIncome ? s.string : s.expense}>
+                  {isIncome ? amount : -amount}
+                </td>
                 <td className={s.string}>
                   <button
                     type="button"

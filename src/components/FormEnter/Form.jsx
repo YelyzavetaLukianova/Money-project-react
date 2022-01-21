@@ -56,11 +56,11 @@ const Form = () => {
 
   const location = useLocation();
 
+  const isIncome = location.pathname === '/income';
+
   useEffect(() => {
-    location.pathname === '/income'
-      ? dispatch(getIncomeBack())
-      : dispatch(getExpenseBack());
-  }, [dispatch, location.pathname]);
+    isIncome ? dispatch(getIncomeBack()) : dispatch(getExpenseBack());
+  }, [dispatch, isIncome]);
 
   useEffect(() => {
     const getDataExp = async () => {
@@ -93,7 +93,7 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    location.pathname === '/income'
+    isIncome
       ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));
     setIsModalOpen(false);
@@ -161,10 +161,7 @@ const Form = () => {
               required
               className={`${s.input} ${s.inputDiscr_items}`}
             >
-              {(location.pathname === '/income'
-                ? categoryInc
-                : categoryBack
-              ).map(value => (
+              {(isIncome ? categoryInc : categoryBack).map(value => (
                 <option key={value} value={value}>
                   {value}
                 </option>

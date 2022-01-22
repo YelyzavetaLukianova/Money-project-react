@@ -26,13 +26,13 @@
   line-height: calc(14 / 12);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #52555f;
+  color: var(--primaryText);
 }
 .categoryListEmpty {
   margin-bottom: 20px;
   font-size: 14px;
   line-height: calc(16 / 14);
-  color: #52555f;
+  color: var(--primaryText);
 }
 @media screen and (max-width: 480px) {
   .categoryItem {
@@ -77,24 +77,24 @@
   top: 5px;
   left: -6px;
   border-radius: 30px;
-  background-color: #f5f6fb;
+  background-color: var(--primaryBg);
 }
 .buttonCategoryIcon:hover:before,
 .buttonCategoryIcon:focus:before {
-  background-color: #ffdac0;
+  background-color: var(--accentSecondary);
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .buttonCategoryIcon:focus,
 .buttonCategoryIcon:hover {
-  fill: #ff751d;
+  fill: var(--accent);
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .buttonCategoryIcon {
   position: relative;
-  background-color: #fff;
+  background-color: var(--buttonBorderWhite);
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

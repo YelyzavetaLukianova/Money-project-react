@@ -1,7 +1,9 @@
 @media screen and (max-width: 480px) {
   .categoryItem {
-    flex-basis: 100px;
+    flex-basis: 108px;
     text-align: center;
+    border-bottom: 1px solid #e0e5eb;
+    padding: 20px 0;
   }
 }
 @media screen and (min-width: 480px) {
@@ -16,7 +18,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
 }
 .categoryPrice {
   font-family: Roboto;
@@ -34,24 +35,20 @@
   line-height: calc(16 / 14);
   color: var(--primaryText);
 }
-@media screen and (max-width: 480px) {
-  .categoryItem {
-    flex-basis: 95px;
-  }
-}
+
 @media screen and (min-width: 480px) {
   .categoryItem {
-    flex-basis: 84px;
+    flex-basis: 108px;
   }
 }
 @media screen and (min-width: 768px) {
   .categoryItem {
-    flex-basis: 79px;
+    flex-basis: 98px;
   }
 }
 @media screen and (min-width: 1280px) {
   .categoryItem {
-    flex-basis: 100px;
+    flex-basis: 117px;
   }
   .categoryList {
     padding: 0 135px;
@@ -59,7 +56,7 @@
 }
 .categoryItem {
   text-align: center;
-  cursor: pointer;
+  padding: 20px 0;
 }
 
 .categoryIcon {

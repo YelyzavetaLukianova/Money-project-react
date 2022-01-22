@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
 }
 .SCItitle {
   display: flex;
@@ -23,7 +23,7 @@
 
 @media screen and (min-width: 480px) {
   .sectionSCI {
-    padding: 20px 44px 30px 44px;
+    padding: 20px 44px 10px 44px;
     box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
     border-radius: 20px;
     background: var(--white);

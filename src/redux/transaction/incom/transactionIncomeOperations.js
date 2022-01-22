@@ -4,7 +4,7 @@ import {
   getIncome,
   postIncome,
   getTransactionPeriodData,
-} from '../../../services/kapusta-api';
+} from '../../../services/kapustaApi';
 
 const getIncomeBack = createAsyncThunk(
   'transaction/getIncome',

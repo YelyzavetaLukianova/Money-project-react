@@ -14,7 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
 import transExpenseReducer from './transaction/expense/transactionSlice';
 import transIncomeReducer from './transaction/incom/transactionIncomeSlice';
-import currentPeriodReducer from './currentPeriod/currentPeriod-slice';
+import currentPeriodReducer from './currentPeriod/currentPeriodSlice';
 import balanceReducer from './balance/balanceSlice';
 import { createLogger } from 'redux-logger';
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getTransactionPeriodData } from '../../services/kapusta-api';
+import { getTransactionPeriodData } from '../../services/kapustaApi';
 
 const getPeriodData = createAsyncThunk(
   'currentPeriod/getPeriodData',

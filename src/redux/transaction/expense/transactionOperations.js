@@ -3,7 +3,7 @@ import {
   deleteTransaction,
   getExpense,
   postExpense,
-} from '../../../services/kapusta-api';
+} from '../../../services/kapustaApi';
 
 const getExpenseBack = createAsyncThunk(
   'transaction/getExpense',

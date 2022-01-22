@@ -7,7 +7,7 @@ import {
   refresh,
   token,
   getUserInfo,
-} from '../../services/kapusta-api';
+} from '../../services/kapustaApi';
 
 const registerNewUser = createAsyncThunk(
   'auth/register',

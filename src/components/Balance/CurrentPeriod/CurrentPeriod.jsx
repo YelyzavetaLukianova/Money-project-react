@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getPeriodData } from '../../../redux/currentPeriod/currentPeriod-operation';
+import { getPeriodData } from '../../../redux/currentPeriod/currentPeriodOperation';
 import {
   goBackOneMonth,
   goForwardOneMonth,
-} from '../../../redux/currentPeriod/currentPeriod-slice';
+} from '../../../redux/currentPeriod/currentPeriodSlice';
 // import { periodSelectors } from '../../../redux/currentPeriod';
 import {
   getMonth,
   getYear,
-} from '../../../redux/currentPeriod/currentPeriod-selectors';
+} from '../../../redux/currentPeriod/currentPeriodSelectors';
 
 import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../../images/svg/vector-right.svg';

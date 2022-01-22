@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {
   getMonthlyIncome,
   getMonthlyExpense,
-} from '../../../redux/currentPeriod/currentPeriod-selectors';
+} from '../../../redux/currentPeriod/currentPeriodSelectors';
 import CategoryList from '../CategoryList/CategoryList';
 import Charts from '../../Charts/Chart';
 import { ReactComponent as ArrowLeftIcon } from '../../../images/svg/vector-left.svg';

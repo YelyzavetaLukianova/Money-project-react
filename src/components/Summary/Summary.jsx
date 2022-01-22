@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
-import { getIncome, getExpense } from '../../services/kapusta-api';
+import { getIncome, getExpense } from '../../services/kapustaApi';
 
 import s from './Summary.module.css';
 

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getUserInfo, updateUserBalance } from '../../services/kapusta-api';
+import { getUserInfo, updateUserBalance } from '../../services/kapustaApi';
 
 const getBalance = createAsyncThunk(
   'balance/getBalance',

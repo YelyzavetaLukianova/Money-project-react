@@ -9,8 +9,6 @@
     flex-basis: 80px;
     text-align: center;
     cursor: pointer;
-    transition-duration: 500ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 .categoryList {
@@ -81,7 +79,8 @@
   border-radius: 30px;
   background-color: #f5f6fb;
 }
-.buttonCategoryIcon:hover:before {
+.buttonCategoryIcon:hover:before,
+.buttonCategoryIcon:focus:before {
   background-color: #ffdac0;
   transition-duration: 500ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);

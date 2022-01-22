@@ -77,6 +77,51 @@ const refreshSession = createAsyncThunk(
   },
 );
 
-// const logInGoogle = createAsyncThunk('auth/google');
+const logInGoogle = createAsyncThunk(
+  'auth/google',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const response = await register(credentials);
+      console.log(response);
+      if (response.data.email) {
+        const { data } = await login(credentials);
+        token.set(data.accessToken);
+        return data;
+      }
+    } catch (error) {
+      if (
+        error.response.data.message ===
+        `User with ${credentials.email} email already exists`
+      ) {
+        const { data } = await login(credentials);
+        token.set(data.accessToken);
+        return data;
+      }
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
-export { registerNewUser, logInUser, logOutUser, refreshSession };
+/*Логинизаци через GOOGLE аккаунт без библеотеки*/
+
+// const logInGoogle = createAsyncThunk(
+//   'auth/google',
+//   async (credentials, { rejectWithValue }) => {
+//     const accessToken = credentials.accessToken;
+//     const refreshToken = credentials.refreshToken;
+//     const sid = credentials.sid;
+
+//     token.set(accessToken);
+
+//     try {
+//       const userInfo = await getUserInfo();
+//       const userEmail = userInfo.data.email;
+//       return { userEmail, accessToken, refreshToken, sid };
+//     } catch (error) {
+//       token.unset();
+//       return rejectWithValue(error.response.data.message);
+//     }
+//   },
+// );
+
+export { registerNewUser, logInUser, logOutUser, refreshSession, logInGoogle };

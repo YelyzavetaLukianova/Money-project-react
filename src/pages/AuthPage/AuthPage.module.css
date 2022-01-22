@@ -27,8 +27,17 @@
   background-image: url(../../images/GroupMob69.svg);
 }
 
+@media screen and (min-width: 456px) {
+  .wrapper {
+    width: 456px;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .wrapper {
+    width: 768px;
+    margin: 0 auto;
     padding: 90px 290px 50px 171px;
   }
 
@@ -59,6 +68,8 @@
   }
 
   .wrapper {
+    width: inherit;
+    margin: 0;
     padding: 147px 127px 240px 0;
   }
 

@@ -44,7 +44,7 @@ const CategoryList = ({ category, onClick }) => {
               type="button"
             >
               <svg className={s.categoryIcon}>
-                {/* <use href={`${sprite}#${item.category}`} /> */}
+                {/* <use xlinkHref={`${sprite}#${item.item}`} /> */}
                 <use href={categories[index].svg} />
               </svg>
             </button>

@@ -1,9 +1,3 @@
-.sectionSCI {
-  padding: 20px 44px 30px 44px;
-  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
-  border-radius: 20px;
-  background: #ffffff;
-}
 .SumCategoryInfo {
   display: flex;
   justify-content: center;
@@ -21,8 +15,29 @@
   letter-spacing: 0.02em;
   text-transform: uppercase;
 
-  color: #000000;
+  color: var(--black);
 }
 .iconSCI {
   cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+  .sectionSCI {
+    padding: 20px 44px 30px 44px;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 20px;
+    background: var(--white);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sectionSCI {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .sectionSCI {
+    width: 1060px;
+    margin: 0 auto;
+  }
 }

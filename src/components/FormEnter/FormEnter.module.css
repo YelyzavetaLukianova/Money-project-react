@@ -3,11 +3,43 @@
   border: 2px solid #f5f6fb;
   box-sizing: border-box;
   text-align: center;
+  color: #52555f;
+}
+/* .grey {
+  color: #c7ccdc;
+} */
+
+.input::placeholder {
+  color: #c7ccdc;
 }
 .formEnter {
   position: relative;
   padding: 5px;
-  width: 100%;
+  /* width: 100%; */
+}
+
+/* .link {
+  color: var(--black);
+} */
+
+.link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  width: 50%;
+  height: 40px;
+  background: #f5f6fb;
+  border: 1px solid #fff;
 }
 
 @media screen and (max-width: 481px) {
@@ -60,26 +92,6 @@
   .active {
     background-color: #ff751d;
   }
-
-  .link {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: calc(14 / 12);
-    display: flex;
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    width: 50%;
-    height: 40px;
-    background: #f5f6fb;
-    border: 1px solid #fff;
-  }
 }
 
 @media screen and (min-width: 481px) {
@@ -91,7 +103,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 604px;
+    width: 500px;
   }
 
   .left_input {
@@ -118,6 +130,12 @@
   .renderTab {
     margin-top: 39px;
   }
+  .formEnter {
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 0px 30px 30px 30px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -134,12 +152,15 @@
     flex-wrap: wrap;
     margin-top: 59px;
   }
-  .formEnter {
+  .form_item {
+    width: 604px;
+  }
+  /* .formEnter {
     padding: 5px;
     background-color: #fff;
     border-radius: 0px 30px 30px 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  }
+  } */
 }
 
 @media screen and (min-width: 1280px) {
@@ -216,4 +237,21 @@
   height: 50px;
   border-radius: 50%;
   margin: 20px auto;
+  background-color: transparent;
+  /* outline: 1px solid blue; */
+}
+
+.plus_btn svg {
+  width: 50px;
+  height: 50px;
+  fill: var(--accent);
+}
+
+.plus_btn svg:hover {
+  transition: box-shadow 0.5s, transform 0.5s;
+  transform: scale(1.2);
+}
+
+.text {
+  color: var(--black);
 }

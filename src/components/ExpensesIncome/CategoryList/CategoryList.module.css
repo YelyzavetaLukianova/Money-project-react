@@ -1,29 +1,22 @@
+@media screen and (max-width: 480px) {
+  .categoryItem {
+    flex-basis: 100px;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 480px) {
+  .categoryItem {
+    flex-basis: 80px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
 .categoryList {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin-right: -15px; */
-  /* margin-bottom: -40px; */
   gap: 20px;
-}
-.categoryListEmpty {
-  margin-bottom: 20px;
-}
-.categoryItem {
-  /* margin-right: 15px; */
-  /* margin-bottom: 40px; */
-  flex-basis: 84px;
-  text-align: center;
-  cursor: pointer;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.categoryItem:focus,
-.categoryItem:hover {
-  fill: #ff751d;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .categoryPrice {
   font-family: Roboto;
@@ -33,12 +26,75 @@
   line-height: calc(14 / 12);
   letter-spacing: 0.02em;
   text-transform: uppercase;
-
-  color: #52555f;
+  color: var(--primaryText);
 }
+.categoryListEmpty {
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  color: var(--primaryText);
+}
+@media screen and (max-width: 480px) {
+  .categoryItem {
+    flex-basis: 95px;
+  }
+}
+@media screen and (min-width: 480px) {
+  .categoryItem {
+    flex-basis: 84px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .categoryItem {
+    flex-basis: 79px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .categoryItem {
+    flex-basis: 100px;
+  }
+  .categoryList {
+    padding: 0 135px;
+  }
+}
+.categoryItem {
+  text-align: center;
+  cursor: pointer;
+}
+
 .categoryIcon {
   width: 56px;
   height: 56px;
   margin-top: 5px;
   margin-bottom: 5px;
+  position: relative;
+}
+.buttonCategoryIcon::before {
+  content: '';
+  width: 70px;
+  height: 60px;
+  position: absolute;
+  top: 5px;
+  left: -6px;
+  border-radius: 30px;
+  background-color: var(--primaryBg);
+}
+.buttonCategoryIcon:hover:before,
+.buttonCategoryIcon:focus:before {
+  background-color: var(--accentSecondary);
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.buttonCategoryIcon:focus,
+.buttonCategoryIcon:hover {
+  fill: var(--accent);
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.buttonCategoryIcon {
+  position: relative;
+  background-color: var(--buttonBorderWhite);
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

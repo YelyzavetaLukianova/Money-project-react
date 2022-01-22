@@ -1,7 +1,12 @@
 .report_button {
-  text-align: center;
+  display: flex;
+  align-items: center;
   margin-bottom: 40px;
+}
+
+.text {
   color: #52555fb2;
+  margin-right: 15px;
 }
 
 @media screen and (min-width: 481px) {
@@ -12,6 +17,7 @@
 
 @media screen and (max-width: 480px) {
   .report_button {
+    justify-content: center;
     margin-top: 30px;
   }
 }

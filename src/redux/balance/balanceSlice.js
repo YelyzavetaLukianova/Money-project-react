@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getBalance from './balanceOperations';
+import { getBalance, updateBalance } from './balanceOperations';
 import {
   addExpenseBack,
   deleteExpenseBack,
@@ -23,6 +23,15 @@ const balanceSlice = createSlice({
         state.balance = payload;
       })
       .addCase(getBalance.rejected, (state, { payload }) => {
+        state.error = payload;
+      })
+      .addCase(updateBalance.pending, state => {
+        state.error = null;
+      })
+      .addCase(updateBalance.fulfilled, (state, { payload }) => {
+        state.balance = payload;
+      })
+      .addCase(updateBalance.rejected, (state, { payload }) => {
         state.error = payload;
       })
       .addCase(addExpenseBack.fulfilled, (state, { payload }) => {

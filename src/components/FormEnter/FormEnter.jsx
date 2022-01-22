@@ -5,9 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { useMediaQuery } from 'react-responsive';
 
-// import BackHomeButton from '../../components/Balance/BackHomeButton/BackHomeButton';
-
-import { BsPlusCircle } from 'react-icons/bs';
+import { ReactComponent as PlusButton } from '../../images/svg/plus_btn.svg';
 import Form from './Form';
 
 import 'flatpickr/dist/themes/material_green.css';
@@ -41,7 +39,7 @@ const FormEnter = () => {
       <div className={s.formEnter}>
         {isMobile && (
           <button className={s.plus_btn} type="button" onClick={toggleModal}>
-            <BsPlusCircle />
+            <PlusButton />
           </button>
         )}
         {isTablet && (
@@ -86,7 +84,7 @@ const FormEnter = () => {
         </div>
       </div>
 
-      {isTablet & isBelowDesktop && <Summary />}
+      {isTablet && isBelowDesktop && <Summary />}
     </>
   );
 };

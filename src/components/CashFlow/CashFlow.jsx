@@ -3,7 +3,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
-import { FaTrashAlt } from 'react-icons/fa';
+// import { FaTrashAlt } from 'react-icons/fa';
+import { ReactComponent as FaTrashAlt } from '../../images/svg/delete.svg';
 import Modal from '../../common/Modal/Modal';
 import ModalExit from '../Header/ModalExit/ModalExit';
 
@@ -23,7 +24,7 @@ const CashFlow = ({ arey }) => {
 
   const location = useLocation();
 
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  // const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
 
   const isIncome = location.pathname === '/income';
@@ -37,7 +38,6 @@ const CashFlow = ({ arey }) => {
   }, [arey.length]);
 
   const onDeleteClick = _id => {
-    console.log(`_id CashFlow`, _id);
     dispatch(deleteExpenseBack(_id));
     setIsFormOpen(false);
   };
@@ -54,9 +54,9 @@ const CashFlow = ({ arey }) => {
 
   return (
     <div>
-      <table className={`${s.table23} ${s.scrollbar}`}>
+      <table className={s.tableCashFlow}>
         {isDesktop && (
-          <thead>
+          <thead className={s.tableHead}>
             <tr>
               <th className={classsTabLeft}>ДАТА</th>
               <th className={s.tab}>ОПИСАНИЕ</th>
@@ -67,7 +67,7 @@ const CashFlow = ({ arey }) => {
           </thead>
         )}
 
-        <tbody className={s.body}>
+        <tbody className={s.tableBody}>
           {!!arey.length &&
             arey.map(({ date, description, category, amount, _id }) => (
               <tr key={_id} className={s.field}>

@@ -4,6 +4,30 @@
   border-radius: 20px;
   background: #ffffff;
 }
+/* @media screen and (min-width: 480px) {
+  .sectionSCI {
+    padding: 20px 44px 30px 44px;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 20px;
+    background: #ffffff;
+  }
+} */
+/* @media screen and (min-width: 768px) {
+  .sectionSCI {
+    padding: 20px 100px 30px 100px;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 20px;
+    background: #ffffff;
+  }
+} */
+/* @media screen and (max-width: 1278px) {
+  .sectionSCI {
+    padding: 20px 240px 30px 240px;
+    box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+    border-radius: 20px;
+    background: #ffffff;
+  }
+} */
 .SumCategoryInfo {
   display: flex;
   justify-content: center;

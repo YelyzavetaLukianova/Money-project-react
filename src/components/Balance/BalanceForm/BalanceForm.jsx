@@ -57,7 +57,9 @@ export default function BalanceForm({ display_none, btnCheker }) {
             onChange={handleChange}
             value={input}
             className={
-              btnCheker ? s.balance_input : `${s.balance_input} ${s.input_chek}`
+              !btnCheker
+                ? s.balance_input
+                : `${s.balance_input} ${s.input_chek}`
             }
             type="number"
             pattern="^[ 0-9]+$"

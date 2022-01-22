@@ -1,5 +1,5 @@
-.active {
-  color: #ff751d;
+.header .active {
+  color: var(--accent);
 }
 .header {
   display: flex;
@@ -9,6 +9,7 @@
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
+  color: var(--black);
   font-size: 12px;
   line-height: calc(14 / 12);
   display: flex;

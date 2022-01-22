@@ -1,5 +1,5 @@
 .balance_container {
-  /* margin: 0 auto; */
+  margin: 0 auto;
   padding-top: 15px;
   padding-bottom: 30px;
   /* padding-left: 19px;
@@ -18,5 +18,19 @@
     padding-bottom: 30px;
     /* padding-left: 50px;
     padding-right: 50px; */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .balance_container {
+    max-width: 716px;
+    padding-left: 80px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balance_container {
+    max-width: 1228px;
   }
 }

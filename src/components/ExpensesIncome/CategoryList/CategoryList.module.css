@@ -1,3 +1,18 @@
+@media screen and (max-width: 480px) {
+  .categoryItem {
+    flex-basis: 100px;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 480px) {
+  .categoryItem {
+    flex-basis: 80px;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
 .categoryList {
   position: relative;
   display: flex;

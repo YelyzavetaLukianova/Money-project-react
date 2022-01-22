@@ -3,7 +3,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
-import { FaTrashAlt } from 'react-icons/fa';
+// import { FaTrashAlt } from 'react-icons/fa';
+import { ReactComponent as FaTrashAlt } from '../../images/svg/delete.svg';
 import Modal from '../../common/Modal/Modal';
 import ModalExit from '../Header/ModalExit/ModalExit';
 

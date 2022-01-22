@@ -3,8 +3,11 @@
   border: 2px solid #f5f6fb;
   box-sizing: border-box;
   text-align: center;
-  color: #c7ccdc;
+  color: #52555f;
 }
+/* .grey {
+  color: #c7ccdc;
+} */
 
 .input::placeholder {
   color: #c7ccdc;
@@ -12,7 +15,7 @@
 .formEnter {
   position: relative;
   padding: 5px;
-  width: 100%;
+  /* width: 100%; */
 }
 
 /* .link {
@@ -100,7 +103,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 604px;
+    width: 500px;
   }
 
   .left_input {
@@ -127,6 +130,12 @@
   .renderTab {
     margin-top: 39px;
   }
+  .formEnter {
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 0px 30px 30px 30px;
+    box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -143,12 +152,15 @@
     flex-wrap: wrap;
     margin-top: 59px;
   }
-  .formEnter {
+  .form_item {
+    width: 604px;
+  }
+  /* .formEnter {
     padding: 5px;
     background-color: #fff;
     border-radius: 0px 30px 30px 30px;
     box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
-  }
+  } */
 }
 
 @media screen and (min-width: 1280px) {

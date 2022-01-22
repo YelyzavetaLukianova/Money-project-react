@@ -10,20 +10,23 @@
   background-color: #fff;
 }
 
-/* .tableHead {
-  width: 100%;
-} */
-
 .tableBody {
-  height: 160px;
+  height: 165px;
   overflow-y: scroll;
   border-collapse: collapse;
   background-color: #ffff;
+  /* border-radius: 10px;
+  border: 2px solid #f5f6fb; */
 }
 
 .tableBody::-webkit-scrollbar {
   width: 5px;
   height: 7px;
+  background-color: #f5f6fb;
+}
+.tableBody::-webkit-scrollbar-thumb {
+  background-color: #ff751d;
+  border-radius: 50px;
 }
 .field {
   display: inline-table;
@@ -109,6 +112,8 @@
 
   .tableBody {
     height: 286px;
+    border-radius: 0;
+    border: 0;
   }
   .tableBody::-webkit-scrollbar {
     width: 5px;

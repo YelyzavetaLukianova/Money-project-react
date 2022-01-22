@@ -1,6 +1,14 @@
-.table {
+/* .table {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
+} */
+@media screen and (min-width: 482px) {
+  .table {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 }

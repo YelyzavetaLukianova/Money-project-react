@@ -15,7 +15,6 @@ const Charts = ({ expenses, incomes, categoryState, typeTr }) => {
     });
   const expensesFinish = expensesStepOne[0]?.sort((a, b) => b.сумма - a.сумма);
 
-  console.log(`expensesFinish`, expensesFinish);
   ///
 
   const incomeResults = Object.entries(incomes)

@@ -32,6 +32,9 @@
 }
 .categoryListEmpty {
   margin-bottom: 20px;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  color: #52555f;
 }
 @media screen and (max-width: 480px) {
   .categoryItem {
@@ -59,14 +62,6 @@
 .categoryItem {
   text-align: center;
   cursor: pointer;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.categoryItem:focus,
-.categoryItem:hover {
-  fill: #ff751d;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .categoryIcon {
@@ -74,7 +69,33 @@
   height: 56px;
   margin-top: 5px;
   margin-bottom: 5px;
+  position: relative;
 }
+.buttonCategoryIcon::before {
+  content: '';
+  width: 70px;
+  height: 60px;
+  position: absolute;
+  top: 5px;
+  left: -6px;
+  border-radius: 30px;
+  background-color: #f5f6fb;
+}
+.buttonCategoryIcon:hover:before {
+  background-color: #ffdac0;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.buttonCategoryIcon:focus,
+.buttonCategoryIcon:hover {
+  fill: #ff751d;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .buttonCategoryIcon {
+  position: relative;
   background-color: #fff;
+  transition-duration: 500ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

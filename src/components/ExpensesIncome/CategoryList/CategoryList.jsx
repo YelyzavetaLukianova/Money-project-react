@@ -1,8 +1,12 @@
 import s from './CategoryList.module.css';
 import { categories, incomes } from '../categoryList';
 import sprite from '../../../images/svg/sprite.svg';
+import { useState } from 'react';
 
 const CategoryList = ({ category, onClick }) => {
+  // const [typeTrans, setTypeTrans] = useState('expenses');
+  const [change, setChange] = useState(true);
+  // useState
   return (
     <ul className={s.categoryList}>
       {category.length === 0 ? (

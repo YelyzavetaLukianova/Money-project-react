@@ -1,20 +1,15 @@
 import s from './CategoryList.module.css';
-import { categories, incomes } from '../categoryList';
+// import { categories, incomes } from '../categoryList';
 import sprite from '../../../images/svg/sprite.svg';
-import { useState } from 'react';
 
 const CategoryList = ({ category, onClick }) => {
-  // const [typeTrans, setTypeTrans] = useState('expenses');
-  const [change, setChange] = useState(true);
-  // useState
   return (
     <ul className={s.categoryList}>
       {category.length === 0 ? (
         <li className={s.categoryListEmpty}>За данный период транзакций нет</li>
       ) : (
-        category.map((item, index) => (
+        category.map(item => (
           // <li className={s.categoryItem} key={index}>
-
           //   <p className={s.categoryPrice}>{item[1].total}.00</p>
           //   <svg viewBox="0 0 32 32" className={s.categoryIcon}>
           //     <use href={categories[index].svg} />
@@ -33,7 +28,6 @@ const CategoryList = ({ category, onClick }) => {
           //       <use href={incomes[index].svg} />
           //     </svg>
           //   )}
-
           //   <h3 className={s.categoryPrice}>{item[0]}</h3>
           // </li>
           <li className={s.categoryItem} key={item[0]}>
@@ -44,8 +38,8 @@ const CategoryList = ({ category, onClick }) => {
               type="button"
             >
               <svg className={s.categoryIcon}>
-                {/* <use xlinkHref={`${sprite}#${item.item}`} /> */}
-                <use href={categories[index].svg} />
+                <use xlinkHref={`${sprite}#${item[0]}`} />
+                {/* <use href={categories[index].svg} /> */}
               </svg>
             </button>
             <h3 className={s.categoryPrice}>{item[0]}</h3>

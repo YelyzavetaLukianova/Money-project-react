@@ -71,7 +71,7 @@ export const incomes = [
 // import salary from '../../images/svg/salary.svg';
 // import alcohol from '../../images/svg/alcohol.svg';
 
-// export const categoryList = {
+// export const categories = {
 //   "Продукты": products,
 //   "Алкоголь": alcohol,
 //   "Развлечения": entertainment,

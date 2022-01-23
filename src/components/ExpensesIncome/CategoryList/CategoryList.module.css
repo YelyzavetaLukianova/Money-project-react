@@ -1,18 +1,3 @@
-@media screen and (max-width: 480px) {
-  .categoryItem {
-    flex-basis: 108px;
-    text-align: center;
-    border-bottom: 1px solid #e0e5eb;
-    padding: 20px 0;
-  }
-}
-@media screen and (min-width: 480px) {
-  .categoryItem {
-    flex-basis: 80px;
-    text-align: center;
-    cursor: pointer;
-  }
-}
 .categoryList {
   position: relative;
   display: flex;
@@ -30,15 +15,26 @@
   color: var(--primaryText);
 }
 .categoryListEmpty {
+  margin-top: 10px;
   margin-bottom: 20px;
   font-size: 14px;
   line-height: calc(16 / 14);
   color: var(--primaryText);
 }
+@media screen and (max-width: 480px) {
+  .categoryItem {
+    flex-basis: 111px;
+    text-align: center;
+    border-bottom: 1px solid #e0e5eb;
+    padding: 20px 0;
+  }
+}
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 481px) {
   .categoryItem {
     flex-basis: 108px;
+    text-align: center;
+    cursor: pointer;
   }
 }
 @media screen and (min-width: 768px) {
@@ -66,6 +62,15 @@
   margin-bottom: 5px;
   position: relative;
 }
+/* .categoryIconActive {
+  width: 56px;
+  height: 56px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  fill: var(--accent);
+} */
+
 .buttonCategoryIcon::before {
   content: '';
   width: 70px;

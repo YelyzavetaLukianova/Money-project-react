@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import {
   getExpensesTotal,
   getIncomesTotal,
-} from '../../redux/currentPeriod/currentPeriod-selectors';
+} from '../../redux/currentPeriod/currentPeriodSelectors';
 import SumCategoryInfo from './SumCategoryInfo/SumCategoryInfo';
 
 import s from './ExpensesIncome.module.css';

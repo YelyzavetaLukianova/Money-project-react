@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getPeriodData } from './currentPeriod-operation';
+import { getPeriodData } from './currentPeriodOperation';
 
 const year = String(new Date().getFullYear());
 const month = String(new Date().getMonth() + 1);

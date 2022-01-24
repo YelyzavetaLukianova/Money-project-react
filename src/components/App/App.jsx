@@ -52,9 +52,7 @@ const App = () => {
 
   const isRefreshCurrentUser = useSelector(getIsRefreshCurrentUser);
 
-  if (isRefreshCurrentUser) {
-    return <p>Loading...</p>;
-  }
+  if (isRefreshCurrentUser) return <Loader />;
 
   return (
     <>
@@ -65,7 +63,6 @@ const App = () => {
           </div>
 
           <Suspense fallback={<Loader />}>
-            {/* <Suspense fallback={<p>Loading...</p>}> */}
             <Switch>
               <NotAuthRoute exact path={AUTH} redirectTo={EXPENSE}>
                 <AuthPage />

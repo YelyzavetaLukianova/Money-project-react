@@ -3,7 +3,7 @@ import {
   deleteTransaction,
   getExpense,
   postExpense,
-} from '../../../services/kapusta-api';
+} from '../../../services/kapustaApi';
 
 const getExpenseBack = createAsyncThunk(
   'transaction/getExpense',
@@ -13,7 +13,6 @@ const getExpenseBack = createAsyncThunk(
 
       return data.expenses;
     } catch (error) {
-      console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },
@@ -26,8 +25,6 @@ const addExpenseBack = createAsyncThunk(
 
       return data;
     } catch (error) {
-      // console.log(`errorget`, error);
-
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },
@@ -36,18 +33,14 @@ const addExpenseBack = createAsyncThunk(
 const deleteExpenseBack = createAsyncThunk(
   'transaction/delete',
   async (id, thunkAPI) => {
-    console.log(`_id Operation`, id);
     try {
       const { data } = await deleteTransaction(id);
-      console.error(data);
       const objDel = {
         id,
         data,
       };
-      console.log(`wwwsdadasdsad + ${id}`);
       return objDel;
     } catch (error) {
-      // console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },

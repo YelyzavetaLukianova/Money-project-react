@@ -16,8 +16,6 @@ const initialState = {
   isLoggedIn: false,
   isRefreshCurrentUser: false,
   error: null,
-  // loadingUser: true,
-  // loading: false,
 };
 
 const authSlice = createSlice({
@@ -30,9 +28,9 @@ const authSlice = createSlice({
       })
       .addCase(registerNewUser.fulfilled, (state, action) => {
         state.user.email = action.payload.userData.email;
-        state.token = action.payload.accessToken; //???
-        state.refreshToken = action.payload.refreshToken; //???
-        state.sid = action.payload.sid; //???
+        state.token = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.sid = action.payload.sid;
         state.isLoggedIn = true;
       })
       .addCase(registerNewUser.rejected, (state, action) => {
@@ -73,9 +71,9 @@ const authSlice = createSlice({
       })
       .addCase(refreshSession.fulfilled, (state, action) => {
         state.user.email = action.payload.userEmail;
-        state.token = action.payload.newAccessToken; //???
-        state.refreshToken = action.payload.newRefreshToken; //???
-        state.sid = action.payload.newSid; //???
+        state.token = action.payload.newAccessToken;
+        state.refreshToken = action.payload.newRefreshToken;
+        state.sid = action.payload.newSid;
         state.isLoggedIn = true;
         state.isRefreshCurrentUser = false;
       })
@@ -85,12 +83,32 @@ const authSlice = createSlice({
         state.token = null; //???
         state.refreshToken = null; //???
         state.sid = null; //???
+      })
+
+      .addCase(logInGoogle.pending, state => {
+        state.error = null;
+      })
+      .addCase(logInGoogle.fulfilled, (state, action) => {
+        state.user.email = action.payload.userData.email;
+        state.token = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.sid = action.payload.sid;
+        state.isLoggedIn = true;
+      })
+      .addCase(logInGoogle.rejected, (state, action) => {
+        state.error = action.payload;
       });
+
+    /*Логинизаци через GOOGLE аккаунт без библеотеки*/
 
     // .addCase(logInGoogle.pending, state => {
     //   state.error = null;
     // })
     // .addCase(logInGoogle.fulfilled, (state, action) => {
+    //   state.user.email = action.payload.userEmail;
+    //   state.token = action.payload.accessToken;
+    //   state.refreshToken = action.payload.refreshToken;
+    //   state.sid = action.payload.sid;
     //   state.isLoggedIn = true;
     // })
     // .addCase(logInGoogle.rejected, (state, action) => {

@@ -23,7 +23,7 @@ import {
 import {
   getExpenseCategories,
   getIncomeCategories,
-} from '../../services/kapusta-api';
+} from '../../services/kapustaApi';
 
 import Flatpickr from 'react-flatpickr';
 

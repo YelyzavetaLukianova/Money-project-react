@@ -4,7 +4,7 @@ import {
   getIncome,
   postIncome,
   getTransactionPeriodData,
-} from '../../../services/kapusta-api';
+} from '../../../services/kapustaApi';
 
 const getIncomeBack = createAsyncThunk(
   'transaction/getIncome',
@@ -37,7 +37,6 @@ const deleteIncomeExpenseBack = createAsyncThunk(
     try {
       // await deleteTransaction(id);
       const { data } = await deleteTransaction(id);
-      // console.error(data)
       const objDel = {
         id,
         data,

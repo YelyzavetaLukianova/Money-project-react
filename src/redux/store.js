@@ -30,16 +30,16 @@ const middleware = [
     },
   }).concat(logger),
 ];
-const persistExpenseConfig = {
-  key: 'items',
-  storage,
-  whitelist: ['items'],
-};
-const persistIncomeConfig = {
-  key: 'itemsIncome',
-  storage,
-  whitelist: ['itemsIncome'],
-};
+// const persistExpenseConfig = {
+//   key: 'items',
+//   storage,
+//   whitelist: ['items'],
+// };
+// const persistIncomeConfig = {
+//   key: 'itemsIncome',
+//   storage,
+//   whitelist: ['itemsIncome'],
+// };
 
 const authPersistConfig = {
   key: 'token',
@@ -50,8 +50,8 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    expense: persistReducer(persistExpenseConfig, transExpenseReducer),
-    income: persistReducer(persistIncomeConfig, transIncomeReducer),
+    expense: transExpenseReducer,
+    income: transIncomeReducer,
     currentPeriod: currentPeriodReducer,
     balance: balanceReducer,
   },

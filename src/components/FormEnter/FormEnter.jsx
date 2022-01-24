@@ -19,6 +19,7 @@ import Modal from '../../common/Modal/Modal';
 
 const FormEnter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [curDate, setCurDate] = useState('');
 
   const expense23 = useSelector(state => state.expense.data.items);
   const income23 = useSelector(state => state.income.data.itemsIncom);
@@ -38,6 +39,10 @@ const FormEnter = () => {
     isModalOpen ? setIsModalOpen(false) : setIsModalOpen(false);
   };
 
+  const currentDate = date => {
+    setCurDate(date);
+  };
+
   return (
     <>
       <div className={s.formEnter}>
@@ -48,12 +53,13 @@ const FormEnter = () => {
         )}
         {isTablet && (
           <div>
-            <Form isModalOpen={isModalOpen} />
+            <Form isModalOpen={isModalOpen} currentDate={currentDate} />
           </div>
         )}
         <div className={s.renderTab}>
           <CashFlow
             arey={location.pathname === '/income' ? income23 : expense23}
+            curDate={curDate}
           />
           {isModalOpen && (
             <Modal closeForm={toggleModal}>
@@ -62,7 +68,7 @@ const FormEnter = () => {
               </div>
             </Modal>
           )}
-          {isDesktop && <Summary />}
+          {isDesktop && <Summary curDate={curDate} />}
           {isMobile && (
             <div>
               <div className={s.header}>

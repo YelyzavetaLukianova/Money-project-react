@@ -14,9 +14,6 @@ const Logo = () => {
       <Link className={s.logo} to="/">
         <img src={theme === themes.light ? logo1 : logo2} alt="logo" />
       </Link>
-      {/* <a className={s.logo} href="/">
-        <img src={theme === themes.light ? logo1 : logo2} alt="logo" />
-      </a> */}
     </div>
   );
 };

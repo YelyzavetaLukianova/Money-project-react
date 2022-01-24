@@ -23,7 +23,7 @@
 }
 @media screen and (max-width: 480px) {
   .categoryItem {
-    flex-basis: 111px;
+    flex-basis: 94px;
     text-align: center;
     border-bottom: 1px solid #e0e5eb;
     padding: 20px 0;
@@ -32,14 +32,16 @@
 
 @media screen and (min-width: 481px) {
   .categoryItem {
-    flex-basis: 108px;
+    flex-basis: 117px;
     text-align: center;
+    border-bottom: 1px solid #e0e5eb;
     cursor: pointer;
   }
 }
 @media screen and (min-width: 768px) {
   .categoryItem {
     flex-basis: 98px;
+    border-bottom: none;
   }
 }
 @media screen and (min-width: 1280px) {

@@ -12,8 +12,10 @@ import Button from '../../../common/Button';
 import s from './BalanceForm.module.css';
 
 export default function BalanceForm({ display_none, btnCheker }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const onClose = useCallback(() => setIsModalOpen(false), []);
+
   const dispatch = useDispatch();
-  let modalWarnProps = false;
   let initialBalance = useSelector(state => state.balance.balance);
 
   const [input, setInput] = useState('');
@@ -39,7 +41,7 @@ export default function BalanceForm({ display_none, btnCheker }) {
   const addBalance = e => {
     e.preventDefault();
     const newBalance = Number(input);
-    modalWarnProps = true;
+    setIsModalOpen(false);
 
     if (newBalance > 0) {
       dispatch(updateBalance({ newBalance }));
@@ -69,7 +71,9 @@ export default function BalanceForm({ display_none, btnCheker }) {
           />
           <ModalWarning
             initialBalance={initialBalance}
-            modalWarnProps={modalWarnProps}
+            onClose={onClose}
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
           />
         </span>
         {!initialBalance && (
@@ -79,11 +83,6 @@ export default function BalanceForm({ display_none, btnCheker }) {
             className={!display_none ? s.balance_button : s.display_none}
           />
         )}
-        {/* <Button
-          text="ПОДТВЕРДИТЬ"
-          type={'submit'}
-          className={!display_none ? s.balance_button : s.display_none}
-        /> */}
       </form>
     </div>
   );

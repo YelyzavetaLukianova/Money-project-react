@@ -1,38 +1,27 @@
-import { useState, useCallback, useEffect } from 'react';
-// import { useState, useCallback, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import s from './ModalWarning.module.css';
 
-const ModalWarning = ({ initialBalance, modalWarnProps }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const onClose = useCallback(
-    () => setIsModalOpen(prevIsModalOpen => (prevIsModalOpen = false)),
-    [],
-  );
-
-  // useEffect(() => {
-  //   if (modalWarnProps) {
-  //     return onClose;
-  //   }
-  //   modalWarnProps = false;
-  // }, [modalWarnProps, onClose]);
-
+const ModalWarning = ({
+  initialBalance,
+  isModalOpen,
+  onClose,
+  setIsModalOpen,
+}) => {
   useEffect(() => {
     let closeId = null;
     let openId = setTimeout(() => {
       if (!initialBalance) {
         setIsModalOpen(true);
 
-        closeId = setTimeout(onClose, 10000);
+        closeId = setTimeout(onClose, 5000);
       }
     }, 2000);
     return () => {
       clearTimeout(closeId);
       clearTimeout(openId);
     };
-  }, [initialBalance, onClose]);
+  }, [initialBalance, onClose, setIsModalOpen]);
 
   useEffect(() => {
     const onEscPress = e => {

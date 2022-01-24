@@ -8,6 +8,8 @@
 
   border-radius: 20px 20px 0px 0px;
   background-color: #fff;
+
+  margin-bottom: 10px;
 }
 
 .tableBody {
@@ -15,8 +17,6 @@
   overflow-y: scroll;
   border-collapse: collapse;
   background-color: #ffff;
-  /* border-radius: 10px;
-  border: 2px solid #f5f6fb; */
 }
 
 .tableBody::-webkit-scrollbar {
@@ -72,19 +72,14 @@
   letter-spacing: 0.04em;
   color: var(--error);
 }
-@media screen and (max-width: 480px) {
-  .tableCashFlow {
-    margin-bottom: 10px;
-  }
 
-  .mobTable {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-  }
+.mobTable {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 768px) {
   .tableCashFlow {
     width: 500px;
     margin-bottom: 20px;

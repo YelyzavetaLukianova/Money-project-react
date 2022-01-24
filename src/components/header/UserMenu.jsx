@@ -19,7 +19,9 @@ const UserMenu = () => {
   );
   return (
     <div className={s.wrap}>
-      {isLoggedIn && <p className={s.avatar}>{email[0].toUpperCase()}</p>}
+      {isLoggedIn && (
+        <p className={s.avatar}>{email && email[0]?.toUpperCase()}</p>
+      )}
       <span className={s.titleuser}>{email}</span>
       <span className={s.line}></span>
       <button className={s.userBtn} type="button" onClick={toggleForm}>

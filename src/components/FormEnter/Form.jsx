@@ -58,10 +58,8 @@ const month = (date.getMonth() + 1).toString().padStart(2, 0);
 const day = date.getDate().toString().padStart(2, 0);
 const newDate = `${year}-${month}-${day}`;
 
-const Form = () => {
+const Form = ({ onCloseForm }) => {
   const dispatch = useDispatch();
-
-  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
   const [selectedDate, setSelectedDate] = useState(newDate);
@@ -110,14 +108,13 @@ const Form = () => {
     e.preventDefault();
     if (!initialBalance) {
       return toast.error('Нет капусты 💰');
-      // return alert('Мало денег...');
     }
     isIncome
       ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));
-    setIsModalOpen(false);
+
     reset();
-    setIsModalOpen(true);
+    onCloseForm();
   };
 
   const onClicReset = () => {
@@ -132,10 +129,6 @@ const Form = () => {
   const onChange = (selectedDates, dateStr, instance) => {
     setSelectedDate(dateStr);
   };
-
-  //  const toggleModal = () => {
-  //    setIsModalOpen(prevIsModalOpen => !prevIsModalOpen);
-  //  };
 
   return (
     <div>

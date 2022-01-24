@@ -34,6 +34,10 @@ const FormEnter = () => {
     setIsModalOpen(prevIsModalOpen => !prevIsModalOpen);
   };
 
+  const onCloseForm = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <div className={s.formEnter}>
@@ -54,7 +58,7 @@ const FormEnter = () => {
           {isModalOpen && (
             <Modal closeForm={toggleModal}>
               <div>
-                <Form />
+                <Form onCloseForm={onCloseForm} />
               </div>
             </Modal>
           )}

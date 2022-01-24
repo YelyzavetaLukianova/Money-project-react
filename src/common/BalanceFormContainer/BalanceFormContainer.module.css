@@ -2,6 +2,7 @@
   margin: 0 auto;
   padding-top: 15px;
   padding-bottom: 30px;
+
   /* padding-left: 19px;
   padding-right: 19px; */
   /* margin-bottom: 21px; */
@@ -9,25 +10,24 @@
   /* outline: brown solid 1px; */
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 768px) {
   .balance_container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding-top: 40px;
     padding-bottom: 30px;
-    /* padding-left: 50px;
-    padding-right: 50px; */
+    max-width: 716px;
   }
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .balance_container {
     max-width: 716px;
     padding-left: 80px;
     padding-right: 30px;
   }
-}
+} */
 
 @media screen and (min-width: 1280px) {
   .balance_container {

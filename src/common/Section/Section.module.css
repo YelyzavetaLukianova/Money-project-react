@@ -15,7 +15,7 @@
   z-index: -5;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 768px) {
   .bg_app {
     background-image: url('../../images/svg/kapusta-tablet.svg');
     background-repeat: no-repeat;
@@ -27,7 +27,7 @@
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1280px) {
   .bg_app {
     background-image: url('../../images/svg/kapusta-desktop.svg');
     /* background-repeat: repeat-x; */

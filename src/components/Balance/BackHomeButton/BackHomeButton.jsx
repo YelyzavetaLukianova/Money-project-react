@@ -4,7 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import s from './BackHomeButton.module.css';
 
 export default function BackHomeButton() {
-  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <NavLink to="/expense">
       <div className={s.wrapper}>

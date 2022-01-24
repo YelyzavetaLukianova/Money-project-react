@@ -18,7 +18,7 @@ const ReportPage = () => {
         <BalanceFormContainer>
           <BackHomeButton />
           <CurrentPeriod />
-          <BalanceForm btnCheker="true" />
+          <BalanceForm />
         </BalanceFormContainer>
       )}
 

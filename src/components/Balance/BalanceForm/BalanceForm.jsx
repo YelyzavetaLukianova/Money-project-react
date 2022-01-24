@@ -60,7 +60,7 @@ export default function BalanceForm({ display_none, btnCheker }) {
             onChange={handleChange}
             value={input}
             className={
-              !btnCheker
+              !initialBalance
                 ? s.balance_input
                 : `${s.balance_input} ${s.input_chek}`
             }

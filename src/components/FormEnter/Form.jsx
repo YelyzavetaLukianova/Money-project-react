@@ -225,7 +225,7 @@ const Form = ({ onCloseForm, isModalOpen, currentDate }) => {
         </div>
       </form>
       {isOpenCalc && (
-        <div style={{ width: 100, height: 200 }} className={s.calc}>
+        <div style={{ width: 155, height: 200 }} className={s.calc}>
           <Calculator onResultChange={onResultChange} />
         </div>
       )}

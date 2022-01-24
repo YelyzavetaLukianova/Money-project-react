@@ -59,7 +59,7 @@ const month = (date.getMonth() + 1).toString().padStart(2, 0);
 const day = date.getDate().toString().padStart(2, 0);
 const newDate = `${year}-${month}-${day}`;
 
-const Form = ({ onCloseForm, isModalOpen }) => {
+const Form = ({ onCloseForm, isModalOpen, currentDate }) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
@@ -133,6 +133,7 @@ const Form = ({ onCloseForm, isModalOpen }) => {
 
   const onChange = (selectedDates, dateStr, instance) => {
     setSelectedDate(dateStr);
+    currentDate(dateStr);
   };
 
   const onResultChange = result => {

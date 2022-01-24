@@ -15,7 +15,7 @@ const classsTabRight = s.tab + ' ' + s.right_tab;
 const classsTabLeft = s.tab + ' ' + s.left_tab;
 const classsInputNumber = s.string + ' ' + s.green;
 
-const CashFlow = ({ arey }) => {
+const CashFlow = ({ arey, curDate }) => {
   const dispatch = useDispatch();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [emptyArray, setEmptyArray] = useState([]);
@@ -28,6 +28,9 @@ const CashFlow = ({ arey }) => {
   const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
 
   const isIncome = location.pathname === '/income';
+
+  console.log(`arey`, arey);
+  console.log(`curDate`, curDate);
 
   useEffect(() => {
     if (arey.length >= 9) return;
@@ -69,26 +72,28 @@ const CashFlow = ({ arey }) => {
 
         <tbody className={s.tableBody}>
           {!!arey.length &&
-            arey.map(({ date, description, category, amount, _id }) => (
-              <tr key={_id} className={s.field}>
-                <td className={s.string}>{date}</td>
-                <td className={s.string}>{description}</td>
+            arey
+              .filter(item => item.date.includes(curDate))
+              .map(({ date, description, category, amount, _id }) => (
+                <tr key={_id} className={s.field}>
+                  <td className={s.string}>{date}</td>
+                  <td className={s.string}>{description}</td>
 
-                <td className={s.string}>{category}</td>
-                <td className={isIncome ? classsInputNumber : s.expense}>
-                  {isIncome ? amount : -amount}
-                </td>
-                <td className={s.string}>
-                  <button
-                    type="button"
-                    className={s.btn_table}
-                    onClick={() => openForm(_id)}
-                  >
-                    <FaTrashAlt />
-                  </button>
-                </td>
-              </tr>
-            ))}
+                  <td className={s.string}>{category}</td>
+                  <td className={isIncome ? classsInputNumber : s.expense}>
+                    {isIncome ? amount : -amount}
+                  </td>
+                  <td className={s.string}>
+                    <button
+                      type="button"
+                      className={s.btn_table}
+                      onClick={() => openForm(_id)}
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </td>
+                </tr>
+              ))}
           {isDesktop &&
             emptyArray.map((_, idx) => {
               return (

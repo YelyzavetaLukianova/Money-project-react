@@ -8,7 +8,6 @@ const getBalance = createAsyncThunk(
       const { data } = await getUserInfo();
       return data.balance;
     } catch (error) {
-      console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },
@@ -21,7 +20,6 @@ const updateBalance = createAsyncThunk(
       const { data } = await updateUserBalance(newBalance);
       return data.newBalance;
     } catch (error) {
-      console.log(`errorget`, error);
       return thunkAPI.rejectWithValue('Something wrong :(');
     }
   },

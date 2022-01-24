@@ -4,7 +4,6 @@ import s from './ThemeSwitcher.module.css';
 
 const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  // console.log(theme);
   return (
     <div className={s.conteiner}>
       <label className={s.switch}>

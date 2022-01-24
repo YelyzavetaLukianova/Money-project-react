@@ -1,6 +1,6 @@
 import { useState, Suspense, useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { ThemeContext, themes } from '../Context/themeContext';
 
 import { refreshSession } from '../../redux/auth/authOperations';
@@ -52,9 +52,7 @@ const App = () => {
 
   const isRefreshCurrentUser = useSelector(getIsRefreshCurrentUser);
 
-  if (isRefreshCurrentUser) {
-    return <p>Loading...</p>;
-  }
+  if (isRefreshCurrentUser) return <Loader />;
 
   return (
     <>
@@ -65,7 +63,6 @@ const App = () => {
           </div>
 
           <Suspense fallback={<Loader />}>
-            {/* <Suspense fallback={<p>Loading...</p>}> */}
             <Switch>
               <NotAuthRoute exact path={AUTH} redirectTo={EXPENSE}>
                 <AuthPage />

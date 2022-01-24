@@ -5,7 +5,6 @@ import {
   goBackOneMonth,
   goForwardOneMonth,
 } from '../../../redux/currentPeriod/currentPeriodSlice';
-// import { periodSelectors } from '../../../redux/currentPeriod';
 import {
   getMonth,
   getYear,

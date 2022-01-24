@@ -36,10 +36,6 @@ const Summary = () => {
 
   const isIncome = location.pathname === '/income';
 
-  // const date = new Date('December 17, 1995');
-
-  // const dateMonth = (date.getMonth() + 1).toString().padStart(2, 0);
-
   useEffect(() => {
     const getData = async () => {
       const { data } = await getIncome();

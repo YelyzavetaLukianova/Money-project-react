@@ -13,6 +13,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.33.0",
+    "awesome-react-calculator": "^1.1.0",
     "axios": "^0.24.0",
     "chart.js": "^3.7.0",
     "faker": "^6.6.6",

@@ -26,7 +26,7 @@
   margin-top: 20px;
 }
 .no:hover {
-  background-color: purple;
+  background-color: rgb(20, 167, 167);
   transition: box-shadow 0.5s, transform 0.5s;
   transform: scale(1.1);
   color: white;

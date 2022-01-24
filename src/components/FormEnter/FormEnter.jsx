@@ -25,10 +25,14 @@ const FormEnter = () => {
   // const income23 = useSelector(state => state.income.data.itemsIncom);
   const income23 = useSelector(getIncomes);
 
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isTablet = useMediaQuery({ query: '(min-width: 481px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isBelowDesktop = useMediaQuery({ query: '(max-width: 1279px)' });
   const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  // const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
+  // const isTablet = useMediaQuery({ query: '(min-width: 481px)' });
+  // const isBelowDesktop = useMediaQuery({ query: '(max-width: 1279px)' });
+  // const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const location = useLocation();
 
@@ -37,7 +41,7 @@ const FormEnter = () => {
   };
 
   const onCloseForm = () => {
-    setIsModalOpen(false);
+    isModalOpen ? setIsModalOpen(false) : setIsModalOpen(false);
   };
 
   return (
@@ -50,7 +54,7 @@ const FormEnter = () => {
         )}
         {isTablet && (
           <div>
-            <Form />
+            <Form isModalOpen={isModalOpen} />
           </div>
         )}
         <div className={s.renderTab}>

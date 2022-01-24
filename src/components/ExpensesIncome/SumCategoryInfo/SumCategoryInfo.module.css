@@ -20,24 +20,33 @@
 .iconSCI {
   cursor: pointer;
 }
+.sectionSCI {
+  padding: 20px 44px 10px 44px;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 20px;
+  background: var(--white);
+  max-width: 282px;
+  margin: 0 auto;
+}
 
-@media screen and (min-width: 481px) {
+/* @media screen and (min-width: 481px) {
   .sectionSCI {
+    margin-bottom: 30px;
     padding: 20px 44px 10px 44px;
     box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
     border-radius: 20px;
     background: var(--white);
   }
-}
+} */
 
 @media screen and (min-width: 768px) {
   .sectionSCI {
-    width: 100%;
+    /* width: 100%; */
+    max-width: 676px;
   }
 }
 @media screen and (min-width: 1280px) {
   .sectionSCI {
-    width: 1060px;
-    margin: 0 auto;
+    max-width: 1060px;
   }
 }

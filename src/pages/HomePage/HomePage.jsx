@@ -1,5 +1,5 @@
 // import { Link } from 'react-router-dom';
-import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import HeaderCostsIncome from '../../components/HeaderCostsIncome/HeaderCostsIncome';
 import Container from '../../common/Container';
@@ -13,8 +13,8 @@ import BalanceFormContainer from '../../common/BalanceFormContainer';
 import style from './HomePage.module.css';
 
 const HomePage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <Section>
       {isMobile && (

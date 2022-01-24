@@ -37,7 +37,6 @@ const deleteIncomeExpenseBack = createAsyncThunk(
     try {
       // await deleteTransaction(id);
       const { data } = await deleteTransaction(id);
-      // console.error(data)
       const objDel = {
         id,
         data,

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { getIncome, getExpense } from '../../services/kapustaApi';
+import { getExpenses } from '../../redux/transaction/expense/transactionSelectors';
+import { getIncomes } from '../../redux/transaction/incom/transactionIncomeSelectors.js';
 
 import s from './Summary.module.css';
 
@@ -23,6 +26,9 @@ const Summary = () => {
   const [incomMonths, setIncomMonths] = useState({});
   const [expenseMonths, setExpenseMonths] = useState({});
 
+  const expenses = useSelector(getExpenses);
+  const incomes = useSelector(getIncomes);
+
   const location = useLocation();
 
   const incom = Object.entries(incomMonths);
@@ -37,7 +43,7 @@ const Summary = () => {
       setIncomMonths({ ...data.monthsStats });
     };
     getData();
-  }, []);
+  }, [incomes]);
 
   useEffect(() => {
     const getDataExpense = async () => {
@@ -46,7 +52,7 @@ const Summary = () => {
       setExpenseMonths({ ...data.monthsStats });
     };
     getDataExpense();
-  }, []);
+  }, [expenses]);
 
   return (
     <div className={s.summary}>

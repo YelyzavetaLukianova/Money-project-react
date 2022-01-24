@@ -65,7 +65,7 @@ export default function BalanceForm({ display_none, btnCheker }) {
                 : `${s.balance_input} ${s.input_chek}`
             }
             type="number"
-            pattern="^[ 0-9]+$"
+            pattern="^[0-9]+$"
             title="Поле должно состоять только из цифр"
             placeholder="0.00"
           />

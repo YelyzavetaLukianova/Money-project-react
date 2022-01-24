@@ -35,7 +35,7 @@ const FormEnter = () => {
   };
 
   const onCloseForm = () => {
-    setIsModalOpen(false);
+    isModalOpen ? setIsModalOpen(false) : setIsModalOpen(false);
   };
 
   return (
@@ -48,7 +48,7 @@ const FormEnter = () => {
         )}
         {isTablet && (
           <div>
-            <Form />
+            <Form isModalOpen={isModalOpen} />
           </div>
         )}
         <div className={s.renderTab}>

@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleLogin } from 'react-google-login';
 
-import { registerNewUser, logInUser } from '../../redux/auth/authOperations';
+import {
+  registerNewUser,
+  logInUser,
+  logInGoogle,
+} from '../../redux/auth/authOperations';
 import { getErrorMessage } from '../../redux/auth/authSelectors';
 
 import symbol from '../../images/google-symbol.png';
@@ -31,6 +37,19 @@ const AuthForm = () => {
 
   const dispatch = useDispatch();
 
+  /*Логинизаци через GOOGLE аккаунт без библеотеки*/
+
+  // const location = useLocation();
+  // const accessToken = new URLSearchParams(location.search).get('accessToken');
+  // const refreshToken = new URLSearchParams(location.search).get('refreshToken');
+  // const sid = new URLSearchParams(location.search).get('sid');
+
+  // useEffect(() => {
+  //   if (!accessToken || !refreshToken || !sid) return;
+  //   const credentials = { accessToken, refreshToken, sid };
+  //   dispatch(logInGoogle(credentials));
+  // }, [accessToken, dispatch, refreshToken, sid]);
+
   useEffect(() => {
     if (!errorMessage) return;
     if (errorMessage === 'Password is wrong') {
@@ -55,10 +74,20 @@ const AuthForm = () => {
     }
   };
 
-  const alphanumeric = () => {
+  const alphanumericEmail = () => {
     const regex = /^[a-zA-Z0-9@_.-]*$/;
+    // готовая валидация для email
     // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (email.match(regex)) {
+      return;
+    } else {
+      return false;
+    }
+  };
+
+  const alphanumericPassword = () => {
+    const regex = '^[A-Za-z0-9]*$';
+    if (password.match(regex)) {
       return;
     } else {
       return false;
@@ -70,15 +99,17 @@ const AuthForm = () => {
     const index = email.indexOf('@');
     const sliceEmail = email.slice(0, index);
 
-    if (alphanumeric() === false) {
+    if (alphanumericEmail() === false) {
       setErrorEmail(
-        'email может включать в себя только латинские буквы, цифры и знаки: "@", "-", "_", "."',
+        'Электронная почта может включать в себя только латинские буквы, цифры и знаки: "@", "-", "_", "."',
       );
       return false;
     }
 
     if (email.indexOf('-') === 0 || email.indexOf('-') === emailLength - 1) {
-      setErrorEmail('знак "-" не должен бить в начале или конце email');
+      setErrorEmail(
+        'знак "-" не должен бить в начале или конце электронной почты',
+      );
       return false;
     }
 
@@ -87,11 +118,13 @@ const AuthForm = () => {
       return false;
     }
     if (email.length < 10 || email.length > 63) {
-      setErrorEmail('email должен содержать минимум 10 и максимум 63 символа');
+      setErrorEmail(
+        'Электронная почта должна содержать минимум 10 и максимум 63 символа',
+      );
       return false;
     }
     if (!email.includes('@')) {
-      setErrorEmail('email должен обязательно содержать @');
+      setErrorEmail('Электронная почта должна обязательно содержать @');
       return false;
     }
     if (sliceEmail.length < 2) {
@@ -99,7 +132,7 @@ const AuthForm = () => {
       return false;
     }
     if (!email.includes('.')) {
-      setErrorEmail('email должен обязательно содержать .');
+      setErrorEmail('Электронная почта должна обязательно содержать .');
       return false;
     }
 
@@ -109,6 +142,13 @@ const AuthForm = () => {
   const isPasswordValid = () => {
     if (password.trim().length === 0) {
       setErrorPassword('это обязательное поле');
+      return false;
+    }
+
+    if (alphanumericPassword() === false) {
+      setErrorPassword(
+        'пароль может включать в себя только латинские буквы и цифры',
+      );
       return false;
     }
 
@@ -152,6 +192,17 @@ const AuthForm = () => {
     setPassword('');
   };
 
+  const clientId =
+    '272069178330-662p6alb34mualmhoibqe3cjgm4opf50.apps.googleusercontent.com';
+
+  const responseGoogle = response => {
+    const email = response.profileObj.email;
+    const password = response.profileObj.googleId;
+    dispatch(logInGoogle({ email, password }));
+    //   dispatch(registerNewUser({ email, password }));
+    //   dispatch(logInUser({ email, password }));
+  };
+
   return (
     <>
       <ToastContainer />
@@ -161,7 +212,37 @@ const AuthForm = () => {
             Вы можете авторизоваться с помощью Google Account:
           </p>
 
-          <button type="button" className={styles.btn}>
+          <div className={''}>
+            <GoogleLogin
+              clientId={clientId}
+              render={renderProps => (
+                <button
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                  className={styles.btn}
+                  type="button"
+                >
+                  <img
+                    src={symbol}
+                    alt="googleSymbol"
+                    width="18px"
+                    height="18px"
+                    className={styles.img}
+                  />
+                  Google
+                </button>
+              )}
+              buttonText="Login"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              // cookiePolicy={'single_host_origin'}
+            />
+          </div>
+
+          {/* 
+            Логинизаци через GOOGLE аккаунт без библеотеки
+
+            <button type="button" className={styles.btn}>
             <img
               src={symbol}
               alt="Google symbol"
@@ -169,9 +250,14 @@ const AuthForm = () => {
               height="18px"
               className={styles.img}
             />
-            {/* <a href="https://kapusta-backend.goit.global/auth/google">Google</a> */}
-            Google
-          </button>
+            <a
+              href="https://kapusta-backend.goit.global/auth/google"
+              className={styles.link}
+            >
+              Google
+            </a>
+            // Google 
+          </button> */}
 
           <p className={`${styles.text} ${styles.secondText}`}>
             Или зайти с помощью e-mail и пароля, предварительно

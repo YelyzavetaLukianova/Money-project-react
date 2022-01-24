@@ -1,27 +1,29 @@
 import { useState } from 'react';
-
 import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
-
+import { NavLink } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-import { ReactComponent as PlusButton } from '../../images/svg/plus_btn.svg';
-import Form from './Form';
-
 import 'flatpickr/dist/themes/material_green.css';
+import { ReactComponent as PlusButton } from '../../images/svg/plus_btn.svg';
 
-import s from './FormEnter.module.css';
+import { getExpenses } from '../../redux/transaction/expense/transactionSelectors.js';
+import { getIncomes } from '../../redux/transaction/incom/transactionIncomeSelectors.js';
+
+import Form from './Form';
 import Summary from '../Summary/Summary';
 import CashFlow from '../CashFlow/CashFlow';
-
-import { NavLink } from 'react-router-dom';
 import Modal from '../../common/Modal/Modal';
+
+import s from './FormEnter.module.css';
 
 const FormEnter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const expense23 = useSelector(state => state.expense.data.items);
-  const income23 = useSelector(state => state.income.data.itemsIncom);
+  // const expense23 = useSelector(state => state.expense.data.items);
+  const expense23 = useSelector(getExpenses);
+  // const income23 = useSelector(state => state.income.data.itemsIncom);
+  const income23 = useSelector(getIncomes);
 
   const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 481px)' });

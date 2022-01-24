@@ -57,6 +57,12 @@
   letter-spacing: 0.02em;
 }
 
+.btn:hover,
+.btn:focus {
+  font-size: 16px;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+}
+
 .img {
   margin-right: 10px;
 }
@@ -117,6 +123,10 @@
   border-radius: 30px;
 }
 
+.input:focus {
+  border: 1px solid #ff751d;
+}
+
 .textError {
   padding: 0 29px;
 
@@ -147,6 +157,12 @@
 
   border: none;
   border-radius: 16px;
+}
+
+.authBtn:hover,
+.authBtn:focus {
+  font-size: 13px;
+  box-shadow: 5px 10px 20px rgba(153, 154, 155, 0.529);
 }
 
 .logInBtn {

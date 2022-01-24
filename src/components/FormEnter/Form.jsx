@@ -96,10 +96,12 @@ const Form = ({ onCloseForm }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
+    let validValue = value;
+    validValue = value.trim().length === 0 ? '' : value;
 
     setFormData({
       ...formData,
-      [name]: name === 'amount' ? Number(value) : value,
+      [name]: name === 'amount' ? Number(validValue) : validValue,
       date: selectedDate,
     });
   };

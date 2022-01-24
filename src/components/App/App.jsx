@@ -1,6 +1,6 @@
 import { useState, Suspense, useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { ThemeContext, themes } from '../Context/themeContext';
 
 import { refreshSession } from '../../redux/auth/authOperations';

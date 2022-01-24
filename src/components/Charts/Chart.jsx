@@ -15,8 +15,6 @@ const Charts = ({ expenses, incomes, categoryState, typeTr }) => {
     });
   const expensesFinish = expensesStepOne[0]?.sort((a, b) => b.сумма - a.сумма);
 
-  ///
-
   const incomeResults = Object.entries(incomes)
     .filter(item => item[0] === categoryState)
     .map(item => item[1])
@@ -55,7 +53,6 @@ const Charts = ({ expenses, incomes, categoryState, typeTr }) => {
           </BarChart>
         </Paper>
       </div>
-      <div className={s.line}></div>
       <div className={s.wrapMob}>
         <BarChart
           layout="vertical"

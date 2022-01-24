@@ -2,7 +2,6 @@
 import { useMediaQuery } from 'react-responsive';
 import Container from '../../common/Container';
 import Section from '../../common/Section';
-import Charts from '../../components/Charts/Chart';
 import BackHomeButton from '../../components/Balance/BackHomeButton';
 import CurrentPeriod from '../../components/Balance/CurrentPeriod/CurrentPeriod';
 import BalanceForm from '../../components/Balance/BalanceForm/BalanceForm';
@@ -11,8 +10,8 @@ import ExpensesIncome from '../../components/ExpensesIncome/ExpensesIncome';
 import style from './ReportPage.module.css';
 
 const ReportPage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <Section>
       {isMobile && (

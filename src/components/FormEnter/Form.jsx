@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { GrCalculator } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
+import Calculator from 'awesome-react-calculator';
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -58,11 +59,12 @@ const month = (date.getMonth() + 1).toString().padStart(2, 0);
 const day = date.getDate().toString().padStart(2, 0);
 const newDate = `${year}-${month}-${day}`;
 
-const Form = ({ onCloseForm }) => {
+const Form = ({ onCloseForm, isModalOpen }) => {
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({ ...INITIAL_STATE });
   const [selectedDate, setSelectedDate] = useState(newDate);
+  const [isOpenCalc, setIsOpenCalc] = useState(false);
 
   const [categoryBack, setCategoryBack] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
@@ -107,13 +109,14 @@ const Form = ({ onCloseForm }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!initialBalance) {
-      return toast.error('Нет капусты 💰');
+      return toast.error('Нет капусты 💰 на балансе');
     }
     isIncome
       ? dispatch(addIncomeBack(formData))
       : dispatch(addExpenseBack(formData));
 
     reset();
+
     onCloseForm();
   };
 
@@ -130,6 +133,15 @@ const Form = ({ onCloseForm }) => {
     setSelectedDate(dateStr);
   };
 
+  const onResultChange = result => {
+    setFormData({ ...formData, amount: Number(result.result) });
+    openCalc();
+  };
+
+  const openCalc = () => {
+    setIsOpenCalc(prevIsOpenCalc => !prevIsOpenCalc);
+  };
+
   return (
     <div>
       <form action="" onSubmit={handleSubmit} className={s.form}>
@@ -144,7 +156,6 @@ const Form = ({ onCloseForm }) => {
             />
             <Flatpickr
               options={{
-                // minDate: '01-01-2017',
                 maxDate: newDate,
               }}
               value={selectedDate}
@@ -187,12 +198,13 @@ const Form = ({ onCloseForm }) => {
               value={amount}
               placeholder="0,00"
               min="1"
-              required
+              // required
               onChange={handleChange}
               className={classsRight}
             />
-
-            <GrCalculator className={s.icon} />
+            <button type="button" onClick={openCalc} className={s.button_icon}>
+              <GrCalculator className={s.icon} />
+            </button>
           </div>
         </div>
 
@@ -206,6 +218,11 @@ const Form = ({ onCloseForm }) => {
           />
         </div>
       </form>
+      {isOpenCalc && (
+        <div style={{ width: 100, height: 200 }} className={s.calc}>
+          <Calculator onResultChange={onResultChange} />
+        </div>
+      )}
     </div>
   );
 };

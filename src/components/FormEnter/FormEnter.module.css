@@ -88,6 +88,10 @@
     flex-wrap: wrap;
   }
 
+  .category {
+    width: 150px;
+  }
+
   .calc {
     position: absolute;
     top: 49px;

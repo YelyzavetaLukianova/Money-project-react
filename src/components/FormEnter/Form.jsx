@@ -66,7 +66,7 @@ const Form = ({ onCloseForm, isModalOpen, currentDate }) => {
   const [selectedDate, setSelectedDate] = useState(newDate);
   const [isOpenCalc, setIsOpenCalc] = useState(false);
 
-  const [categoryBack, setCategoryBack] = useState([]);
+  const [categoryExpense, setCategoryExpense] = useState([]);
   const [categoryInc, setCategoryInc] = useState([]);
   const initialBalance = useSelector(state => state.balance.balance);
 
@@ -81,7 +81,7 @@ const Form = ({ onCloseForm, isModalOpen, currentDate }) => {
   useEffect(() => {
     const getDataExp = async () => {
       const { data } = await getExpenseCategories();
-      setCategoryBack(['Категория товара', ...data]);
+      setCategoryExpense([...data]);
     };
     getDataExp();
   }, []);
@@ -89,7 +89,7 @@ const Form = ({ onCloseForm, isModalOpen, currentDate }) => {
   useEffect(() => {
     const getDataInc = async () => {
       const { data } = await getIncomeCategories();
-      setCategoryInc(['Категория дохода', ...data]);
+      setCategoryInc([...data]);
     };
     getDataInc();
   }, []);
@@ -183,9 +183,12 @@ const Form = ({ onCloseForm, isModalOpen, currentDate }) => {
               value={category}
               onChange={handleChange}
               required
-              className={`${s.input} ${s.inputDiscr_items}`}
+              className={`${s.input} ${s.inputDiscr_items} ${s.category}`}
             >
-              {(isIncome ? categoryInc : categoryBack).map(value => (
+              <option value="">
+                {isIncome ? 'Категория дохода' : 'Категория расхода'}
+              </option>
+              {(isIncome ? categoryInc : categoryExpense).map(value => (
                 <option key={value} value={value}>
                   {value}
                 </option>

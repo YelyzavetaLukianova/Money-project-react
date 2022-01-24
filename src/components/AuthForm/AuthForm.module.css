@@ -61,6 +61,11 @@
   margin-right: 10px;
 }
 
+.link {
+  padding-top: 1px;
+  color: inherit;
+}
+
 .label {
   display: flex;
   flex-direction: column;

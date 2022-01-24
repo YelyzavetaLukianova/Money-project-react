@@ -55,7 +55,6 @@ const Charts = ({ expenses, incomes, categoryState, typeTr }) => {
           </BarChart>
         </Paper>
       </div>
-      <div className={s.line}></div>
       <div className={s.wrapMob}>
         <BarChart
           layout="vertical"

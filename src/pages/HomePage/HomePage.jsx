@@ -9,8 +9,10 @@ import Income from '../../components/Income/Income';
 import ReportButton from '../../components/Balance/ReportButton';
 import BalanceForm from '../../components/Balance/BalanceForm/BalanceForm';
 import BalanceFormContainer from '../../common/BalanceFormContainer';
-
+import { routes } from '../../routes';
 import style from './HomePage.module.css';
+
+const { EXPENSE, INCOME } = routes;
 
 const HomePage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -34,10 +36,10 @@ const HomePage = () => {
       <Container>
         {isDesktop && <HeaderCostsIncome />}
         <Switch>
-          <Route exact path="/expense">
+          <Route exact path={EXPENSE}>
             <Expense />
           </Route>
-          <Route exact path="/income">
+          <Route exact path={INCOME}>
             <Income />
           </Route>
         </Switch>

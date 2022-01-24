@@ -30,7 +30,6 @@
 @media screen and (min-width: 1000px) {
   .bg_app {
     background-image: url('../../images/svg/kapusta-desktop.svg');
-    /* background-repeat: repeat-x; */
     background-position: 10px bottom;
   }
 }

@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from 'react';
 // import { useState, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 
 import s from './ModalWarning.module.css';
 
-const ModalWarning = ({ initialBalance }) => {
+const ModalWarning = ({ initialBalance, modalWarnProps }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onClose = useCallback(
@@ -12,15 +12,22 @@ const ModalWarning = ({ initialBalance }) => {
     [],
   );
 
+  // useEffect(() => {
+  //   if (modalWarnProps) {
+  //     return onClose;
+  //   }
+  //   modalWarnProps = false;
+  // }, [modalWarnProps, onClose]);
+
   useEffect(() => {
     let closeId = null;
     let openId = setTimeout(() => {
       if (!initialBalance) {
         setIsModalOpen(true);
 
-        closeId = setTimeout(onClose, 3000);
+        closeId = setTimeout(onClose, 10000);
       }
-    }, 1000);
+    }, 2000);
     return () => {
       clearTimeout(closeId);
       clearTimeout(openId);

@@ -13,6 +13,7 @@ import s from './BalanceForm.module.css';
 
 export default function BalanceForm({ display_none, btnCheker }) {
   const dispatch = useDispatch();
+  let modalWarnProps = false;
   let initialBalance = useSelector(state => state.balance.balance);
 
   const [input, setInput] = useState('');
@@ -37,8 +38,8 @@ export default function BalanceForm({ display_none, btnCheker }) {
 
   const addBalance = e => {
     e.preventDefault();
-
     const newBalance = Number(input);
+    modalWarnProps = true;
 
     if (newBalance > 0) {
       dispatch(updateBalance({ newBalance }));
@@ -66,7 +67,10 @@ export default function BalanceForm({ display_none, btnCheker }) {
             title="Поле должно состоять только из цифр"
             placeholder="0.00"
           />
-          <ModalWarning initialBalance={initialBalance} />
+          <ModalWarning
+            initialBalance={initialBalance}
+            modalWarnProps={modalWarnProps}
+          />
         </span>
         {!initialBalance && (
           <Button

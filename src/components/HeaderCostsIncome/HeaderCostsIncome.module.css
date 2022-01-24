@@ -5,6 +5,11 @@
   display: flex;
   justify-content: left;
 }
+@media screen and (min-width: 1280px) {
+  .header {
+    margin-left: 64px;
+  }
+}
 .link {
   font-family: Roboto;
   font-style: normal;

@@ -13,8 +13,8 @@ import BalanceFormContainer from '../../common/BalanceFormContainer';
 import style from './HomePage.module.css';
 
 const HomePage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <Section>
       {isMobile && (

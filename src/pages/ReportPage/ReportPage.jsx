@@ -11,8 +11,8 @@ import ExpensesIncome from '../../components/ExpensesIncome/ExpensesIncome';
 import style from './ReportPage.module.css';
 
 const ReportPage = () => {
-  const isMobile = useMediaQuery({ query: '(max-width: 480px)' });
-  const isDesktop = useMediaQuery({ query: '(min-width: 481px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <Section>
       {isMobile && (

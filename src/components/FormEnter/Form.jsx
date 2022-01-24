@@ -117,7 +117,7 @@ const Form = ({ onCloseForm, isModalOpen }) => {
 
     reset();
 
-    onCloseForm();
+    onCloseForm && onCloseForm();
   };
 
   const onClicReset = () => {

@@ -1,22 +1,8 @@
-@media screen and (max-width: 480px) {
-  .categoryItem {
-    flex-basis: 100px;
-    text-align: center;
-  }
-}
-@media screen and (min-width: 480px) {
-  .categoryItem {
-    flex-basis: 80px;
-    text-align: center;
-    cursor: pointer;
-  }
-}
 .categoryList {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
 }
 .categoryPrice {
   font-family: Roboto;
@@ -29,6 +15,7 @@
   color: var(--primaryText);
 }
 .categoryListEmpty {
+  margin-top: 10px;
   margin-bottom: 20px;
   font-size: 14px;
   line-height: calc(16 / 14);
@@ -36,22 +23,28 @@
 }
 @media screen and (max-width: 480px) {
   .categoryItem {
-    flex-basis: 95px;
+    flex-basis: 111px;
+    text-align: center;
+    border-bottom: 1px solid #e0e5eb;
+    padding: 20px 0;
   }
 }
-@media screen and (min-width: 480px) {
+
+@media screen and (min-width: 481px) {
   .categoryItem {
-    flex-basis: 84px;
+    flex-basis: 108px;
+    text-align: center;
+    cursor: pointer;
   }
 }
 @media screen and (min-width: 768px) {
   .categoryItem {
-    flex-basis: 79px;
+    flex-basis: 98px;
   }
 }
 @media screen and (min-width: 1280px) {
   .categoryItem {
-    flex-basis: 100px;
+    flex-basis: 117px;
   }
   .categoryList {
     padding: 0 135px;
@@ -59,7 +52,7 @@
 }
 .categoryItem {
   text-align: center;
-  cursor: pointer;
+  padding: 20px 0;
 }
 
 .categoryIcon {
@@ -69,6 +62,15 @@
   margin-bottom: 5px;
   position: relative;
 }
+/* .categoryIconActive {
+  width: 56px;
+  height: 56px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  fill: var(--accent);
+} */
+
 .buttonCategoryIcon::before {
   content: '';
   width: 70px;

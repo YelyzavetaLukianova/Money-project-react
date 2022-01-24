@@ -41,7 +41,6 @@ const balanceSlice = createSlice({
         state.balance = payload.newBalance;
       })
       .addCase(deleteExpenseBack.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.balance = payload.data.newBalance;
       });
   },

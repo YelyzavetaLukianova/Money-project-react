@@ -50,7 +50,6 @@ const transactionExpenseSlice = createSlice({
         state.data.error = null;
       })
       .addCase(deleteExpenseBack.fulfilled, (state, { payload }) => {
-        console.log(` id payload`, payload);
         state.data.loading = false;
         const indx = state.data.items.findIndex(
           item => item._id === payload.id,

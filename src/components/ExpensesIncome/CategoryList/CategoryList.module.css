@@ -62,14 +62,6 @@
   margin-bottom: 5px;
   position: relative;
 }
-/* .categoryIconActive {
-  width: 56px;
-  height: 56px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  position: relative;
-  fill: var(--accent);
-} */
 
 .buttonCategoryIcon::before {
   content: '';

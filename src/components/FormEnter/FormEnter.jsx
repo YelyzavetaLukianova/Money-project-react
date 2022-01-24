@@ -1,30 +1,56 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import { useLocation } from 'react-router';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
 import { useMediaQuery } from 'react-responsive';
 
 import 'flatpickr/dist/themes/material_green.css';
 import { ReactComponent as PlusButton } from '../../images/svg/plus_btn.svg';
 
-import { getExpenses } from '../../redux/transaction/expense/transactionSelectors.js';
-import { getIncomes } from '../../redux/transaction/incom/transactionIncomeSelectors.js';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Form from './Form';
 import Summary from '../Summary/Summary';
 import CashFlow from '../CashFlow/CashFlow';
-import Modal from '../../common/Modal/Modal';
+import {
+  getExpenseItems,
+  getExpenseError,
+} from '../../redux/transaction/expense/transactionSelectors';
 
+import {
+  getIncomeItems,
+  getIncomeError,
+} from '../../redux/transaction/incom/transactionIncomeSelectors';
+
+import Modal from '../../common/Modal/Modal';
 import s from './FormEnter.module.css';
+
+<ToastContainer
+  position="bottom-right"
+  autoClose={2000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>;
 
 const FormEnter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [curDate, setCurDate] = useState('');
+  const [errorInc, setErrorInc] = useState('');
+  const [errorExpense, setErrorExpense] = useState('');
 
-  // const expense23 = useSelector(state => state.expense.data.items);
-  const expense23 = useSelector(getExpenses);
-  // const income23 = useSelector(state => state.income.data.itemsIncom);
-  const income23 = useSelector(getIncomes);
+  const expense23 = useSelector(getExpenseItems);
+  const income23 = useSelector(getIncomeItems);
+
+  const errorExp = useSelector(getExpenseError);
+  const errorIncome = useSelector(getIncomeError);
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
@@ -36,6 +62,14 @@ const FormEnter = () => {
   // const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   const location = useLocation();
+
+  useEffect(() => {
+    setErrorInc(errorIncome);
+  }, [errorIncome]);
+
+  useEffect(() => {
+    setErrorExpense(errorExp);
+  }, [errorExp]);
 
   const toggleModal = () => {
     setIsModalOpen(prevIsModalOpen => !prevIsModalOpen);
@@ -51,6 +85,9 @@ const FormEnter = () => {
 
   return (
     <>
+      {errorInc && toast.error('Что-то с вашими доходами')}
+      {errorExpense && toast.error('Что-то с вашими расходами')}
+
       <div className={s.formEnter}>
         {isMobile && (
           <button className={s.plus_btn} type="button" onClick={toggleModal}>

@@ -1,3 +1,4 @@
-const getIncomes = state => state.income.data.itemsIncom;
+const getIncomeItems = state => state.income.data.itemsIncom;
+const getIncomeError = state => state.income.data.error;
 
-export { getIncomes };
+export { getIncomeItems, getIncomeError };

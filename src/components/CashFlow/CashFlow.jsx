@@ -29,9 +29,6 @@ const CashFlow = ({ arey, curDate }) => {
 
   const isIncome = location.pathname === '/income';
 
-  console.log(`arey`, arey);
-  console.log(`curDate`, curDate);
-
   useEffect(() => {
     if (arey.length >= 9) return;
     const arrayLength = 9 - arey.length;

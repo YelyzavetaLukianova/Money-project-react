@@ -6,26 +6,27 @@ import { NavLink } from 'react-router-dom';
 
 import { useMediaQuery } from 'react-responsive';
 
+import 'flatpickr/dist/themes/material_green.css';
 import { ReactComponent as PlusButton } from '../../images/svg/plus_btn.svg';
-import Form from './Form';
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import 'flatpickr/dist/themes/material_green.css';
-
-import s from './FormEnter.module.css';
+import Form from './Form';
 import Summary from '../Summary/Summary';
 import CashFlow from '../CashFlow/CashFlow';
 import {
   getExpenseItems,
   getExpenseError,
 } from '../../redux/transaction/expense/transactionSelectors';
+
 import {
   getIncomeItems,
   getIncomeError,
 } from '../../redux/transaction/incom/transactionIncomeSelectors';
+
 import Modal from '../../common/Modal/Modal';
+import s from './FormEnter.module.css';
 
 <ToastContainer
   position="bottom-right"

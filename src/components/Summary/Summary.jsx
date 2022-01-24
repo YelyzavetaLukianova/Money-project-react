@@ -1,27 +1,23 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { getIncome, getExpense } from '../../services/kapustaApi';
 
-import s from './Summary.module.css';
+import { getExpenseItems } from '../../redux/transaction/expense/transactionSelectors';
 
-// const months = [
-//   ['01', 'ЯНВАРЬ'],
-//   ['02', 'ФЕВРАЛЬ'],
-//   ['03', 'МАРТ'],
-//   ['04', 'АПРЕЛЬ'],
-//   ['05', 'МАЙ'],
-//   ['06', 'ИЮНЬ'],
-//   ['07', 'ИЮЛЬ'],
-//   ['08', 'АВГУСТ'],
-//   ['09', 'СЕНТЯБРЬ'],
-//   [10, 'ОКТЯБРЬ'],
-//   [11, 'НОЯБРЬ'],
-//   [12, 'ДЕКАБРЬ'],
-// ];
+import { getIncomeItems } from '../../redux/transaction/incom/transactionIncomeSelectors';
+
+// import { getExpenses } from '../../redux/transaction/expense/transactionSelectors';
+// import { getIncomes } from '../../redux/transaction/incom/transactionIncomeSelectors.js';
+
+import s from './Summary.module.css';
 
 const Summary = () => {
   const [incomMonths, setIncomMonths] = useState({});
   const [expenseMonths, setExpenseMonths] = useState({});
+
+  const expenses = useSelector(getExpenseItems);
+  const incomes = useSelector(getIncomeItems);
 
   const location = useLocation();
 
@@ -37,7 +33,7 @@ const Summary = () => {
       setIncomMonths({ ...data.monthsStats });
     };
     getData();
-  }, []);
+  }, [incomes]);
 
   useEffect(() => {
     const getDataExpense = async () => {
@@ -46,7 +42,7 @@ const Summary = () => {
       setExpenseMonths({ ...data.monthsStats });
     };
     getDataExpense();
-  }, []);
+  }, [expenses]);
 
   return (
     <div className={s.summary}>

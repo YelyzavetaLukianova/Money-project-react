@@ -35,6 +35,7 @@ const authSlice = createSlice({
       })
       .addCase(registerNewUser.rejected, (state, action) => {
         state.error = action.payload;
+        state.isLoggedIn = false;
       })
 
       .addCase(logInUser.pending, state => {
@@ -49,6 +50,7 @@ const authSlice = createSlice({
       })
       .addCase(logInUser.rejected, (state, action) => {
         state.error = action.payload;
+        state.isLoggedIn = false;
       })
 
       .addCase(logOutUser.pending, state => {
@@ -78,11 +80,12 @@ const authSlice = createSlice({
         state.isRefreshCurrentUser = false;
       })
       .addCase(refreshSession.rejected, (state, action) => {
+        state.isLoggedIn = false;
         state.error = action.payload;
         state.isRefreshCurrentUser = false;
-        state.token = null; //???
-        state.refreshToken = null; //???
-        state.sid = null; //???
+        state.token = null;
+        state.refreshToken = null;
+        state.sid = null;
       })
 
       .addCase(logInGoogle.pending, state => {
@@ -96,6 +99,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logInGoogle.rejected, (state, action) => {
+        state.isLoggedIn = false;
         state.error = action.payload;
       });
 

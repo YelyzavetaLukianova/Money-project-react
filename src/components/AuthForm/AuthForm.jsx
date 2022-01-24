@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useLocation } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleLogin } from 'react-google-login';
 
@@ -14,18 +14,6 @@ import { getErrorMessage } from '../../redux/auth/authSelectors';
 
 import symbol from '../../images/google-symbol.png';
 import styles from './AuthForm.module.css';
-
-<ToastContainer
-  position="bottom-right"
-  autoClose={2000}
-  hideProgressBar={false}
-  newestOnTop={false}
-  closeOnClick
-  rtl={false}
-  pauseOnFocusLoss
-  draggable
-  pauseOnHover
-/>;
 
 const AuthForm = () => {
   const [email, setEmail] = useState('');
@@ -99,6 +87,11 @@ const AuthForm = () => {
     const index = email.indexOf('@');
     const sliceEmail = email.slice(0, index);
 
+    if (email.trim().length === 0) {
+      setErrorEmail('это обязательное поле');
+      return false;
+    }
+
     if (alphanumericEmail() === false) {
       setErrorEmail(
         'Электронная почта может включать в себя только латинские буквы, цифры и знаки: "@", "-", "_", "."',
@@ -113,10 +106,6 @@ const AuthForm = () => {
       return false;
     }
 
-    if (email.trim().length === 0) {
-      setErrorEmail('это обязательное поле');
-      return false;
-    }
     if (email.length < 10 || email.length > 63) {
       setErrorEmail(
         'Электронная почта должна содержать минимум 10 и максимум 63 символа',
@@ -196,8 +185,11 @@ const AuthForm = () => {
     '272069178330-662p6alb34mualmhoibqe3cjgm4opf50.apps.googleusercontent.com';
 
   const responseGoogle = response => {
-    const email = response.profileObj.email;
-    const password = response.profileObj.googleId;
+    const email = response?.profileObj?.email;
+    const password = response?.profileObj?.googleId;
+
+    if (!email || !password) return;
+
     dispatch(logInGoogle({ email, password }));
     //   dispatch(registerNewUser({ email, password }));
     //   dispatch(logInUser({ email, password }));
@@ -205,7 +197,6 @@ const AuthForm = () => {
 
   return (
     <>
-      <ToastContainer />
       <div className={styles.wrapper}>
         <form className={styles.form}>
           <p className={`${styles.text} ${styles.firstText}`}>

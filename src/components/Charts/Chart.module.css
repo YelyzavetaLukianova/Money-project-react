@@ -11,6 +11,7 @@
 .wrapMob {
   width: 280px;
   height: 508px;
+  margin: 0 auto;
 }
 @media screen and (min-width: 768px) {
   .wrap {

@@ -44,7 +44,7 @@ const persistIncomeConfig = {
 const authPersistConfig = {
   key: 'token',
   storage,
-  whitelist: ['token', 'refreshToken', 'sid'],
+  whitelist: ['token', 'refreshToken', 'sid', 'isLoggedIn'],
 };
 
 const store = configureStore({

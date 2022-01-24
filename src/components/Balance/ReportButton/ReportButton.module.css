@@ -9,11 +9,11 @@
   margin-right: 15px;
 }
 
-/* @media screen and (min-width: 481px) {
+@media screen and (min-width: 767px) {
   .report_button {
     margin-bottom: 0px;
   }
-} */
+}
 
 @media screen and (max-width: 768px) {
   .report_button {

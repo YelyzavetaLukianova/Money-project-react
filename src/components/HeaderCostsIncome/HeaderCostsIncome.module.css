@@ -1,5 +1,6 @@
 .header .active {
   color: var(--accent);
+  background-color: #fff;
 }
 .header {
   display: flex;

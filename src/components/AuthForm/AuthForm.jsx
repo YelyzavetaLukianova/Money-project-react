@@ -151,7 +151,7 @@ const AuthForm = () => {
 
     const credentials = { email, password };
     dispatch(registerNewUser(credentials));
-    reset();
+    // reset();
     setErrorEmail(null);
     setErrorPassword(null);
   };
@@ -171,15 +171,15 @@ const AuthForm = () => {
 
     const credentials = { email, password };
     dispatch(logInUser(credentials));
-    reset();
+    // reset();
     setErrorEmail(null);
     setErrorPassword(null);
   };
 
-  const reset = () => {
-    setEmail('');
-    setPassword('');
-  };
+  // const reset = () => {
+  //   setEmail('');
+  //   setPassword('');
+  // };
 
   const clientId =
     '272069178330-662p6alb34mualmhoibqe3cjgm4opf50.apps.googleusercontent.com';
